@@ -1,0 +1,70 @@
+---
+import { nav, site } from "../site.config";
+
+const path = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="/" aria-label={site.brandName}>
+      <span class="brand-mark" aria-hidden="true">3</span>
+      <span>{site.brandName}</span>
+    </a>
+    <nav class="nav-links" aria-label="주요 메뉴">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            aria-current={path.startsWith(item.href) ? "page" : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+    <button
+      class="menu-btn"
+      type="button"
+      id="menu-btn"
+      aria-expanded="false"
+      aria-controls="mobile-panel"
+      aria-label="메뉴 열기"
+    >
+      <span></span>
+    </button>
+  </div>
+  <div class="container">
+    <div class="mobile-panel" id="mobile-panel" data-open="false" hidden>
+      {
+        nav.map((item) => (
+          <a class="mobile-link" href={item.href}>
+            {item.label}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById("menu-btn");
+  const panel = document.getElementById("mobile-panel");
+  if (btn && panel) {
+    const toggle = () => {
+      const open = panel.dataset.open !== "true";
+      panel.dataset.open = String(open);
+      panel.hidden = !open;
+      btn.setAttribute("aria-expanded", String(open));
+      btn.setAttribute("aria-label", open ? "메뉴 닫기" : "메뉴 열기");
+    };
+    btn.addEventListener("click", toggle);
+    panel.querySelectorAll("a").forEach((link) =>
+      link.addEventListener("click", () => {
+        panel.dataset.open = "false";
+        panel.hidden = true;
+        btn.setAttribute("aria-expanded", "false");
+        btn.setAttribute("aria-label", "메뉴 열기");
+      }),
+    );
+  }
+</script>

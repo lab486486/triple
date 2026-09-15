@@ -1,0 +1,54 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import StayCard from "../../components/StayCard.astro";
+import { getStaysByChain } from "../../lib/content";
+
+export async function getStaticPaths() {
+  const chains = await getCollection("chains");
+  return chains.map((chain) => ({
+    params: { slug: chain.id },
+    props: { chain },
+  }));
+}
+
+const { chain } = Astro.props;
+const { Content } = await render(chain);
+const stays = await getStaysByChain(chain.id);
+---
+
+<Layout title={chain.data.title} description={chain.data.description}>
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <p class="kicker">체인</p>
+        <h1>{chain.data.title}</h1>
+        <p class="lede">{chain.data.description}</p>
+        <p class="cta-row">
+          <a class="cta cta-ghost" href={chain.data.official_url} rel="noopener noreferrer" target="_blank">
+            공식 사이트
+          </a>
+        </p>
+      </div>
+    </section>
+    <section class="section">
+      <article class="narrow prose">
+        <Content />
+      </article>
+    </section>
+    {
+      stays.length > 0 && (
+        <section class="section">
+          <div class="container">
+            <h2>트리플에 올린 {chain.data.nameKo} 숙소</h2>
+            <div class="grid grid-3" style="margin-top:1rem">
+              {stays.map((stay) => (
+                <StayCard stay={stay} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )
+    }
+  </main>
+</Layout>

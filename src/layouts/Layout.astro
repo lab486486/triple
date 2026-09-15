@@ -1,0 +1,52 @@
+---
+import { site } from "../site.config";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/site.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const {
+  title = site.title,
+  description = site.description,
+  jsonLd,
+} = Astro.props;
+
+const pageTitle = title === site.title ? title : `${title} · ${site.brandName}`;
+const canonical = new URL(Astro.url.pathname, site.baseUrl).href;
+const graph = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+---
+
+<!doctype html>
+<html lang={site.lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:site_name" content={site.brandName} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    {
+      graph.map((node) => (
+        <script type="application/ld+json" set:html={JSON.stringify(node)} />
+      ))
+    }
+  </head>
+  <body>
+    <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+    <Header />
+    <slot />
+    <Footer />
+  </body>
+</html>

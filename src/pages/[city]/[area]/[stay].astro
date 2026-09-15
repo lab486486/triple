@@ -1,0 +1,122 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../../layouts/Layout.astro";
+import Breadcrumb from "../../../components/Breadcrumb.astro";
+import AffiliateCta from "../../../components/AffiliateCta.astro";
+import StayCard from "../../../components/StayCard.astro";
+import { getArea, getCity, relatedStays } from "../../../lib/content";
+import {
+  partyList,
+  priceLabels,
+  sleepLabels,
+} from "../../../lib/labels";
+import {
+  breadcrumbJsonLd,
+  crumbsForStay,
+  lodgingJsonLd,
+} from "../../../lib/jsonld";
+
+export async function getStaticPaths() {
+  const stays = await getCollection("stays");
+  return stays.map((stay) => ({
+    params: {
+      city: stay.data.city,
+      area: stay.data.area,
+      stay: stay.id,
+    },
+    props: { stay },
+  }));
+}
+
+const { stay } = Astro.props;
+const city = await getCity(stay.data.city);
+const area = await getArea(stay.data.city, stay.data.area);
+if (!city || !area) throw new Error(`Missing parent for ${stay.id}`);
+const { Content } = await render(stay);
+const related = await relatedStays(stay);
+const crumbs = crumbsForStay(city, area, stay);
+---
+
+<Layout
+  title={`${stay.data.nameKo} 3인`}
+  description={stay.data.verdict}
+  jsonLd={[breadcrumbJsonLd(crumbs), lodgingJsonLd(stay)]}
+>
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <Breadcrumb items={crumbs} />
+        <p class="kicker">{area.data.nameKo} · {sleepLabels[stay.data.sleep_layout]}</p>
+        <h1>{stay.data.nameKo}</h1>
+        <p class="lede">{stay.data.verdict}</p>
+        <div class="stats">
+          <div class="stat">
+            <b>{stay.data.room_size_sqm}㎡</b>
+            <span>대표 면적</span>
+          </div>
+          <div class="stat">
+            <b>{stay.data.capacity_comfortable}인</b>
+            <span>편안하게 자는 인원</span>
+          </div>
+          <div class="stat">
+            <b>{stay.data.walk_min}분</b>
+            <span>{stay.data.station}</span>
+          </div>
+          <div class="stat">
+            <b>{priceLabels[stay.data.price_band]}</b>
+            <span>{partyList(stay.data.party_types)}</span>
+          </div>
+        </div>
+        <div class="cta-row">
+          <AffiliateCta href={stay.data.rakuten_url} />
+          {
+            stay.data.official_url && (
+              <a
+                class="cta cta-ghost"
+                href={stay.data.official_url}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                공식 사이트
+              </a>
+            )
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <article class="narrow prose">
+        <div class="callout">
+          <strong>맞지 않는 사람</strong>
+          {stay.data.not_for}
+        </div>
+        <p>
+          침대: {stay.data.beds}. 공식 정원 {stay.data.capacity_official}인,
+          트리플이 보는 편안한 정원 {stay.data.capacity_comfortable}인.
+          아동 첨이네 {stay.data.child_sharing ? "가능(정책·나이 확인)" : "기대하지 말 것"}.
+          엑스트라베드 {stay.data.extra_bed ? "있는 타입 있음" : "없이 고정 침대로 구성"}.
+        </p>
+        <Content />
+        <p class="cta-row">
+          <AffiliateCta href={stay.data.rakuten_url} />
+        </p>
+      </article>
+    </section>
+
+    {
+      related.length > 0 && (
+        <section class="section">
+          <div class="container">
+            <h2>같은 지역에서</h2>
+            <div class="grid grid-3" style="margin-top:1rem">
+              {related.map((item) => (
+                <StayCard stay={item} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )
+    }
+  </main>
+</Layout>

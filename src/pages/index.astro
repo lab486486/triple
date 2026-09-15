@@ -1,0 +1,102 @@
+---
+import Layout from "../layouts/Layout.astro";
+import StayCard from "../components/StayCard.astro";
+import { organizationJsonLd } from "../lib/jsonld";
+import { getAreasByCity, getCities, getFeaturedStays } from "../lib/content";
+import { cityPath, areaPath } from "../lib/labels";
+
+const cities = await getCities();
+const featured = await getFeaturedStays();
+const areaEntries = await Promise.all(
+  cities.map(async (city) => ({
+    city,
+    areas: await getAreasByCity(city.id),
+  })),
+);
+---
+
+<Layout jsonLd={organizationJsonLd()}>
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <p class="kicker">일본 3인 숙소만</p>
+        <h1>3명이 실제로 눕는 방만 고릅니다</h1>
+        <p class="lede">
+          4인은 2인실 두 개면 됩니다. 3인은 그렇지 않습니다. 트리플은 소파를
+          침대라고 우기지 않고, 부부+자녀와 성인 3인을 따로 봅니다.
+        </p>
+        <div class="chips" aria-label="도시로 이동">
+          {
+            cities.map((city) => (
+              <a class="chip" href={cityPath(city.id)}>
+                {city.data.nameKo} 숙소 3인
+              </a>
+            ))
+          }
+          <a class="chip" href="/tokyo/ueno/">우에노 숙소 3인</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>먼저 볼 숙소</h2>
+          <a href="/about/">선정 기준</a>
+        </div>
+        <div class="grid grid-3">
+          {featured.map((stay) => <StayCard stay={stay} />)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>지역으로 찾기</h2>
+        </div>
+        <div class="grid grid-2">
+          {
+            areaEntries.flatMap(({ city, areas }) =>
+              areas.map((area) => (
+                <a class="card" href={areaPath(city.id, area.data.slug)}>
+                  <div class="meta">
+                    <span class="pill">{city.data.nameKo}</span>
+                  </div>
+                  <h3>{area.data.title}</h3>
+                  <p>{area.data.why}</p>
+                </a>
+              )),
+            )
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid grid-2">
+        <a class="card" href="/guides/how-to-choose-3-person-stay/">
+          <p class="kicker">가이드</p>
+          <h3>일본 숙소 3인, 이렇게 고르면 됩니다</h3>
+          <p>트리플베드, 엑스트라베드, 화실, 아파트형을 한 기준으로 가릅니다.</p>
+        </a>
+        <a class="card" href="/guides/couple-child-vs-three-adults/">
+          <p class="kicker">가이드</p>
+          <h3>부부+자녀와 성인 3인은 다른 방입니다</h3>
+          <p>첨이네(添い寝)가 통하는 구성과, 어른 세 명이 각자 눕는 구성.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container criteria">
+        <h2>올리는 숙소의 기준</h2>
+        <ol>
+          <li>3명이 각자 누울 자리가 있거나, 부부+자녀라면 첨이네 정책이 분명할 것.</li>
+          <li>방 면적과 침대 구성을 공식 사이트에서 교차확인할 것.</li>
+          <li>「3인 가능」만 적혀 있고 소파·협소한 엑베면 탈락하거나 비추천으로 적을 것.</li>
+        </ol>
+      </div>
+    </section>
+  </main>
+</Layout>

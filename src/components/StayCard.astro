@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { partyList, sleepLabels, stayPath } from "../lib/labels";
+
+interface Props {
+  stay: CollectionEntry<"stays">;
+}
+
+const { stay } = Astro.props;
+const href = stayPath(stay);
+---
+
+<a class="card stay-card" href={href} data-parties={stay.data.party_types.join(" ")}>
+  <div class="meta">
+    <span class="pill pill-ok">{sleepLabels[stay.data.sleep_layout]}</span>
+    <span class="pill">{stay.data.room_size_sqm}㎡</span>
+    <span class="pill">{stay.data.walk_min}분</span>
+  </div>
+  <h3>{stay.data.nameKo}</h3>
+  <p>{partyList(stay.data.party_types)} · {stay.data.station}</p>
+  <p class="verdict">{stay.data.verdict}</p>
+</a>

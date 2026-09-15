@@ -1,0 +1,23 @@
+---
+import { site } from "../site.config";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-row">
+      <p>© {year} {site.brandName}</p>
+      <div class="footer-links">
+        <a href="/about/">선정 기준</a>
+        <a href="/guides/">고르는 법</a>
+        <a href="/chains/minn/">Minn</a>
+      </div>
+    </div>
+    <p class="footer-note">
+      트리플은 예약 사이트가 아닙니다. 숙소 링크는 라쿠텐트래블 제휴를 포함하며,
+      클릭 후 예약이 성사되면 소개 수수료를 받을 수 있습니다. 방 타입·정원·요금은
+      날짜에 따라 달라지니 반드시 예약 페이지에서 다시 확인하세요.
+    </p>
+  </div>
+</footer>

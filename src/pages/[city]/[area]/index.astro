@@ -1,0 +1,92 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Breadcrumb from "../../../components/Breadcrumb.astro";
+import StayCard from "../../../components/StayCard.astro";
+import StayCompareTable from "../../../components/StayCompareTable.astro";
+import FaqList from "../../../components/FaqList.astro";
+import { getCollection, render } from "astro:content";
+import { getArea, getCity, getStaysByArea } from "../../../lib/content";
+import { breadcrumbJsonLd, crumbsForArea, faqJsonLd } from "../../../lib/jsonld";
+
+export async function getStaticPaths() {
+  const areas = await getCollection("areas");
+  return areas.map((area) => ({
+    params: { city: area.data.city, area: area.data.slug },
+    props: { cityId: area.data.city, areaSlug: area.data.slug },
+  }));
+}
+
+const { cityId, areaSlug } = Astro.props;
+const city = await getCity(cityId);
+const area = await getArea(cityId, areaSlug);
+if (!city || !area) throw new Error(`Unknown area: ${cityId}/${areaSlug}`);
+const stays = await getStaysByArea(city.id, area.data.slug);
+const { Content } = await render(area);
+const crumbs = crumbsForArea(city, area);
+---
+
+<Layout
+  title={area.data.title}
+  description={area.data.description}
+  jsonLd={[breadcrumbJsonLd(crumbs), faqJsonLd(area.data.faqs)]}
+>
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <Breadcrumb items={crumbs} />
+        <p class="kicker">{area.data.kicker}</p>
+        <h1>{area.data.title}</h1>
+        <p class="lede">{area.data.why}</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="filter-bar" role="group" aria-label="동행 유형">
+          <button type="button" data-filter="all" aria-pressed="true">전체</button>
+          <button type="button" data-filter="couple_child" aria-pressed="false">부부+자녀</button>
+          <button type="button" data-filter="three_adults" aria-pressed="false">성인 3인</button>
+        </div>
+        <StayCompareTable stays={stays} />
+      </div>
+    </section>
+
+    <section class="section">
+      <article class="narrow prose">
+        <Content />
+      </article>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>숙소 판정</h2>
+        <div class="grid grid-3" style="margin-top:1rem">
+          {stays.map((stay) => <StayCard stay={stay} />)}
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <FaqList faqs={area.data.faqs} />
+    </div>
+  </main>
+</Layout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>("[data-filter]");
+  const rows = document.querySelectorAll<HTMLElement>("[data-parties]");
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.dataset.filter ?? "all";
+      buttons.forEach((item) =>
+        item.setAttribute("aria-pressed", String(item === button)),
+      );
+      rows.forEach((row) => {
+        const parties = row.dataset.parties ?? "";
+        const show = filter === "all" || parties.split(" ").includes(filter);
+        row.hidden = !show;
+        row.style.display = show ? "" : "none";
+      });
+    });
+  });
+</script>

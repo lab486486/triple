@@ -1,0 +1,19 @@
+---
+import { affiliateHref } from "../lib/affiliate";
+
+interface Props {
+  href: string;
+  label?: string;
+}
+
+const { href, label = "라쿠텐트래블에서 일정·잔여 확인" } = Astro.props;
+---
+
+<a
+  class="cta"
+  href={affiliateHref(href)}
+  rel="sponsored noopener noreferrer"
+  target="_blank"
+>
+  {label}
+</a>

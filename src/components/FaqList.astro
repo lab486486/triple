@@ -1,0 +1,21 @@
+---
+interface Props {
+  faqs: { q: string; a: string }[];
+}
+
+const { faqs } = Astro.props;
+---
+
+{
+  faqs.length > 0 && (
+    <section class="section faq" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">자주 묻는 질문</h2>
+      {faqs.map((faq) => (
+        <details>
+          <summary>{faq.q}</summary>
+          <p>{faq.a}</p>
+        </details>
+      ))}
+    </section>
+  )
+}

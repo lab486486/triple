@@ -1,0 +1,61 @@
+---
+import type { CollectionEntry } from "astro:content";
+import {
+  partyList,
+  priceLabels,
+  sleepLabels,
+  stayPath,
+} from "../lib/labels";
+import { affiliateHref } from "../lib/affiliate";
+
+interface Props {
+  stays: CollectionEntry<"stays">[];
+}
+
+const { stays } = Astro.props;
+---
+
+<div class="compare-wrap">
+  <table class="compare">
+    <thead>
+      <tr>
+        <th>숙소</th>
+        <th>실제 수면</th>
+        <th>방</th>
+        <th>역</th>
+        <th>이런 구성</th>
+        <th>가격대</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        stays.map((stay) => (
+          <tr data-parties={stay.data.party_types.join(" ")}>
+            <td>
+              <a href={stayPath(stay)}>{stay.data.nameKo}</a>
+            </td>
+            <td>{sleepLabels[stay.data.sleep_layout]} · {stay.data.beds}</td>
+            <td>{stay.data.room_size_sqm}㎡ · 공식 {stay.data.capacity_official}인</td>
+            <td>
+              {stay.data.station} {stay.data.walk_min}분
+            </td>
+            <td>{partyList(stay.data.party_types)}</td>
+            <td>{priceLabels[stay.data.price_band]}</td>
+            <td>
+              <a
+                class="cta"
+                style="padding:0.4rem 0.7rem;font-size:0.82rem"
+                href={affiliateHref(stay.data.rakuten_url)}
+                rel="sponsored noopener noreferrer"
+                target="_blank"
+              >
+                잔여 확인
+              </a>
+            </td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>
