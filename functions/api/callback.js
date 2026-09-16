@@ -3,7 +3,7 @@ function page(script) {
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
-    <title>트리플 로그인</title>
+    <title>3인룸 로그인</title>
   </head>
   <body>
     <p>GitHub 로그인을 마무리하는 중입니다.</p>

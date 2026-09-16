@@ -40,7 +40,7 @@ const stays = await getStaysByChain(chain.id);
       stays.length > 0 && (
         <section class="section">
           <div class="container">
-            <h2>트리플에 올린 {chain.data.nameKo} 숙소</h2>
+            <h2>3인룸에 올린 {chain.data.nameKo} 숙소</h2>
             <div class="grid grid-3" style="margin-top:1rem">
               {stays.map((stay) => (
                 <StayCard stay={stay} />
