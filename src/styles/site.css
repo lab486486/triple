@@ -223,7 +223,7 @@ select {
 
 .search-band h1 {
   margin: 0 0 0.7rem;
-  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+  font-size: clamp(1.55rem, 3.2vw, 2.25rem);
   letter-spacing: -0.04em;
   line-height: 1.25;
 }
@@ -244,16 +244,34 @@ select {
   align-items: stretch;
 }
 
-.intro-copy .lede {
+.intro-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 100%;
+  gap: 1rem;
+}
+
+.intro-visual {
+  flex: 1 1 auto;
+  min-height: 13rem;
+  border-radius: 1.4rem;
+  overflow: hidden;
+  background: #d8deea;
+}
+
+.intro-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.intro-text .lede {
   margin: 0;
 }
 
-.intro-copy .feature-list {
-  margin-top: 1.15rem;
-}
-
-.intro-copy .feature-list li + li {
-  margin-top: 0.75rem;
+.intro-copy .lede {
+  margin: 0;
 }
 
 .search-card {
@@ -1236,6 +1254,12 @@ h3 {
   .grid-3,
   .stats {
     grid-template-columns: 1fr;
+  }
+
+  .intro-visual {
+    flex: none;
+    min-height: 11rem;
+    max-height: 14rem;
   }
 
   .city-grid {

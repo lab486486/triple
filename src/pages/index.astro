@@ -25,26 +25,23 @@ const destinations = areaEntries.flatMap(({ city, areas }) =>
     <section class="search-band">
       <div class="container intro-search">
         <div class="intro-copy">
-          <p class="search-kicker">일본 3인 숙소만</p>
-          <h1>3명이 눕는 방만 올립니다</h1>
-          <p class="lede">
-            정원 숫자 대신 누가 어디에 눕는지를 봅니다. 소파베드와 협소한 엑베는
-            비추천으로 밝히고, 예약은 라쿠텐트래블에서 확인합니다.
-          </p>
-          <ul class="feature-list">
-            <li>
-              <strong>수면 구성</strong>
-              트리플베드, 아파트형, 화실, 엑베를 같은 기준으로 가릅니다.
-            </li>
-            <li>
-              <strong>교차확인</strong>
-              공식 사이트의 면적과 침대 수를 맞춰 본 숙소만 올립니다.
-            </li>
-            <li>
-              <strong>동행을 나눔</strong>
-              부부+자녀와 성인 3인은 다른 방입니다.
-            </li>
-          </ul>
+          <div class="intro-visual">
+            <img
+              src="/images/covers/family-stay.png"
+              alt="더블 침대에 앉은 부부가, 싱글 침대에서 책을 읽는 아들을 바라보는 3인 가족"
+              width="1200"
+              height="900"
+            />
+          </div>
+          <div class="intro-text">
+            <p class="search-kicker">일본여행 정보</p>
+            <h1>트리플 : 3인 숙소정보 플랫폼</h1>
+            <p class="lede lede-lines">
+              <span>애매한 3인 여행자를 위한</span>
+              <span>완벽한 숙소 가이드!</span>
+              <span>누구 하나 소외없이 만족스러운 여행을 만들어드립니다.</span>
+            </p>
+          </div>
         </div>
         <SearchBar />
       </div>
