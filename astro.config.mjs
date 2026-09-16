@@ -15,4 +15,8 @@ export default defineConfig({
   build: {
     inlineStylesheets: "always",
   },
+  redirects: {
+    "/guides": "/blog",
+    "/guides/[slug]": "/blog/[slug]",
+  },
 });

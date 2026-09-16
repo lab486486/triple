@@ -11,7 +11,7 @@ export const partyLabels: Record<PartyType, string> = {
 
 export const sleepLabels: Record<SleepLayout, string> = {
   apartment: "더블+싱글",
-  triple_bed: "싱글X3",
+  triple_bed: "싱글 X 3",
   futon_3: "다다미",
   twin_extra: "엑스트라베드",
 };
@@ -21,6 +21,20 @@ export const priceLabels: Record<PriceBand, string> = {
   mid: "중간",
   high: "상급",
 };
+
+export const weekdayPriceLabels: Record<PriceBand, string> = {
+  low: "1박 7만원대(평일기준)",
+  mid: "1박 10만원대(평일기준)",
+  high: "1박 15만원대(평일기준)",
+};
+
+export function transitLabel(station: string, walkMin: number): string {
+  const label =
+    station.endsWith("역") && !station.includes(" ")
+      ? `${station.slice(0, -1)} 역`
+      : station;
+  return `${label}(${walkMin}분 소요)`;
+}
 
 export function stayPath(stay: CollectionEntry<"stays">): string {
   return `/${stay.data.city}/${stay.data.area}/${stay.id}/`;

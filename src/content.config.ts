@@ -96,8 +96,9 @@ const guides = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    kicker: z.string(),
+    kicker: z.string().default("블로그"),
     date: z.coerce.date(),
+    cover_image: z.string().optional(),
   }),
 });
 

@@ -1,5 +1,5 @@
 ---
-import { getAreasByCity, getCities } from "../lib/content";
+import { getCities } from "../lib/content";
 
 interface Props {
   layout?: "panel" | "page";
@@ -7,69 +7,69 @@ interface Props {
 
 const { layout = "panel" } = Astro.props;
 const cities = await getCities();
-const grouped = await Promise.all(
-  cities.map(async (city) => ({
-    city,
-    areas: await getAreasByCity(city.id),
-  })),
-);
 
-const areaMap = Object.fromEntries(
-  grouped.map(({ city, areas }) => [
-    city.id,
-    areas.map((area) => ({
-      id: `${city.id}/${area.data.slug}`,
-      name: area.data.nameKo,
-    })),
-  ]),
-);
+const cityImages: Record<string, string> = {
+  tokyo: "/images/search/tokyo.png",
+  osaka: "/images/search/osaka.png",
+  kyoto: "/images/search/kyoto.png",
+  fukuoka: "/images/search/fukuoka.png",
+};
 
 const layouts = [
-  { value: "", label: "전체" },
-  { value: "apartment", label: "더블+싱글" },
-  { value: "triple_bed", label: "싱글X3" },
-  { value: "futon_3", label: "다다미" },
-  { value: "twin_extra", label: "엑스트라베드" },
+  {
+    value: "apartment",
+    label: "더블+싱글",
+    image: "/images/search/bed-double-single.png",
+  },
+  {
+    value: "triple_bed",
+    label: "싱글 X 3",
+    image: "/images/search/bed-triple-single.png",
+  },
+  {
+    value: "futon_3",
+    label: "다다미",
+    image: "/images/search/bed-tatami.png",
+  },
+  {
+    value: "twin_extra",
+    label: "엑스트라베드",
+    image: "/images/search/bed-extra.png",
+  },
 ];
 ---
 
 <form
-  class:list={["search-card", "search-card-stack", layout === "page" && "search-card-page"]}
+  class:list={["search-card", layout === "page" && "search-card-page"]}
   action="/search/"
   method="get"
   data-search-form
-  data-areas={JSON.stringify(areaMap)}
 >
   <input type="hidden" name="region" value="" />
   <input type="hidden" name="layout" value="" />
 
-  <div class="search-group">
+  <div class="search-group search-group-picks">
     <span>여행 지역</span>
-    <div class="choice-row" data-group="city">
-      <button class="choice is-on" type="button" data-value="" aria-pressed="true">전체</button>
+    <div class="pick-grid" data-group="city">
       {
-        grouped.map(({ city }) => (
-          <button class="choice" type="button" data-value={city.id}>
-            {city.data.nameKo}
+        cities.map((city) => (
+          <button class="pick" type="button" data-value={city.id} aria-pressed="false">
+            <img src={cityImages[city.id] ?? cityImages.tokyo} alt="" width="640" height="480" />
+            <span>{city.data.nameKo}</span>
           </button>
         ))
       }
     </div>
-    <div class="choice-row" data-group="area" hidden></div>
   </div>
 
-  <div class="search-group">
+  <div class="search-group search-group-picks">
     <span>침대 구성</span>
-    <div class="choice-row" data-group="layout">
+    <div class="pick-grid" data-group="layout">
       {
-        layouts.map((item, index) => (
-          <button
-            class:list={["choice", index === 0 && "is-on"]}
-            type="button"
-            data-value={item.value}
-            aria-pressed={index === 0 ? "true" : "false"}
-          >
-            {item.label}
+        layouts.map((item) => (
+          <button class="pick" type="button" data-value={item.value} aria-pressed="false">
+            <img src={item.image} alt="" width="640" height="480" />
+            <span>{item.label}</span>
           </button>
         ))
       }
@@ -81,92 +81,45 @@ const layouts = [
 
 <script>
   function markOn(row: Element, value: string) {
-    row.querySelectorAll<HTMLButtonElement>(".choice").forEach((button) => {
-      const on = (button.dataset.value ?? "") === value;
+    row.querySelectorAll<HTMLButtonElement>(".pick").forEach((button) => {
+      const on = (button.dataset.value ?? "") === value && value !== "";
       button.classList.toggle("is-on", on);
       button.setAttribute("aria-pressed", String(on));
     });
   }
 
   document.querySelectorAll<HTMLFormElement>("[data-search-form]").forEach((form) => {
-    const areaMap = form.dataset.areas
-      ? (JSON.parse(form.dataset.areas) as Record<
-          string,
-          { id: string; name: string }[]
-        >)
-      : {};
-
     const fields = {
       region: form.querySelector<HTMLInputElement>('[name="region"]')!,
       layout: form.querySelector<HTMLInputElement>('[name="layout"]')!,
     };
-
     const cityRow = form.querySelector("[data-group='city']")!;
-    const areaRow = form.querySelector<HTMLElement>("[data-group='area']")!;
     const layoutRow = form.querySelector("[data-group='layout']")!;
     const params = new URLSearchParams(window.location.search);
 
-    function renderAreas(cityId: string, selected = "") {
-      areaRow.replaceChildren();
-      const areas = areaMap[cityId] ?? [];
-      if (!cityId || areas.length === 0) {
-        areaRow.hidden = true;
-        return;
-      }
-
-      const all = document.createElement("button");
-      all.type = "button";
-      all.className = `choice${selected ? "" : " is-on"}`;
-      all.dataset.value = cityId;
-      all.setAttribute("aria-pressed", selected ? "false" : "true");
-      all.textContent = "도시 전체";
-      areaRow.append(all);
-
-      for (const area of areas) {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = `choice${selected === area.id ? " is-on" : ""}`;
-        button.dataset.value = area.id;
-        button.setAttribute("aria-pressed", String(selected === area.id));
-        button.textContent = area.name;
-        areaRow.append(button);
-      }
-      areaRow.hidden = false;
-    }
-
     const region = params.get("region") ?? "";
-    const [cityId = "", areaSlug = ""] = region.split("/");
-    fields.region.value = region;
+    const cityId = region.split("/")[0] ?? "";
+    fields.region.value = cityId;
     fields.layout.value = params.get("layout") ?? "";
 
     markOn(cityRow, cityId);
     markOn(layoutRow, fields.layout.value);
-    renderAreas(cityId, areaSlug ? region : "");
 
-    cityRow.addEventListener("click", (event) => {
-      const button = (event.target as HTMLElement).closest<HTMLButtonElement>(".choice");
-      if (!button) return;
-      const value = button.dataset.value ?? "";
-      fields.region.value = value;
-      markOn(cityRow, value);
-      renderAreas(value);
-    });
+    function bindToggle(
+      row: Element,
+      field: HTMLInputElement,
+    ) {
+      row.addEventListener("click", (event) => {
+        const button = (event.target as HTMLElement).closest<HTMLButtonElement>(".pick");
+        if (!button) return;
+        const value = button.dataset.value ?? "";
+        field.value = field.value === value ? "" : value;
+        markOn(row, field.value);
+      });
+    }
 
-    areaRow.addEventListener("click", (event) => {
-      const button = (event.target as HTMLElement).closest<HTMLButtonElement>(".choice");
-      if (!button) return;
-      const value = button.dataset.value ?? "";
-      fields.region.value = value;
-      markOn(areaRow, value);
-    });
-
-    layoutRow.addEventListener("click", (event) => {
-      const button = (event.target as HTMLElement).closest<HTMLButtonElement>(".choice");
-      if (!button) return;
-      const value = button.dataset.value ?? "";
-      fields.layout.value = value;
-      markOn(layoutRow, value);
-    });
+    bindToggle(cityRow, fields.region);
+    bindToggle(layoutRow, fields.layout);
 
     form.addEventListener("submit", () => {
       Object.values(fields).forEach((input) => {

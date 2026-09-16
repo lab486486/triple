@@ -1,8 +1,9 @@
 ---
 title: 부부+자녀와 성인 3인은 다른 방입니다
 description: 첨이네(添い寝)가 되는 가족과, 어른 세 명이 각자 침대가 필요한 구성은 검색어가 같아도 답이 다릅니다.
-kicker: 동행
+kicker: 블로그
 date: 2026-09-15
+cover_image: /images/covers/namba.jpg
 ---
 
 검색어는 둘 다 `숙소 3인`입니다. 방은 다릅니다.

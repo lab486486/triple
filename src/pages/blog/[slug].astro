@@ -1,0 +1,28 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("guides");
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={post.data.title} description={post.data.description}>
+  <main id="main" class="section">
+    <article class="narrow prose">
+      <p class="kicker">{post.data.kicker}</p>
+      <h1>{post.data.title}</h1>
+      {post.data.cover_image && (
+        <img class="post-cover" src={post.data.cover_image} alt="" width="1200" height="675" />
+      )}
+      <Content />
+    </article>
+  </main>
+</Layout>
