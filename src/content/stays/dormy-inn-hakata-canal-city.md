@@ -17,6 +17,8 @@ price_band: mid
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=Dormy+Inn+Premium+Hakata+Canal+City
 official_url: https://www.hotespa.net/
 address: 福岡市博多区
+check_in: "15:00"
+check_out: "11:00"
 verdict: 캐널시티와 온천이 목적. 수면은 2.5인으로 계산하세요.
 not_for: 성인 3인의 본방. 우에노 도미 인과 같은 타협입니다.
 rank: 3

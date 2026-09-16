@@ -18,6 +18,8 @@ price_band: mid
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=Minn+Ueno
 official_url: https://staytuned.asia/en/brands/minn/hotels/minn-ueno
 address: 東京都台東区東上野1-19-5
+check_in: "15:00"
+check_out: "11:00"
 verdict: 부부+자녀와 성인 3인 모두, 우에노에서 실패가 가장 적은 아파트형.
 not_for: 욕조가 꼭 필요하거나, 퀸+소파베드 타입을 성인 3인이 잡으려는 경우.
 rank: 1

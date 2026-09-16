@@ -2,7 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import type { StayRoom } from "../lib/rooms";
 import AffiliateCta from "./AffiliateCta.astro";
-import { partyList } from "../lib/labels";
+import PriceAsk from "./PriceAsk.astro";
 
 interface Props {
   room: StayRoom;
@@ -12,27 +12,34 @@ interface Props {
 
 const { room, stay, photo } = Astro.props;
 const href = room.rakuten_url ?? stay.data.rakuten_url;
-const parties = room.party_types ?? stay.data.party_types;
 ---
 
 <article class="room-card">
   <div class="room-photo">
     <img src={room.photo ?? photo} alt="" width="480" height="360" loading="lazy" />
-    {room.recommended && <span class="pkg-badge">3인 추천</span>}
   </div>
   <div class="room-body">
     <div>
-      <h3>{room.name}</h3>
+      <div class="room-name-row">
+        <h3>{room.name}</h3>
+        <a class="room-detail" href="#intro">상세 정보</a>
+      </div>
       <p class="room-meta">
         {room.size_sqm ? `${room.size_sqm}㎡ · ` : ""}
-        {room.beds} · 공식 {room.capacity_official}인 · 편안하게 {room.capacity_comfortable}인
+        {room.beds} · 편안하게 {room.capacity_comfortable}인
       </p>
-      <p class="room-parties">{partyList(parties)}</p>
+      <p class="room-times">
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+          <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
+          <path d="M12 8v4l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        </svg>
+        입실 {stay.data.check_in} · 퇴실 {stay.data.check_out}
+      </p>
       <p class="room-note">{room.note}</p>
     </div>
     <div class="room-cta">
-      <small>잔여·요금은 라쿠텐에서</small>
-      <AffiliateCta href={href} label="이 타입 확인" />
+      <PriceAsk band={stay.data.price_band} href={href} />
+      <AffiliateCta href={href} label="객실 예약" />
     </div>
   </div>
 </article>

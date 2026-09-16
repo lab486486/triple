@@ -18,6 +18,8 @@ price_band: mid
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=Minn+Asakusa
 official_url: https://staytuned.asia/en/brands/minn
 address: 東京都台東区浅草
+check_in: "15:00"
+check_out: "11:00"
 verdict: 센소지를 걷고 주방에서 해 먹는 3인 일정에 맞는 아파트형.
 not_for: 가미나리몬 바로 앞 전망이 목적인 경우. 역 1분을 원하면 MIMARU 아사쿠사 스테이션.
 rank: 2

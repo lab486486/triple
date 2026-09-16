@@ -17,6 +17,8 @@ price_band: mid
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=Nishitetsu+Hotel+Croom+Hakata
 official_url: https://www.nishitetsu-hotel-croom.jp/hakata/
 address: 福岡市博多区博多駅前
+check_in: "15:00"
+check_out: "11:00"
 verdict: 하카타역 앞. 트리플 타입을 고르면 3인 첫날 이동이 가장 짧습니다.
 not_for: 트윈+엑베 타입을 아무거나 잡는 경우. 역세권 가치만 남고 수면이 무너집니다.
 rank: 1

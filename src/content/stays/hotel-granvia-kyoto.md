@@ -17,6 +17,8 @@ price_band: high
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=Hotel+Granvia+Kyoto
 official_url: https://www.granvia-kyoto.co.jp/
 address: 京都市下京区烏丸通塩小路下ル
+check_in: "15:00"
+check_out: "11:00"
 verdict: 역 빌딩 직결. 가족 짐과 JR 호텔 서비스가 목적일 때. 방 타입을 디럭스·커넥팅으로 고정하세요.
 not_for: 스탠다드 트윈에 엑베만 넣고 성인 3인을 재우려는 경우.
 rank: 2

@@ -18,6 +18,8 @@ price_band: mid
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=MIMARU+Osaka+Namba+North
 official_url: https://mimaruhotels.com/en/hotel/namba-north/
 address: 大阪府大阪市中央区
+check_in: "15:00"
+check_out: "11:00"
 verdict: 스테이션점보다 한 블록 북쪽. 잔여가 없을 때 같은 기준으로 옮겨도 됩니다.
 not_for: 난카이 공항선을 매일 쓰는 일정. 그때는 스테이션점이 4분으로 더 짧습니다.
 rank: 2

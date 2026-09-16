@@ -17,6 +17,8 @@ price_band: high
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=Hotel+Nikko+Fukuoka
 official_url: https://www.hotelnikkofukuoka.com/
 address: 福岡市博多区白金2-18-25
+check_in: "15:00"
+check_out: "11:00"
 verdict: 방이 넓은 시티호텔. 부부+자녀가 욕조와 서비스를 원할 때.
 not_for: 성인 3인이 1인당 요금을 맞추고 싶은 경우. 트리플베드 실속형은 크룸·이비스 쪽이 정직합니다.
 rank: 2

@@ -17,6 +17,8 @@ price_band: low
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=ibis+Styles+Kyoto+Station
 official_url: https://all.accor.com/hotel/B4P3/index.en.shtml
 address: 京都市下京区
+check_in: "15:00"
+check_out: "11:00"
 verdict: 성인 3인에게 가장 정직한 트리플베드. 면적은 작지만 소파가 아닙니다.
 not_for: 부부+자녀의 공간·욕조·주방. 22㎡에 짐 세 개는 타협입니다.
 rank: 3

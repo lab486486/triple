@@ -18,6 +18,8 @@ price_band: mid
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=MIMARU+Tokyo+Asakusa+Station
 official_url: https://mimaruhotels.com/en/hotel/asakusa-station/
 address: 東京都台東区雷門2-20-4
+check_in: "15:00"
+check_out: "11:00"
 verdict: 아사쿠사역 1분. 3인 짐과 스카이트리 일정의 기본값.
 not_for: 예산을 비즈니스호텔 트윈에 맞추고 싶은 경우.
 rank: 1

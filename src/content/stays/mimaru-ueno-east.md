@@ -18,6 +18,8 @@ price_band: mid
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=MIMARU+Tokyo+Ueno+East
 official_url: https://mimaruhotels.com/en/hotel/ueno-east/
 address: 東京都台東区東上野4-26-3
+check_in: "15:00"
+check_out: "11:00"
 verdict: 성인 3인은 4싱글 아파트, 아이는 2층침대 패밀리 타입.
 not_for: 1인당 요금을 비즈니스호텔 수준으로 맞추고 싶은 일정.
 rank: 2

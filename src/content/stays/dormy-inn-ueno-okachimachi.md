@@ -17,6 +17,8 @@ price_band: mid
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=Dormy+Inn+Premium+Ueno+Okachimachi
 official_url: https://www.hotespa.net/hotels/ueno/
 address: 東京都台東区上野3-16-3
+check_in: "15:00"
+check_out: "11:00"
 verdict: 온천이 목표면 타협. 성인 3인 각자의 침대는 아닙니다.
 not_for: 어른 세 명이 각자 싱글을 원하는 경우. 면적보다 잠을 사야 하면 Minn·MIMARU로.
 rank: 3

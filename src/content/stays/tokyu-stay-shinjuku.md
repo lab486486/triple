@@ -17,6 +17,8 @@ price_band: mid
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=Tokyu+Stay+Shinjuku
 official_url: https://www.tokyustay.co.jp/
 address: 東京都新宿区
+check_in: "15:00"
+check_out: "11:00"
 verdict: 세탁기·키친ette는 편하지만, 3번째 잠자리는 소파인 경우가 많습니다.
 not_for: 성인 3인. 소파베드를 싱글로 계산하지 마세요.
 rank: 3

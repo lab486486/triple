@@ -18,6 +18,8 @@ price_band: mid
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=MIMARU+Kyoto+Station
 official_url: https://mimaruhotels.com/en/hotel/kyoto-station/
 address: 京都市南区東九条東山王町15-1
+check_in: "15:00"
+check_out: "11:00"
 verdict: 교토역 하치조 2분. 3인 짐과 당일치기의 본방.
 not_for: 기온 골목에서 자고 싶은 일정. 그때는 낮에 나가고, 잠은 여기서 자는 편이 덜 지칩니다.
 rank: 1

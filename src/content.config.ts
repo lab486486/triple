@@ -1,6 +1,7 @@
 import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
+import { defaultAmenities } from "./lib/amenities";
 
 const partyType = z.enum(["couple_child", "three_adults"]);
 const sleepLayout = z.enum([
@@ -81,6 +82,15 @@ const stays = defineCollection({
     rakuten_url: z.string().url(),
     official_url: z.string().url().optional(),
     address: z.string(),
+    check_in: z.preprocess(
+      (v) => (typeof v === "string" && v.trim() ? v.trim() : undefined),
+      z.string().default("15:00"),
+    ),
+    check_out: z.preprocess(
+      (v) => (typeof v === "string" && v.trim() ? v.trim() : undefined),
+      z.string().default("11:00"),
+    ),
+    amenities: z.array(z.string()).default(defaultAmenities),
     verdict: z.string(),
     not_for: z.string(),
     rank: z.number(),

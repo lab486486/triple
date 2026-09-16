@@ -18,6 +18,8 @@ price_band: mid
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=MIMARU+Tokyo+Shinjuku+West
 official_url: https://mimaruhotels.com/en/hotel/shinjuku-west/
 address: 東京都新宿区西新宿3-3-11
+check_in: "15:00"
+check_out: "11:00"
 verdict: 신주쿠에서 3인이 면적을 사는 기본값. 역 5분 트윈보다 도보 8분이 낫습니다.
 not_for: 신주쿠역 동구·가부키초에 밤마다 붙어야 하는 일정.
 rank: 1

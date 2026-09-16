@@ -18,6 +18,8 @@ price_band: mid
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=MIMARU+Osaka+Namba+Station
 official_url: https://mimaruhotels.com/en/hotel/namba-station/
 address: 大阪府大阪市中央区
+check_in: "15:00"
+check_out: "11:00"
 verdict: 난카이 난바역 4분. 오사카 3인 일정의 본방으로 쓰기 좋습니다.
 not_for: 도톤보리 네온이 창밖으로 보여야 하는 일정. 방은 한 블록 빠지고 면적을 줍니다.
 rank: 1

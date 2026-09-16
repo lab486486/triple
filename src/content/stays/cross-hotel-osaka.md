@@ -17,6 +17,8 @@ price_band: high
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=Cross+Hotel+Osaka
 official_url: https://www.crosshotel.com/osaka/
 address: 大阪府大阪市中央区島町1-1-36
+check_in: "15:00"
+check_out: "11:00"
 verdict: 도톤보리 옆에서 진짜 트리플베드를 파는 호텔. 아파트형은 아니지만 성인 3인 침대가 있습니다.
 not_for: 주방에서 해 먹어야 하는 가족. 키친은 MIMARU 쪽으로.
 rank: 3

@@ -17,6 +17,8 @@ price_band: high
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=Citadines+Shinjuku+Tokyo
 official_url: https://www.discoverasr.com/en/citadines/japan/citadines-shinjuku-tokyo
 address: 東京都新宿区新宿
+check_in: "15:00"
+check_out: "11:00"
 verdict: 주방이 있는 서구식 아파트. 스튜디오의 소파베드는 성인 3인에게 약하니 1베드룸을 고르세요.
 not_for: 스튜디오를 성인 셋이 예약하는 경우. 세 번째 사람이 소파를 침대라고 부르는 구성입니다.
 rank: 2

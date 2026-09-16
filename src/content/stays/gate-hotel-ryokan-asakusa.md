@@ -17,6 +17,8 @@ price_band: high
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=The+Gate+Hotel+Ryokan+Asakusa+Kaminarimon
 official_url: https://www.gate-hotel.jp/asakusa-kaminarimon/
 address: 東京都台東区雷門2
+check_in: "15:00"
+check_out: "11:00"
 verdict: 가미나리몬 옆에서 화실로 자는 가족용. 성인 3인 싱글 목적과는 다릅니다.
 not_for: 각자 침대와 넓은 욕실이 필요한 성인 셋. 저층 골목 소음에 민감한 경우.
 rank: 3
