@@ -5,7 +5,7 @@ const path = Astro.url.pathname;
 ---
 
 <header class="site-header">
-  <div class="container nav">
+  <div class="nav-shell">
     <a class="brand" href="/" aria-label={site.brandName}>
       <span class="brand-mark" aria-hidden="true">3</span>
       <span>{site.brandName}</span>
@@ -22,6 +22,7 @@ const path = Astro.url.pathname;
         ))
       }
     </nav>
+    <a class="nav-cta" href="/about/">선정 기준</a>
     <button
       class="menu-btn"
       type="button"
@@ -42,6 +43,7 @@ const path = Astro.url.pathname;
           </a>
         ))
       }
+      <a class="mobile-link" href="/about/">선정 기준</a>
     </div>
   </div>
 </header>

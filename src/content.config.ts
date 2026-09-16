@@ -46,6 +46,19 @@ const areas = defineCollection({
   }),
 });
 
+const stayRoom = z.object({
+  name: z.string(),
+  size_sqm: z.number().optional(),
+  beds: z.string(),
+  capacity_official: z.number(),
+  capacity_comfortable: z.number(),
+  party_types: z.array(partyType).optional(),
+  recommended: z.boolean().default(false),
+  note: z.string(),
+  rakuten_url: z.string().url().optional(),
+  photo: z.string().optional(),
+});
+
 const stays = defineCollection({
   loader: glob({ base: "./src/content/stays", pattern: "**/*.md" }),
   schema: z.object({
@@ -73,6 +86,8 @@ const stays = defineCollection({
     rank: z.number(),
     featured: z.boolean().default(false),
     updated: z.coerce.date(),
+    photos: z.array(z.string()).default([]),
+    rooms: z.array(stayRoom).default([]),
   }),
 });
 

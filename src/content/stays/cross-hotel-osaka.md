@@ -22,6 +22,15 @@ not_for: 주방에서 해 먹어야 하는 가족. 키친은 MIMARU 쪽으로.
 rank: 3
 featured: false
 updated: 2026-09-15
+rooms:
+  - name: 슈퍼리어 트리플
+    size_sqm: 28
+    beds: 싱글 3 또는 더블+싱글
+    capacity_official: 3
+    capacity_comfortable: 3
+    party_types: [three_adults, couple_child]
+    recommended: true
+    note: 처음부터 3인이 눕도록 만든 방입니다. 트리플 잔여가 없으면 더블+엑베로 바꾸지 마세요.
 ---
 
 도톤보리·에비스바시에 가까운 디자인 호텔입니다. 슈퍼리어 트리플처럼 **처음부터 3인이 눕도록 만든 방**이 있습니다. 난바에서 아파트형이 싫고, 호텔 침구와 야경을 원하면 이 타입이 맞습니다.

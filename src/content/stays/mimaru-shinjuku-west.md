@@ -23,6 +23,23 @@ not_for: 신주쿠역 동구·가부키초에 밤마다 붙어야 하는 일정.
 rank: 1
 featured: true
 updated: 2026-09-15
+rooms:
+  - name: 4싱글 아파트
+    size_sqm: 40
+    beds: 싱글 4
+    capacity_official: 4
+    capacity_comfortable: 3
+    party_types: [three_adults]
+    recommended: true
+    note: 성인 3인에게 맞습니다. 신주쿠역 앞 트윈보다 면적을 사는 타입입니다.
+  - name: 패밀리 아파트
+    size_sqm: 40
+    beds: 싱글 2 + 2층침대
+    capacity_official: 6
+    capacity_comfortable: 3
+    party_types: [couple_child]
+    recommended: true
+    note: 부부+자녀 기본값. 키친이 있어 편의점·슈퍼가 실제로 돌아갑니다.
 ---
 
 도에이 오에도선 도청앞역 A2 출구 8분, JR 신주쿠 남쪽 출구 10분입니다. 패밀리 아파트 40㎡는 싱글 2+2층침대, 4싱글 아파트 40㎡는 성인 3인에게 맞습니다. 58㎡ 6싱글은 과한 면적이지만 친구 셋이 거실처럼 쓰기 좋습니다.

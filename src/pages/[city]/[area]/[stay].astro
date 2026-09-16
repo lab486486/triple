@@ -4,12 +4,12 @@ import Layout from "../../../layouts/Layout.astro";
 import Breadcrumb from "../../../components/Breadcrumb.astro";
 import AffiliateCta from "../../../components/AffiliateCta.astro";
 import StayCard from "../../../components/StayCard.astro";
+import StayGallery from "../../../components/StayGallery.astro";
+import StayRoomCard from "../../../components/StayRoomCard.astro";
 import { getArea, getCity, relatedStays } from "../../../lib/content";
-import {
-  partyList,
-  priceLabels,
-  sleepLabels,
-} from "../../../lib/labels";
+import { stayCover, stayGallery } from "../../../lib/covers";
+import { roomsForStay, stayFacts } from "../../../lib/rooms";
+import { placeLabel, priceLabels } from "../../../lib/labels";
 import {
   breadcrumbJsonLd,
   crumbsForStay,
@@ -35,6 +35,11 @@ if (!city || !area) throw new Error(`Missing parent for ${stay.id}`);
 const { Content } = await render(stay);
 const related = await relatedStays(stay);
 const crumbs = crumbsForStay(city, area, stay);
+const photos = stayGallery(stay.data.city, stay.data.area, stay.data.photos);
+const rooms = roomsForStay(stay);
+const facts = stayFacts(stay);
+const cover = stayCover(stay.data.city, stay.data.area);
+const place = placeLabel(stay.data.city, stay.data.area);
 ---
 
 <Layout
@@ -42,66 +47,86 @@ const crumbs = crumbsForStay(city, area, stay);
   description={stay.data.verdict}
   jsonLd={[breadcrumbJsonLd(crumbs), lodgingJsonLd(stay)]}
 >
-  <main id="main">
-    <section class="hero">
+  <main id="main" class="stay-page">
+    <section class="stay-top">
       <div class="container">
         <Breadcrumb items={crumbs} />
-        <p class="kicker">{area.data.nameKo} · {sleepLabels[stay.data.sleep_layout]}</p>
-        <h1>{stay.data.nameKo}</h1>
-        <p class="lede">{stay.data.verdict}</p>
-        <div class="stats">
-          <div class="stat">
-            <b>{stay.data.room_size_sqm}㎡</b>
-            <span>대표 면적</span>
+        <StayGallery photos={photos} name={stay.data.nameKo} />
+        <div class="stay-head">
+          <div>
+            <p class="kicker">{place}</p>
+            <h1>{stay.data.nameKo}</h1>
+            <p class="lede">{stay.data.verdict}</p>
+            <ul class="stay-facts">
+              {facts.map((fact) => <li>{fact}</li>)}
+            </ul>
           </div>
-          <div class="stat">
-            <b>{stay.data.capacity_comfortable}인</b>
-            <span>편안하게 자는 인원</span>
-          </div>
-          <div class="stat">
-            <b>{stay.data.walk_min}분</b>
-            <span>{stay.data.station}</span>
-          </div>
-          <div class="stat">
+          <aside class="stay-head-card">
+            <span class="pkg-from">경비 띠</span>
             <b>{priceLabels[stay.data.price_band]}</b>
-            <span>{partyList(stay.data.party_types)}</span>
-          </div>
-        </div>
-        <div class="cta-row">
-          <AffiliateCta href={stay.data.rakuten_url} />
-          {
-            stay.data.official_url && (
-              <a
-                class="cta cta-ghost"
-                href={stay.data.official_url}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                공식 사이트
-              </a>
-            )
-          }
+            <p>{stay.data.station} 도보 {stay.data.walk_min}분</p>
+            <AffiliateCta href={stay.data.rakuten_url} />
+            {
+              stay.data.official_url && (
+                <a
+                  class="cta cta-ghost"
+                  href={stay.data.official_url}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  공식 사이트
+                </a>
+              )
+            }
+          </aside>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <article class="narrow prose">
+    <nav class="stay-tabs" aria-label="숙소 섹션">
+      <div class="container stay-tabs-row">
+        <a href="#rooms">3인실 선택</a>
+        <a href="#intro">숙소 소개</a>
+        <a href="#location">위치</a>
+      </div>
+    </nav>
+
+    <section class="section" id="rooms">
+      <div class="container">
+        <h2>3인실만 고릅니다</h2>
+        <p class="section-note">트윈·스탠다드는 올리지 않습니다. 예약은 라쿠텐에서 날짜를 넣어 확인하세요.</p>
+        <div class="room-list">
+          {rooms.map((room) => <StayRoomCard room={room} stay={stay} photo={cover} />)}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="intro">
+      <article class="container stay-intro">
+        <h2>숙소 소개</h2>
         <div class="callout">
           <strong>맞지 않는 사람</strong>
           {stay.data.not_for}
         </div>
-        <p>
-          침대: {stay.data.beds}. 공식 정원 {stay.data.capacity_official}인,
-          트리플이 보는 편안한 정원 {stay.data.capacity_comfortable}인.
-          아동 첨이네 {stay.data.child_sharing ? "가능(정책·나이 확인)" : "기대하지 말 것"}.
-          엑스트라베드 {stay.data.extra_bed ? "있는 타입 있음" : "없이 고정 침대로 구성"}.
-        </p>
-        <Content />
-        <p class="cta-row">
-          <AffiliateCta href={stay.data.rakuten_url} />
-        </p>
+        <div class="prose">
+          <Content />
+        </div>
       </article>
+    </section>
+
+    <section class="section" id="location">
+      <div class="container stay-location">
+        <div>
+          <h2>위치</h2>
+          <p class="lede">{stay.data.address}</p>
+          <p>{stay.data.station}에서 도보 {stay.data.walk_min}분. {place} 권역입니다.</p>
+        </div>
+        <div class="stay-location-card">
+          <strong>{stay.data.station}</strong>
+          <span>도보 {stay.data.walk_min}분</span>
+          <p>{stay.data.address}</p>
+        </div>
+      </div>
     </section>
 
     {
@@ -118,5 +143,15 @@ const crumbs = crumbsForStay(city, area, stay);
         </section>
       )
     }
+
+    <div class="stay-dock">
+      <div class="container stay-dock-row">
+        <div>
+          <small>{stay.data.nameKo}</small>
+          <b>{priceLabels[stay.data.price_band]} · {stay.data.station} {stay.data.walk_min}분</b>
+        </div>
+        <AffiliateCta href={stay.data.rakuten_url} class="stay-dock-cta" />
+      </div>
+    </div>
   </main>
 </Layout>

@@ -34,8 +34,24 @@ export function cityPath(city: string): string {
   return `/${city}/`;
 }
 
-export function chainPath(id: string): string {
-  return `/chains/${id}/`;
+export const cityNames: Record<string, string> = {
+  tokyo: "도쿄",
+  osaka: "오사카",
+  kyoto: "교토",
+  fukuoka: "후쿠오카",
+};
+
+export const areaNames: Record<string, string> = {
+  ueno: "우에노",
+  asakusa: "아사쿠사",
+  shinjuku: "신주쿠",
+  namba: "난바",
+  station: "교토역",
+  hakata: "하카타",
+};
+
+export function placeLabel(city: string, area: string): string {
+  return [areaNames[area] ?? area, cityNames[city] ?? city].join(" · ");
 }
 
 export function partyList(types: PartyType[]): string {

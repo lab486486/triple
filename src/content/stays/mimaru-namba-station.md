@@ -23,6 +23,15 @@ not_for: 도톤보리 네온이 창밖으로 보여야 하는 일정. 방은 한
 rank: 1
 featured: true
 updated: 2026-09-15
+rooms:
+  - name: 패밀리 아파트
+    size_sqm: 40
+    beds: 싱글 여러 개 또는 2층침대
+    capacity_official: 6
+    capacity_comfortable: 3
+    party_types: [couple_child, three_adults]
+    recommended: true
+    note: 타입 이름은 시즌마다 열리니 라쿠텐에서 침대 수를 다시 세세요. 트윈+엑베가 아닙니다.
 ---
 
 난카이 난바역 도보 4분. 공항에서 짐을 들고 내려 바로 풀 수 있습니다. MIMARU 난바 스테이션은 보드게임 등 패밀리 연출이 있는 지점이고, 2베드룸·패밀리 스위트가 있어 성인 3인이 침실을 나누기도 쉽습니다.

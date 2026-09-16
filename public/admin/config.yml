@@ -1,0 +1,228 @@
+local_backend:
+  url: http://127.0.0.1:8081/api/v1
+  allowed_hosts: ["127.0.0.1", "localhost"]
+site_url: https://triple-e6i.pages.dev
+display_url: https://triple-e6i.pages.dev
+logo_url: /favicon.svg
+
+backend:
+  name: github
+  repo: lab486486/triple
+  branch: main
+  base_url: https://triple-e6i.pages.dev
+  auth_endpoint: api/auth
+  commit_messages:
+    create: "{{collection}}에 {{slug}} 추가"
+    update: "{{collection}} {{slug}} 수정"
+    delete: "{{collection}} {{slug}} 삭제"
+    uploadMedia: "사진 올림 {{path}}"
+    deleteMedia: "사진 지움 {{path}}"
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: "-"
+
+collections:
+  - name: stays
+    label: 숙소
+    label_singular: 숙소
+    folder: src/content/stays
+    create: true
+    delete: true
+    slug: "{{nameEn | slugify}}"
+    identifier_field: nameKo
+    extension: md
+    format: yaml-frontmatter
+    summary: "{{nameKo}} · {{city}}/{{area}}"
+    sortable_fields: ["nameKo", "city", "rank", "updated"]
+    view_groups:
+      - label: 도시
+        field: city
+    fields:
+      - { name: nameKo, label: 숙소 이름 (한글), widget: string }
+      - { name: nameEn, label: 숙소 이름 (영문, 파일명·검색용), widget: string, hint: "Minn Ueno 처럼. URL 슬러그가 됩니다." }
+      - name: city
+        label: 도시
+        widget: select
+        options:
+          - { label: 도쿄, value: tokyo }
+          - { label: 오사카, value: osaka }
+          - { label: 교토, value: kyoto }
+          - { label: 후쿠오카, value: fukuoka }
+      - name: area
+        label: 지역
+        widget: select
+        options:
+          - { label: 우에노, value: ueno }
+          - { label: 아사쿠사, value: asakusa }
+          - { label: 신주쿠, value: shinjuku }
+          - { label: 난바, value: namba }
+          - { label: 교토역, value: station }
+          - { label: 하카타, value: hakata }
+      - { name: chain, label: 체인 (없으면 비움), widget: string, required: false }
+      - name: party_types
+        label: 맞는 동행
+        widget: select
+        multiple: true
+        min: 1
+        options:
+          - { label: 부부+자녀, value: couple_child }
+          - { label: 성인 3인, value: three_adults }
+      - name: sleep_layout
+        label: 대표 침대 구성
+        widget: select
+        options:
+          - { label: 트리플베드, value: triple_bed }
+          - { label: 아파트형, value: apartment }
+          - { label: 화실 3이불, value: futon_3 }
+          - { label: 트윈+엑베, value: twin_extra }
+      - { name: capacity_official, label: 공식 정원, widget: number, value_type: int, min: 1 }
+      - { name: capacity_comfortable, label: 편안하게 자는 인원, widget: number, value_type: int, min: 1 }
+      - { name: room_size_sqm, label: 대표 면적(㎡), widget: number, value_type: int, min: 1 }
+      - { name: beds, label: 대표 침대 설명, widget: string }
+      - { name: child_sharing, label: 아동 첨이네 가능, widget: boolean, default: false }
+      - { name: extra_bed, label: 엑스트라베드 있는 타입 있음, widget: boolean, default: false }
+      - { name: station, label: 기준 역, widget: string }
+      - { name: walk_min, label: 도보(분), widget: number, value_type: int, min: 0 }
+      - name: price_band
+        label: 경비 띠
+        widget: select
+        options:
+          - { label: 실속, value: low }
+          - { label: 중간, value: mid }
+          - { label: 상급, value: high }
+      - { name: rakuten_url, label: 라쿠텐트래블 URL, widget: string, hint: "숙소 검색 또는 상품 링크" }
+      - { name: official_url, label: 공식 사이트, widget: string, required: false }
+      - { name: address, label: 주소, widget: string }
+      - { name: verdict, label: 한줄 평가, widget: text }
+      - { name: not_for, label: 맞지 않는 사람, widget: text }
+      - { name: rank, label: 지역 안 순위, widget: number, value_type: int, min: 1, default: 1 }
+      - { name: featured, label: 도시 대표로 쓰기, widget: boolean, default: false }
+      - { name: updated, label: 확인한 날짜, widget: datetime, date_format: YYYY-MM-DD, time_format: false, picker_utc: true }
+      - name: photos
+        label: 숙소 사진
+        widget: list
+        required: false
+        hint: "없으면 지역 사진을 씁니다."
+        field: { name: photo, label: 사진, widget: image }
+      - name: rooms
+        label: 3인실만
+        widget: list
+        required: false
+        hint: "트윈·스탠다드는 넣지 마세요. 3명이 눕는 타입만."
+        summary: "{{name}} · {{beds}}"
+        fields:
+          - { name: name, label: 타입 이름, widget: string }
+          - { name: size_sqm, label: 면적(㎡), widget: number, value_type: int, required: false, min: 1 }
+          - { name: beds, label: 침대 구성, widget: string }
+          - { name: capacity_official, label: 공식 정원, widget: number, value_type: int, min: 1 }
+          - { name: capacity_comfortable, label: 편안하게 자는 인원, widget: number, value_type: int, min: 1 }
+          - name: party_types
+            label: 이 타입이 맞는 동행
+            widget: select
+            multiple: true
+            required: false
+            options:
+              - { label: 부부+자녀, value: couple_child }
+              - { label: 성인 3인, value: three_adults }
+          - { name: recommended, label: 3인 추천, widget: boolean, default: true }
+          - { name: note, label: 고르는 메모, widget: text }
+          - { name: rakuten_url, label: 이 타입 라쿠텐 URL (없으면 숙소 URL), widget: string, required: false }
+          - { name: photo, label: 객실 사진, widget: image, required: false }
+      - { name: body, label: 숙소 소개, widget: markdown }
+
+  - name: guides
+    label: 가이드
+    label_singular: 가이드
+    folder: src/content/guides
+    create: true
+    slug: "{{slug}}"
+    identifier_field: title
+    extension: md
+    format: yaml-frontmatter
+    fields:
+      - { name: title, label: 제목, widget: string }
+      - { name: description, label: 한줄 설명, widget: text }
+      - { name: kicker, label: 꼬리표, widget: string, default: 가이드 }
+      - { name: date, label: 날짜, widget: datetime, date_format: YYYY-MM-DD, time_format: false, picker_utc: true }
+      - { name: body, label: 본문, widget: markdown }
+
+  - name: cities
+    label: 도시
+    label_singular: 도시
+    folder: src/content/cities
+    create: true
+    slug: "{{nameEn | slugify}}"
+    identifier_field: nameKo
+    extension: md
+    format: yaml-frontmatter
+    fields:
+      - { name: nameKo, label: 도시 이름, widget: string }
+      - { name: nameEn, label: 영문 (파일명), widget: string }
+      - { name: title, label: 페이지 제목, widget: string, hint: "도쿄 숙소 3인" }
+      - { name: description, label: 메타 설명, widget: text }
+      - { name: kicker, label: 꼬리표, widget: string }
+      - { name: lede, label: 리드, widget: text }
+      - { name: sort, label: 정렬, widget: number, value_type: int, min: 1 }
+      - name: faqs
+        label: FAQ
+        widget: list
+        fields:
+          - { name: q, label: 질문, widget: string }
+          - { name: a, label: 답, widget: text }
+      - { name: body, label: 본문, widget: markdown }
+
+  - name: areas
+    label: 지역
+    label_singular: 지역
+    folder: src/content/areas
+    create: true
+    slug: "{{city}}-{{slug}}"
+    identifier_field: nameKo
+    extension: md
+    format: yaml-frontmatter
+    fields:
+      - name: city
+        label: 도시
+        widget: select
+        options:
+          - { label: 도쿄, value: tokyo }
+          - { label: 오사카, value: osaka }
+          - { label: 교토, value: kyoto }
+          - { label: 후쿠오카, value: fukuoka }
+      - { name: slug, label: 지역 슬러그, widget: string, hint: "ueno, namba, station, hakata" }
+      - { name: nameKo, label: 지역 이름, widget: string }
+      - { name: nameEn, label: 영문, widget: string }
+      - { name: title, label: 페이지 제목, widget: string }
+      - { name: description, label: 메타 설명, widget: text }
+      - { name: kicker, label: 꼬리표, widget: string }
+      - { name: why, label: 왜 이 지역인지, widget: text }
+      - { name: sort, label: 정렬, widget: number, value_type: int, min: 1 }
+      - name: faqs
+        label: FAQ
+        widget: list
+        fields:
+          - { name: q, label: 질문, widget: string }
+          - { name: a, label: 답, widget: text }
+      - { name: body, label: 본문, widget: markdown }
+
+  - name: chains
+    label: 체인
+    label_singular: 체인
+    folder: src/content/chains
+    create: true
+    slug: "{{nameEn | slugify}}"
+    identifier_field: nameKo
+    extension: md
+    format: yaml-frontmatter
+    fields:
+      - { name: nameKo, label: 체인 이름, widget: string }
+      - { name: nameEn, label: 영문, widget: string }
+      - { name: title, label: 페이지 제목, widget: string }
+      - { name: description, label: 메타 설명, widget: text }
+      - { name: official_url, label: 공식 사이트, widget: string }
+      - { name: body, label: 본문, widget: markdown }

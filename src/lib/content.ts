@@ -50,6 +50,28 @@ export async function getFeaturedStays() {
     .sort((a, b) => a.data.rank - b.data.rank);
 }
 
+const cityHighlightIds: Record<string, string> = {
+  tokyo: "minn-ueno",
+  osaka: "mimaru-namba-station",
+  kyoto: "mimaru-kyoto-station",
+  fukuoka: "hotel-nikko-fukuoka",
+};
+
+export async function getCityHighlights() {
+  const cities = await getCities();
+  const stays = await getCollection("stays");
+  return cities.flatMap((city) => {
+    const preferred = stays.find(
+      (stay) => stay.id === cityHighlightIds[city.id],
+    );
+    const fallback = stays
+      .filter((stay) => stay.data.city === city.id)
+      .sort((a, b) => a.data.rank - b.data.rank)[0];
+    const stay = preferred ?? fallback;
+    return stay ? [{ city, stay }] : [];
+  });
+}
+
 export async function relatedStays(
   stay: CollectionEntry<"stays">,
   limit = 3,

@@ -1,0 +1,38 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { StayRoom } from "../lib/rooms";
+import AffiliateCta from "./AffiliateCta.astro";
+import { partyList } from "../lib/labels";
+
+interface Props {
+  room: StayRoom;
+  stay: CollectionEntry<"stays">;
+  photo: string;
+}
+
+const { room, stay, photo } = Astro.props;
+const href = room.rakuten_url ?? stay.data.rakuten_url;
+const parties = room.party_types ?? stay.data.party_types;
+---
+
+<article class="room-card">
+  <div class="room-photo">
+    <img src={room.photo ?? photo} alt="" width="480" height="360" loading="lazy" />
+    {room.recommended && <span class="pkg-badge">3인 추천</span>}
+  </div>
+  <div class="room-body">
+    <div>
+      <h3>{room.name}</h3>
+      <p class="room-meta">
+        {room.size_sqm ? `${room.size_sqm}㎡ · ` : ""}
+        {room.beds} · 공식 {room.capacity_official}인 · 편안하게 {room.capacity_comfortable}인
+      </p>
+      <p class="room-parties">{partyList(parties)}</p>
+      <p class="room-note">{room.note}</p>
+    </div>
+    <div class="room-cta">
+      <small>잔여·요금은 라쿠텐에서</small>
+      <AffiliateCta href={href} label="이 타입 확인" />
+    </div>
+  </div>
+</article>

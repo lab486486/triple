@@ -22,6 +22,15 @@ not_for: 부부+자녀의 공간·욕조·주방. 22㎡에 짐 세 개는 타협
 rank: 3
 featured: false
 updated: 2026-09-15
+rooms:
+  - name: 트리플룸
+    size_sqm: 22
+    beds: 싱글 3
+    capacity_official: 3
+    capacity_comfortable: 3
+    party_types: [three_adults]
+    recommended: true
+    note: 성인 친구 셋에게 소파베드보다 정직합니다. 트리플 잔여가 없으면 이 숙소의 가치는 사라집니다.
 ---
 
 아코르의 이비스 스타일은 트리플룸을 실제로 운영하는 브랜드입니다. 교토역점에서 3인 타입은 싱글 세 개가 깔린 구성입니다. 성인 친구 셋에게 Minn의 소파베드보다 정직합니다.

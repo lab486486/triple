@@ -1,0 +1,34 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { cityCovers } from "../lib/covers";
+import { cityPath, cityNames, placeLabel, priceLabels, sleepLabels } from "../lib/labels";
+
+interface Props {
+  city: CollectionEntry<"cities">;
+  stay: CollectionEntry<"stays">;
+}
+
+const { city, stay } = Astro.props;
+const photo = cityCovers[city.id] ?? cityCovers.tokyo;
+---
+
+<a class="pkg-card city-pack" href={cityPath(city.id)}>
+  <div class="pkg-photo">
+    <img src={photo} alt="" width="640" height="400" loading="lazy" />
+    <span class="pkg-badge">{city.data.nameKo}</span>
+  </div>
+  <div class="pkg-body">
+    <p class="pkg-kicker">대표 숙소</p>
+    <h3>{stay.data.nameKo}</h3>
+    <p class="pkg-line">
+      {placeLabel(stay.data.city, stay.data.area)} · {sleepLabels[stay.data.sleep_layout]}
+    </p>
+    <div class="pkg-foot">
+      <div>
+        <span class="pkg-from">경비</span>
+        <b>{priceLabels[stay.data.price_band]}</b>
+      </div>
+      <span class="pkg-walk">{cityNames[city.id]} 숙소 보기</span>
+    </div>
+  </div>
+</a>

@@ -3,8 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import Breadcrumb from "../../components/Breadcrumb.astro";
 import StayCard from "../../components/StayCard.astro";
 import FaqList from "../../components/FaqList.astro";
-import { getCities, getAreasByCity, getStaysByCity, getCity } from "../../lib/content";
-import { areaPath } from "../../lib/labels";
+import { getCities, getStaysByCity, getCity } from "../../lib/content";
 import { breadcrumbJsonLd, crumbsForCity, faqJsonLd } from "../../lib/jsonld";
 import { render } from "astro:content";
 
@@ -19,10 +18,10 @@ export async function getStaticPaths() {
 const { cityId } = Astro.props;
 const city = await getCity(cityId);
 if (!city) throw new Error(`Unknown city: ${cityId}`);
-const areas = await getAreasByCity(city.id);
 const stays = await getStaysByCity(city.id);
 const { Content } = await render(city);
 const crumbs = crumbsForCity(city);
+const ledeLines = city.data.lede.split(/(?<=\.)\s+/).filter(Boolean);
 ---
 
 <Layout
@@ -31,26 +30,21 @@ const crumbs = crumbsForCity(city);
   jsonLd={[breadcrumbJsonLd(crumbs), faqJsonLd(city.data.faqs)]}
 >
   <main id="main">
-    <section class="hero">
+    <section class="page-hero">
       <div class="container">
         <Breadcrumb items={crumbs} />
         <p class="kicker">{city.data.kicker}</p>
         <h1>{city.data.title}</h1>
-        <p class="lede">{city.data.lede}</p>
+        <p class="lede lede-lines">
+          {ledeLines.map((line) => <span>{line}</span>)}
+        </p>
       </div>
     </section>
     <section class="section">
       <div class="container">
-        <h2>리뷰한 지역</h2>
-        <div class="grid grid-2" style="margin-top:1rem">
-          {
-            areas.map((area) => (
-              <a class="card" href={areaPath(city.id, area.data.slug)}>
-                <h3>{area.data.title}</h3>
-                <p>{area.data.why}</p>
-              </a>
-            ))
-          }
+        <h2>{city.data.nameKo} 3인실 숙소 리스트</h2>
+        <div class="grid grid-3" style="margin-top:1rem">
+          {stays.slice(0, 6).map((stay) => <StayCard stay={stay} />)}
         </div>
       </div>
     </section>
@@ -58,14 +52,6 @@ const crumbs = crumbsForCity(city);
       <article class="narrow prose">
         <Content />
       </article>
-    </section>
-    <section class="section">
-      <div class="container">
-        <h2>이 도시에서 먼저 볼 숙소</h2>
-        <div class="grid grid-3" style="margin-top:1rem">
-          {stays.slice(0, 6).map((stay) => <StayCard stay={stay} />)}
-        </div>
-      </div>
     </section>
     <div class="container">
       <FaqList faqs={city.data.faqs} />

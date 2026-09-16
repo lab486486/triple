@@ -23,6 +23,15 @@ not_for: 기온 골목에서 자고 싶은 일정. 그때는 낮에 나가고, �
 rank: 1
 featured: true
 updated: 2026-09-15
+rooms:
+  - name: 패밀리 아파트
+    size_sqm: 40
+    beds: 싱글 2 + 2층침대
+    capacity_official: 6
+    capacity_comfortable: 3
+    party_types: [couple_child, three_adults]
+    recommended: true
+    note: 열차가 보이는 타입과 정원 쪽 타입이 같은 수면 구성입니다.
 ---
 
 JR 교토역 하치조 동쪽 출구 2분. 패밀리 아파트 40㎡는 싱글 2+2층침대입니다. 열차가 보이는 타입, 정원 쪽 타입이 같은 수면 구성입니다. 80㎡ 2베드룸·연결 패밀리는 6~8인용이라 3인에게는 과할 수 있으나, 잔여와 요금이 비슷하면 침실이 나뉘어 편합니다.

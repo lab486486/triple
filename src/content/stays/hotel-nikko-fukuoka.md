@@ -22,6 +22,15 @@ not_for: 성인 3인이 1인당 요금을 맞추고 싶은 경우. 트리플베�
 rank: 2
 featured: true
 updated: 2026-09-15
+rooms:
+  - name: 패밀리·재패니즈 웨스턴
+    size_sqm: 36
+    beds: 패밀리 또는 재패니즈 웨스턴
+    capacity_official: 4
+    capacity_comfortable: 3
+    party_types: [couple_child]
+    recommended: true
+    note: 공식 정원 4인 방을 3인이 쓰면 여유가 생깁니다. 스탠다드 트윈+엑베로 떨어지지 않게 고정하세요.
 ---
 
 하카타역에서 걸어가는 시티호텔입니다. 면적이 나오는 패밀리·재패니즈 웨스턴 타입이 있어, 도쿄 비즈니스호텔에서 지친 가족이 후쿠오카에서 회복하기 좋습니다. 공식 정원 4인 방을 3인이 쓰면 바닥에 여유가 생깁니다.

@@ -1,22 +1,42 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { partyList, sleepLabels, stayPath } from "../lib/labels";
+import { stayCover } from "../lib/covers";
+import { placeLabel, priceLabels, sleepLabels, stayPath } from "../lib/labels";
 
 interface Props {
   stay: CollectionEntry<"stays">;
+  featured?: boolean;
 }
 
-const { stay } = Astro.props;
+const { stay, featured = stay.data.featured } = Astro.props;
 const href = stayPath(stay);
+const photo = stayCover(stay.data.city, stay.data.area);
+const place = placeLabel(stay.data.city, stay.data.area);
 ---
 
-<a class="card stay-card" href={href} data-parties={stay.data.party_types.join(" ")}>
-  <div class="meta">
-    <span class="pill pill-ok">{sleepLabels[stay.data.sleep_layout]}</span>
-    <span class="pill">{stay.data.room_size_sqm}㎡</span>
-    <span class="pill">{stay.data.walk_min}분</span>
+<a
+  class="pkg-card"
+  href={href}
+  data-parties={stay.data.party_types.join(" ")}
+  data-city={stay.data.city}
+  data-area={`${stay.data.city}/${stay.data.area}`}
+  data-price={stay.data.price_band}
+  data-layout={stay.data.sleep_layout}
+>
+  <div class="pkg-photo">
+    <img src={photo} alt="" width="640" height="400" loading="lazy" />
+    {featured && <span class="pkg-badge">추천</span>}
   </div>
-  <h3>{stay.data.nameKo}</h3>
-  <p>{partyList(stay.data.party_types)} · {stay.data.station}</p>
-  <p class="verdict">{stay.data.verdict}</p>
+  <div class="pkg-body">
+    <h3>{stay.data.nameKo}</h3>
+    <p class="pkg-line">{place}</p>
+    <p class="pkg-line">{sleepLabels[stay.data.sleep_layout]} · {stay.data.room_size_sqm}㎡ · 침대 {stay.data.capacity_comfortable}인</p>
+    <div class="pkg-foot">
+      <div>
+        <span class="pkg-from">경비</span>
+        <b>{priceLabels[stay.data.price_band]}</b>
+      </div>
+      <span class="pkg-walk">{stay.data.station} {stay.data.walk_min}분</span>
+    </div>
+  </div>
 </a>

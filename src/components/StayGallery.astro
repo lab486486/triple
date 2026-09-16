@@ -1,0 +1,46 @@
+---
+interface Props {
+  photos: string[];
+  name: string;
+}
+
+const { photos, name } = Astro.props;
+const [hero, ...thumbs] = photos;
+---
+
+<div class="stay-gallery" data-gallery>
+  <div class="stay-gallery-main">
+    <img src={hero} alt={name} width="1200" height="720" data-gallery-main />
+  </div>
+  {
+    thumbs.length > 0 && (
+      <div class="stay-gallery-thumbs">
+        {photos.map((photo, index) => (
+          <button
+            class:list={["stay-gallery-thumb", index === 0 && "is-on"]}
+            type="button"
+            data-src={photo}
+            aria-label={`${name} 사진 ${index + 1}`}
+          >
+            <img src={photo} alt="" width="280" height="180" />
+          </button>
+        ))}
+      </div>
+    )
+  }
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-gallery]").forEach((gallery) => {
+    const main = gallery.querySelector<HTMLImageElement>("[data-gallery-main]");
+    gallery.querySelectorAll<HTMLButtonElement>("[data-src]").forEach((button) => {
+      button.addEventListener("click", () => {
+        if (!main) return;
+        main.src = button.dataset.src ?? main.src;
+        gallery.querySelectorAll(".stay-gallery-thumb").forEach((thumb) => {
+          thumb.classList.toggle("is-on", thumb === button);
+        });
+      });
+    });
+  });
+</script>

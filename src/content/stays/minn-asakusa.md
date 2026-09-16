@@ -23,6 +23,15 @@ not_for: 가미나리몬 바로 앞 전망이 목적인 경우. 역 1분을 원�
 rank: 2
 featured: false
 updated: 2026-09-15
+rooms:
+  - name: 로프트·싱글 아파트
+    size_sqm: 35
+    beds: 싱글·로프트 조합
+    capacity_official: 6
+    capacity_comfortable: 3
+    party_types: [couple_child, three_adults]
+    recommended: true
+    note: 우에노점과 같이 로프트·트윈을 고르세요. 퀸+소파만 있는 타입은 성인 3인이 피하세요.
 ---
 
 Minn 아사쿠사는 스카이트리·센소지 권역의 아파트형입니다. 객실은 키친이 있고 면적이 비즈니스호텔 트윈의 두 배에 가깝습니다. 도보권 관광이 많은 3인 가족에게, 「일본집처럼 묵기」가 목표면 맞습니다.

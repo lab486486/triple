@@ -1,39 +1,95 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import StayCard from "../components/StayCard.astro";
+import SearchBar from "../components/SearchBar.astro";
+import CityPackageCard from "../components/CityPackageCard.astro";
 import { organizationJsonLd } from "../lib/jsonld";
-import { getAreasByCity, getCities, getFeaturedStays } from "../lib/content";
-import { cityPath, areaPath } from "../lib/labels";
+import { getAreasByCity, getCities, getCityHighlights } from "../lib/content";
+import { areaCover } from "../lib/covers";
+import { areaPath } from "../lib/labels";
 
 const cities = await getCities();
-const featured = await getFeaturedStays();
+const highlights = await getCityHighlights();
 const areaEntries = await Promise.all(
   cities.map(async (city) => ({
     city,
     areas: await getAreasByCity(city.id),
   })),
 );
+const destinations = areaEntries.flatMap(({ city, areas }) =>
+  areas.map((area) => ({ city, area })),
+);
 ---
 
 <Layout jsonLd={organizationJsonLd()}>
   <main id="main">
-    <section class="hero">
+    <section class="search-band">
+      <div class="container intro-search">
+        <div class="intro-copy">
+          <p class="search-kicker">일본 3인 숙소만</p>
+          <h1>3명이 눕는 방만 올립니다</h1>
+          <p class="lede">
+            정원 숫자 대신 누가 어디에 눕는지를 봅니다. 소파베드와 협소한 엑베는
+            비추천으로 밝히고, 예약은 라쿠텐트래블에서 확인합니다.
+          </p>
+          <ul class="feature-list">
+            <li>
+              <strong>수면 구성</strong>
+              트리플베드, 아파트형, 화실, 엑베를 같은 기준으로 가릅니다.
+            </li>
+            <li>
+              <strong>교차확인</strong>
+              공식 사이트의 면적과 침대 수를 맞춰 본 숙소만 올립니다.
+            </li>
+            <li>
+              <strong>동행을 나눔</strong>
+              부부+자녀와 성인 3인은 다른 방입니다.
+            </li>
+          </ul>
+        </div>
+        <SearchBar />
+      </div>
+    </section>
+
+    <section class="section" id="featured">
       <div class="container">
-        <p class="kicker">일본 3인 숙소만</p>
-        <h1>3명이 실제로 눕는 방만 고릅니다</h1>
-        <p class="lede">
-          4인은 2인실 두 개면 됩니다. 3인은 그렇지 않습니다. 트리플은 소파를
-          침대라고 우기지 않고, 부부+자녀와 성인 3인을 따로 봅니다.
-        </p>
-        <div class="chips" aria-label="도시로 이동">
+        <div class="section-head">
+          <h2>도시별 추천 숙소</h2>
+          <a class="text-link" href="/tokyo/">도쿄부터 보기</a>
+        </div>
+        <div class="city-grid">
           {
-            cities.map((city) => (
-              <a class="chip" href={cityPath(city.id)}>
-                {city.data.nameKo} 숙소 3인
+            highlights.map(({ city, stay }) => (
+              <CityPackageCard city={city} stay={stay} />
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>여행 지역</h2>
+          <a class="text-link" href="/tokyo/ueno/">우에노부터 보기</a>
+        </div>
+        <div class="dest-grid">
+          {
+            destinations.map(({ city, area }) => (
+              <a class="dest-card" href={areaPath(city.id, area.data.slug)}>
+                <img
+                  src={areaCover(city.id, area.data.slug)}
+                  alt=""
+                  width="640"
+                  height="420"
+                  loading="lazy"
+                />
+                <span>
+                  <small>{city.data.nameKo}</small>
+                  <strong>{area.data.nameKo}</strong>
+                </span>
               </a>
             ))
           }
-          <a class="chip" href="/tokyo/ueno/">우에노 숙소 3인</a>
         </div>
       </div>
     </section>
@@ -41,61 +97,27 @@ const areaEntries = await Promise.all(
     <section class="section">
       <div class="container">
         <div class="section-head">
-          <h2>먼저 볼 숙소</h2>
-          <a href="/about/">선정 기준</a>
+          <h2>고르는 법</h2>
+          <a class="text-link" href="/guides/">모든 가이드</a>
         </div>
-        <div class="grid grid-3">
-          {featured.map((stay) => <StayCard stay={stay} />)}
+        <div class="article-grid">
+          <a class="article-card" href="/guides/how-to-choose-3-person-stay/">
+            <img src={areaCover("tokyo", "ueno")} alt="" width="640" height="360" loading="lazy" />
+            <div>
+              <small>가이드</small>
+              <h3>일본 숙소 3인, 이렇게 고르면 됩니다</h3>
+              <p>트리플베드, 엑스트라베드, 화실, 아파트형을 한 기준으로 가릅니다.</p>
+            </div>
+          </a>
+          <a class="article-card" href="/guides/couple-child-vs-three-adults/">
+            <img src={areaCover("osaka", "namba")} alt="" width="640" height="360" loading="lazy" />
+            <div>
+              <small>가이드</small>
+              <h3>부부+자녀와 성인 3인은 다른 방입니다</h3>
+              <p>첨이네가 통하는 구성과, 어른 세 명이 각자 눕는 구성.</p>
+            </div>
+          </a>
         </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>지역으로 찾기</h2>
-        </div>
-        <div class="grid grid-2">
-          {
-            areaEntries.flatMap(({ city, areas }) =>
-              areas.map((area) => (
-                <a class="card" href={areaPath(city.id, area.data.slug)}>
-                  <div class="meta">
-                    <span class="pill">{city.data.nameKo}</span>
-                  </div>
-                  <h3>{area.data.title}</h3>
-                  <p>{area.data.why}</p>
-                </a>
-              )),
-            )
-          }
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container grid grid-2">
-        <a class="card" href="/guides/how-to-choose-3-person-stay/">
-          <p class="kicker">가이드</p>
-          <h3>일본 숙소 3인, 이렇게 고르면 됩니다</h3>
-          <p>트리플베드, 엑스트라베드, 화실, 아파트형을 한 기준으로 가릅니다.</p>
-        </a>
-        <a class="card" href="/guides/couple-child-vs-three-adults/">
-          <p class="kicker">가이드</p>
-          <h3>부부+자녀와 성인 3인은 다른 방입니다</h3>
-          <p>첨이네(添い寝)가 통하는 구성과, 어른 세 명이 각자 눕는 구성.</p>
-        </a>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container criteria">
-        <h2>올리는 숙소의 기준</h2>
-        <ol>
-          <li>3명이 각자 누울 자리가 있거나, 부부+자녀라면 첨이네 정책이 분명할 것.</li>
-          <li>방 면적과 침대 구성을 공식 사이트에서 교차확인할 것.</li>
-          <li>「3인 가능」만 적혀 있고 소파·협소한 엑베면 탈락하거나 비추천으로 적을 것.</li>
-        </ol>
       </div>
     </section>
   </main>

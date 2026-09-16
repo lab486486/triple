@@ -23,6 +23,23 @@ not_for: 예산을 비즈니스호텔 트윈에 맞추고 싶은 경우.
 rank: 1
 featured: true
 updated: 2026-09-15
+rooms:
+  - name: 패밀리 아파트
+    size_sqm: 35
+    beds: 싱글 2 + 2층침대
+    capacity_official: 6
+    capacity_comfortable: 3
+    party_types: [couple_child, three_adults]
+    recommended: true
+    note: 3인이 쓰기엔 넉넉합니다. 강변 전망 타입도 같은 수면 구성입니다.
+  - name: 원베드룸 아파트
+    size_sqm: 52
+    beds: 싱글 4 + 2층침대
+    capacity_official: 6
+    capacity_comfortable: 3
+    party_types: [three_adults]
+    recommended: false
+    note: 성인 3인이 침실을 나누고 싶을 때만. 보통은 35㎡면 충분합니다.
 ---
 
 도쿄 메트로 아사쿠사역 도보 1분. 패밀리 아파트 35㎡는 싱글 2 + 2층침대, 정원 성인 4 + 아동 2입니다. 3인이 쓰기엔 넉넉하고, 강변 전망 타입은 같은 구성에 스미다 강이 보입니다.
