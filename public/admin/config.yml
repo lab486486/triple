@@ -76,10 +76,10 @@ collections:
         label: 대표 침대 구성
         widget: select
         options:
-          - { label: 트리플베드, value: triple_bed }
-          - { label: 아파트형, value: apartment }
-          - { label: 화실 3이불, value: futon_3 }
-          - { label: 트윈+엑베, value: twin_extra }
+          - { label: 더블+싱글, value: apartment }
+          - { label: 싱글X3, value: triple_bed }
+          - { label: 다다미, value: futon_3 }
+          - { label: 엑스트라베드, value: twin_extra }
       - { name: capacity_official, label: 공식 정원, widget: number, value_type: int, min: 1 }
       - { name: capacity_comfortable, label: 편안하게 자는 인원, widget: number, value_type: int, min: 1 }
       - { name: room_size_sqm, label: 대표 면적(㎡), widget: number, value_type: int, min: 1 }

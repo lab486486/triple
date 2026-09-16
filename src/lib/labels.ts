@@ -10,10 +10,10 @@ export const partyLabels: Record<PartyType, string> = {
 };
 
 export const sleepLabels: Record<SleepLayout, string> = {
-  triple_bed: "트리플베드",
-  twin_extra: "트윈+엑베",
-  futon_3: "화실 3이불",
-  apartment: "아파트형",
+  apartment: "더블+싱글",
+  triple_bed: "싱글X3",
+  futon_3: "다다미",
+  twin_extra: "엑스트라베드",
 };
 
 export const priceLabels: Record<PriceBand, string> = {

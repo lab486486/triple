@@ -24,25 +24,12 @@ const areaMap = Object.fromEntries(
   ]),
 );
 
-const prices = [
-  { value: "", label: "전체" },
-  { value: "low", label: "실속" },
-  { value: "mid", label: "중간" },
-  { value: "high", label: "상급" },
-];
-
 const layouts = [
   { value: "", label: "전체" },
-  { value: "triple_bed", label: "트리플베드" },
-  { value: "apartment", label: "아파트형" },
-  { value: "futon_3", label: "화실 3이불" },
-  { value: "twin_extra", label: "트윈+엑베" },
-];
-
-const parties = [
-  { value: "", label: "전체" },
-  { value: "couple_child", label: "부부+자녀" },
-  { value: "three_adults", label: "성인 3인" },
+  { value: "apartment", label: "더블+싱글" },
+  { value: "triple_bed", label: "싱글X3" },
+  { value: "futon_3", label: "다다미" },
+  { value: "twin_extra", label: "엑스트라베드" },
 ];
 ---
 
@@ -54,9 +41,7 @@ const parties = [
   data-areas={JSON.stringify(areaMap)}
 >
   <input type="hidden" name="region" value="" />
-  <input type="hidden" name="price" value="" />
   <input type="hidden" name="layout" value="" />
-  <input type="hidden" name="party" value="" />
 
   <div class="search-group">
     <span>여행 지역</span>
@@ -74,23 +59,6 @@ const parties = [
   </div>
 
   <div class="search-group">
-    <span>경비</span>
-    <div class="choice-row" data-group="price">
-      {
-        prices.map((item, index) => (
-          <button
-            class:list={["choice", index === 0 && "is-on"]}
-            type="button"
-            data-value={item.value}
-          >
-            {item.label}
-          </button>
-        ))
-      }
-    </div>
-  </div>
-
-  <div class="search-group">
     <span>침대 구성</span>
     <div class="choice-row" data-group="layout">
       {
@@ -99,23 +67,7 @@ const parties = [
             class:list={["choice", index === 0 && "is-on"]}
             type="button"
             data-value={item.value}
-          >
-            {item.label}
-          </button>
-        ))
-      }
-    </div>
-  </div>
-
-  <div class="search-group">
-    <span>동행</span>
-    <div class="choice-row" data-group="party">
-      {
-        parties.map((item, index) => (
-          <button
-            class:list={["choice", index === 0 && "is-on"]}
-            type="button"
-            data-value={item.value}
+            aria-pressed={index === 0 ? "true" : "false"}
           >
             {item.label}
           </button>
@@ -146,13 +98,12 @@ const parties = [
 
     const fields = {
       region: form.querySelector<HTMLInputElement>('[name="region"]')!,
-      price: form.querySelector<HTMLInputElement>('[name="price"]')!,
       layout: form.querySelector<HTMLInputElement>('[name="layout"]')!,
-      party: form.querySelector<HTMLInputElement>('[name="party"]')!,
     };
 
     const cityRow = form.querySelector("[data-group='city']")!;
     const areaRow = form.querySelector<HTMLElement>("[data-group='area']")!;
+    const layoutRow = form.querySelector("[data-group='layout']")!;
     const params = new URLSearchParams(window.location.search);
 
     function renderAreas(cityId: string, selected = "") {
@@ -186,14 +137,10 @@ const parties = [
     const region = params.get("region") ?? "";
     const [cityId = "", areaSlug = ""] = region.split("/");
     fields.region.value = region;
-    fields.price.value = params.get("price") ?? "";
     fields.layout.value = params.get("layout") ?? "";
-    fields.party.value = params.get("party") ?? "";
 
     markOn(cityRow, cityId);
-    markOn(form.querySelector("[data-group='price']")!, fields.price.value);
-    markOn(form.querySelector("[data-group='layout']")!, fields.layout.value);
-    markOn(form.querySelector("[data-group='party']")!, fields.party.value);
+    markOn(layoutRow, fields.layout.value);
     renderAreas(cityId, areaSlug ? region : "");
 
     cityRow.addEventListener("click", (event) => {
@@ -213,15 +160,12 @@ const parties = [
       markOn(areaRow, value);
     });
 
-    (["price", "layout", "party"] as const).forEach((name) => {
-      const row = form.querySelector(`[data-group='${name}']`);
-      row?.addEventListener("click", (event) => {
-        const button = (event.target as HTMLElement).closest<HTMLButtonElement>(".choice");
-        if (!button) return;
-        const value = button.dataset.value ?? "";
-        fields[name].value = value;
-        markOn(row, value);
-      });
+    layoutRow.addEventListener("click", (event) => {
+      const button = (event.target as HTMLElement).closest<HTMLButtonElement>(".choice");
+      if (!button) return;
+      const value = button.dataset.value ?? "";
+      fields.layout.value = value;
+      markOn(layoutRow, value);
     });
 
     form.addEventListener("submit", () => {

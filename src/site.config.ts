@@ -16,5 +16,4 @@ export const nav = [
   { href: "/osaka/", label: "오사카" },
   { href: "/kyoto/", label: "교토" },
   { href: "/fukuoka/", label: "후쿠오카" },
-  { href: "/guides/", label: "고르는 법" },
 ] as const;

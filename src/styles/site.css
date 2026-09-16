@@ -100,7 +100,7 @@ select {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.5rem 0.55rem 0.5rem 1rem;
+  padding: 0.5rem 1rem;
   background: var(--card);
   border-radius: 999px;
   box-shadow: var(--shadow);
@@ -247,14 +247,13 @@ select {
 .intro-copy {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   min-height: 100%;
-  gap: 1rem;
 }
 
 .intro-visual {
+  position: relative;
   flex: 1 1 auto;
-  min-height: 13rem;
+  min-height: 22rem;
   border-radius: 1.4rem;
   overflow: hidden;
   background: #d8deea;
@@ -266,12 +265,41 @@ select {
   object-fit: cover;
 }
 
-.intro-text .lede {
-  margin: 0;
+.intro-visual::after {
+  content: "";
+  position: absolute;
+  inset: 35% 0 0;
+  background: linear-gradient(
+    to top,
+    rgba(16, 27, 51, 0.92) 0%,
+    rgba(16, 27, 51, 0.55) 42%,
+    transparent 100%
+  );
+  pointer-events: none;
 }
 
-.intro-copy .lede {
+.intro-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  padding: 1.35rem 1.3rem 1.25rem;
+}
+
+.intro-text .search-kicker {
+  color: var(--orange);
+}
+
+.intro-text h1 {
+  margin: 0 0 0.55rem;
+  color: #fff;
+}
+
+.intro-text .lede {
   margin: 0;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: none;
 }
 
 .search-card {
@@ -1258,8 +1286,8 @@ h3 {
 
   .intro-visual {
     flex: none;
-    min-height: 11rem;
-    max-height: 14rem;
+    min-height: 18rem;
+    max-height: none;
   }
 
   .city-grid {
