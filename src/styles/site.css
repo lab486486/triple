@@ -1117,45 +1117,34 @@ h3 {
 
 .price-ask {
   display: grid;
-  justify-items: end;
-  gap: 0.38rem;
-  text-decoration: none;
-  color: inherit;
-  flex: none;
-}
-
-.price-ask b {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 8.6rem;
-  padding: 0.58rem 1.05rem;
-  border-radius: 0.85rem;
-  background: var(--blue);
+  justify-items: center;
+  gap: 0.18rem;
+  padding: 0.72rem 1.35rem 0.78rem;
+  border-radius: 0.95rem;
+  background: #d1006e;
   color: #fff;
-  font-size: 1.02rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  box-shadow: 0 8px 18px rgba(76, 111, 255, 0.28);
+  text-decoration: none;
+  flex: none;
+  box-shadow: 0 8px 18px rgba(209, 0, 110, 0.28);
 }
 
 .price-ask em {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.22rem 0.58rem;
-  border: 1.5px solid var(--orange);
-  border-radius: 0.45rem;
-  color: var(--orange);
   font-size: 0.78rem;
   font-style: normal;
   font-weight: 750;
   letter-spacing: -0.02em;
-  background: #fff;
+  color: #fff;
 }
 
-.price-ask:hover b {
-  background: var(--blue-dark);
+.price-ask b {
+  font-size: 1.08rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.price-ask:hover {
+  background: #b4005f;
 }
 
 .stay-panels {
@@ -1413,14 +1402,22 @@ h3 {
 
 .room-cta {
   display: grid;
-  align-content: end;
+  align-content: center;
   justify-items: end;
-  gap: 0.4rem;
-  min-width: 9.5rem;
+  flex: none;
 }
 
-.room-cta .price-ask {
-  justify-items: end;
+.room-book {
+  display: grid;
+  place-items: center;
+  width: 7.6rem;
+  height: 7.6rem;
+  padding: 0.7rem;
+  border-radius: 1rem;
+  text-align: center;
+  line-height: 1.3;
+  font-size: 0.98rem;
+  font-weight: 800;
 }
 
 .stay-intro h2 {
@@ -1470,9 +1467,13 @@ h3 {
 .stay-dock-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: stretch;
   gap: 1rem;
   padding: 0.75rem 0 calc(0.75rem + env(safe-area-inset-bottom));
+}
+
+.stay-dock-cta {
+  width: 100%;
 }
 
 .stay-dock small {
@@ -1725,9 +1726,8 @@ h3 {
     height: 16rem;
   }
 
-  .stay-title .price-ask,
-  .room-cta .price-ask {
-    justify-items: start;
+  .stay-title .price-ask {
+    justify-items: center;
   }
 
   .room-body {
@@ -1735,15 +1735,8 @@ h3 {
   }
 
   .room-cta {
-    min-width: 0;
     width: 100%;
-    grid-template-columns: 1fr auto;
-    align-items: end;
-    justify-items: start;
-  }
-
-  .room-cta .price-ask {
-    justify-items: start;
+    justify-items: end;
   }
 
   .room-name-row {
@@ -1751,7 +1744,7 @@ h3 {
   }
 
   .stay-dock-cta {
-    width: auto;
+    width: 100%;
   }
 
   .lede-lines {

@@ -2,7 +2,6 @@
 import type { CollectionEntry } from "astro:content";
 import type { StayRoom } from "../lib/rooms";
 import AffiliateCta from "./AffiliateCta.astro";
-import PriceAsk from "./PriceAsk.astro";
 
 interface Props {
   room: StayRoom;
@@ -38,8 +37,7 @@ const href = room.rakuten_url ?? stay.data.rakuten_url;
       <p class="room-note">{room.note}</p>
     </div>
     <div class="room-cta">
-      <PriceAsk band={stay.data.price_band} href={href} />
-      <AffiliateCta href={href} label="객실 예약" />
+      <AffiliateCta href={href} class="room-book" label="객실 예약하기" />
     </div>
   </div>
 </article>
