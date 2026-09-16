@@ -1,7 +1,7 @@
 export const site = {
   name: "3인룸",
   brandName: "3인룸",
-  brandRest: "인룸",
+  brandRest: "room.kr",
   title: "3인룸 — 일본 3인 숙소",
   description:
     "3명이 실제로 눕는 일본 숙소만 고릅니다. 우에노·도쿄·오사카·교토·후쿠오카에서 부부+자녀와 성인 3인 기준으로 방을 가릅니다.",

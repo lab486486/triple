@@ -122,22 +122,31 @@ select {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.18rem;
+  gap: 0;
   font-weight: 800;
   font-size: 1.05rem;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
   text-decoration: none;
 }
 
 .brand-mark {
   display: inline-grid;
   place-items: center;
-  width: 1.85rem;
-  height: 1.85rem;
-  border-radius: 0.55rem;
-  background: var(--blue);
-  color: #fff;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 0;
+  background: #111;
+  color: #f2ff00;
+  font-size: 1.28rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.08em;
+}
+
+.brand-word {
+  margin-left: 0;
   font-weight: 800;
+  letter-spacing: -0.06em;
 }
 
 .nav-links {
@@ -413,9 +422,24 @@ select {
   background: #d5dbe8;
 }
 
+.pick-round {
+  aspect-ratio: 1;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 50%;
+  justify-self: center;
+  align-self: center;
+}
+
 .search-card-page .pick {
   aspect-ratio: 4 / 3;
   height: auto;
+}
+
+.search-card-page .pick-round {
+  aspect-ratio: 1;
 }
 
 .pick img {
@@ -882,6 +906,12 @@ h3 {
   color: var(--muted);
 }
 
+.search-summary {
+  margin: 0 0 0.35rem;
+  color: var(--ink-soft);
+  font-weight: 750;
+}
+
 .result-count {
   margin: 0 0 1rem;
   font-weight: 750;
@@ -1088,21 +1118,44 @@ h3 {
 .price-ask {
   display: grid;
   justify-items: end;
+  gap: 0.38rem;
   text-decoration: none;
   color: inherit;
   flex: none;
 }
 
 .price-ask b {
-  color: var(--ink);
-  font-size: 1.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 8.6rem;
+  padding: 0.58rem 1.05rem;
+  border-radius: 0.85rem;
+  background: var(--blue);
+  color: #fff;
+  font-size: 1.02rem;
+  font-weight: 800;
   letter-spacing: -0.03em;
+  box-shadow: 0 8px 18px rgba(76, 111, 255, 0.28);
 }
 
-.price-ask span {
+.price-ask em {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.22rem 0.58rem;
+  border: 1.5px solid var(--orange);
+  border-radius: 0.45rem;
   color: var(--orange);
-  font-size: 0.88rem;
-  font-weight: 800;
+  font-size: 0.78rem;
+  font-style: normal;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  background: #fff;
+}
+
+.price-ask:hover b {
+  background: var(--blue-dark);
 }
 
 .stay-panels {
@@ -1513,7 +1566,7 @@ h3 {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  grid-template-columns: 1.5fr 1fr 1.3fr;
   gap: 1.5rem;
 }
 
@@ -1578,6 +1631,10 @@ h3 {
   .search-card .pick {
     aspect-ratio: 4 / 3;
     height: auto;
+  }
+
+  .search-card .pick-round {
+    aspect-ratio: 1;
   }
 
   .intro-visual {

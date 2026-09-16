@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import SearchBar from "../components/SearchBar.astro";
 import StayCard from "../components/StayCard.astro";
 import { getCollection } from "astro:content";
 
@@ -14,17 +13,13 @@ const stays = (await getCollection("stays")).sort(
   description="지역과 침대 구성으로 일본 3인 숙소를 가릅니다."
 >
   <main id="main">
-    <section class="search-band">
-      <div class="container">
-        <p class="search-kicker">검색</p>
-        <h1>조건에 맞는 3인 숙소</h1>
-        <SearchBar layout="page" />
-      </div>
-    </section>
     <section class="section">
       <div class="container">
+        <p class="kicker">검색 결과</p>
+        <h1>조건에 맞는 3인 숙소</h1>
+        <p class="search-summary" id="search-summary"></p>
         <p class="result-count" id="result-count">{stays.length}곳</p>
-        <p class="lede" id="empty-msg" hidden>조건에 맞는 숙소가 없습니다. 지역만 고르거나 침대 구성을 비워 보세요.</p>
+        <p class="lede" id="empty-msg" hidden>조건에 맞는 숙소가 없습니다. 홈에서 지역만 고르거나 침대 구성을 비워 보세요.</p>
         <div class="pack-grid" id="result-grid">
           {stays.map((stay) => <StayCard stay={stay} />)}
         </div>
@@ -34,6 +29,19 @@ const stays = (await getCollection("stays")).sort(
 </Layout>
 
 <script>
+  const cityNames: Record<string, string> = {
+    tokyo: "도쿄",
+    osaka: "오사카",
+    kyoto: "교토",
+    fukuoka: "후쿠오카",
+  };
+  const sleepLabels: Record<string, string> = {
+    apartment: "더블+싱글",
+    triple_bed: "싱글 X 3",
+    futon_3: "다다미",
+    twin_extra: "엑스트라베드",
+  };
+
   const params = new URLSearchParams(window.location.search);
   const region = params.get("region") ?? "";
   const layout = params.get("layout") ?? "";
@@ -51,6 +59,14 @@ const stays = (await getCollection("stays")).sort(
   });
   const count = document.getElementById("result-count");
   const empty = document.getElementById("empty-msg");
+  const summary = document.getElementById("search-summary");
   if (count) count.textContent = `${shown}곳`;
   if (empty) empty.hidden = shown !== 0;
+  if (summary) {
+    const bits = [
+      cityNames[region] ?? (region ? region : ""),
+      sleepLabels[layout] ?? "",
+    ].filter(Boolean);
+    summary.textContent = bits.length ? bits.join(" · ") : "전체 숙소";
+  }
 </script>

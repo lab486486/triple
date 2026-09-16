@@ -53,7 +53,7 @@ const layouts = [
     <div class="pick-grid" data-group="city">
       {
         cities.map((city) => (
-          <button class="pick" type="button" data-value={city.id} aria-pressed="false">
+          <button class="pick pick-square" type="button" data-value={city.id} aria-pressed="false">
             <img src={cityImages[city.id] ?? cityImages.tokyo} alt="" width="640" height="480" />
             <span>{city.data.nameKo}</span>
           </button>
@@ -67,7 +67,7 @@ const layouts = [
     <div class="pick-grid" data-group="layout">
       {
         layouts.map((item) => (
-          <button class="pick" type="button" data-value={item.value} aria-pressed="false">
+          <button class="pick pick-round" type="button" data-value={item.value} aria-pressed="false">
             <img src={item.image} alt="" width="640" height="480" />
             <span>{item.label}</span>
           </button>
