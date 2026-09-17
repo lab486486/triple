@@ -8,7 +8,7 @@ photos:
 price_band: 40
 trip_hotel: "64218295"
 official_url: https://staytuned.asia/en/brands/minn/hotels/minn-ueno
-verdict: 부부+자녀와 성인 3인 모두, 우에노에서 실패가 가장 적은 아파트형.
+verdict: 부부+자녀와 성인 3인 모두, 우에노에서 실패가 가장 적은 아파트형 호텔
 address: 1 Chome-19-5 Higashiueno, 다이토 구, 110-0015 도쿄, 일본
 transit: 우에노오카치마치 역 (270m)
 check_in: 15:00
@@ -22,9 +22,7 @@ rooms:
     size_sqm: 35
     beds: 싱글침대 4개 + 소파침대 2개
     photo: https://pub-776d8a270e67409bb1704e375af76a79.r2.dev/uploads/2026/09/1789633571156-_____________________2026.jpg
-    note: |-
-      싱글 침대 4개 (너비: 1m) 및 소파침대 2개 (너비: 1m)
-      유아용 침대 및 침대 추가 요청이 불가능한 객실 유형
+    note: 성인 자녀 또는 3인 이상 여행자들이 편안하게 투숙하기 좋은 객실입니다.
     recommended: true
   - party_types:
       - couple_child
@@ -35,11 +33,7 @@ rooms:
     size_sqm: 50
     beds: 퀸침대 1개 + 싱글침대 2개
     photo: https://pub-776d8a270e67409bb1704e375af76a79.r2.dev/uploads/2026/09/1789634073274-_____________________2026__1_.jpg
-    note: >-
-      퀸침대 1개 (너비: 1.51m - 1.8m) 및 소파침대 2개(침대 너비는 숙소에 문의해 주세요) 및 싱글 침대 2개 (너비:
-      0.8m - 1.3m)
-
-      유아용 침대 및 침대 추가 요청이 불가능한 객실 유형
+    note: 어린 자녀를 동반한 가족이 투숙하기 좋은 객실입니다.
     recommended: true
 party_types:
   - couple_child
