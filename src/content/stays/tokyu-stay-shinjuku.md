@@ -11,6 +11,7 @@ room_size_sqm: 20
 beds: "더블 또는 트윈 + 소파베드"
 child_sharing: true
 extra_bed: true
+transit: 신주쿠역(5분 소요)
 station: 신주쿠역
 walk_min: 5
 price_band: mid

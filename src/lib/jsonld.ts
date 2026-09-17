@@ -46,7 +46,7 @@ export function lodgingJsonLd(stay: CollectionEntry<"stays">) {
     },
     occupancy: {
       "@type": "QuantitativeValue",
-      maxValue: stay.data.capacity_official,
+      maxValue: stay.data.capacity_comfortable,
     },
   };
 }

@@ -11,6 +11,7 @@ room_size_sqm: 24
 beds: "트리플 또는 트윈+엑베 (타입 확인)"
 child_sharing: true
 extra_bed: true
+transit: 하카타역(3분 소요)
 station: 하카타역
 walk_min: 3
 price_band: mid

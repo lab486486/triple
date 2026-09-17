@@ -12,6 +12,7 @@ room_size_sqm: 40
 beds: "싱글 2 + 2층침대"
 child_sharing: true
 extra_bed: false
+transit: 교토역 하치조(2분 소요)
 station: 교토역 하치조
 walk_min: 2
 price_band: mid
@@ -26,7 +27,7 @@ rank: 1
 featured: true
 updated: 2026-09-15
 photos:
-  - stays/mimaru-kyoto-station.jpg
+  - https://pub-776d8a270e67409bb1704e375af76a79.r2.dev/stays/mimaru-kyoto-station.jpg
 rooms:
   - name: 패밀리 아파트
     size_sqm: 40

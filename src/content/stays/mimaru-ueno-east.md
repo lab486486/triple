@@ -12,6 +12,7 @@ room_size_sqm: 38
 beds: "싱글 4 또는 싱글 2+2층침대"
 child_sharing: true
 extra_bed: false
+transit: 우에노역(3분 소요)
 station: 우에노역
 walk_min: 3
 price_band: mid

@@ -11,6 +11,7 @@ room_size_sqm: 28
 beds: "트리플 (싱글 3 또는 더블+싱글)"
 child_sharing: true
 extra_bed: false
+transit: 니혼바시역(5분 소요)
 station: 니혼바시역
 walk_min: 5
 price_band: high

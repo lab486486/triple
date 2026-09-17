@@ -11,6 +11,7 @@ room_size_sqm: 36
 beds: "패밀리·재패니즈 웨스턴"
 child_sharing: true
 extra_bed: true
+transit: 하카타역(8분 소요)
 station: 하카타역
 walk_min: 8
 price_band: high
@@ -25,7 +26,7 @@ rank: 2
 featured: true
 updated: 2026-09-15
 photos:
-  - stays/hotel-nikko-fukuoka.jpg
+  - https://pub-776d8a270e67409bb1704e375af76a79.r2.dev/stays/hotel-nikko-fukuoka.jpg
 rooms:
   - name: 패밀리·재패니즈 웨스턴
     size_sqm: 36

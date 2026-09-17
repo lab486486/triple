@@ -11,6 +11,7 @@ room_size_sqm: 22
 beds: "싱글 3"
 child_sharing: false
 extra_bed: false
+transit: 교토역(3분 소요)
 station: 교토역
 walk_min: 3
 price_band: low

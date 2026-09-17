@@ -12,7 +12,7 @@ import { getArea, getCity, relatedStays } from "../../../lib/content";
 import { stayCover, stayGallery } from "../../../lib/covers";
 import { roomsForStay } from "../../../lib/rooms";
 import { mapsHref, stayScore } from "../../../lib/stayMeta";
-import { placeLabel, transitLabel } from "../../../lib/labels";
+import { placeLabel, stayTransit } from "../../../lib/labels";
 import {
   breadcrumbJsonLd,
   crumbsForStay,
@@ -89,7 +89,7 @@ const mapUrl = mapsHref(stay.data.address);
                 {stay.data.address}
                 <span>지도보기</span>
               </p>
-              <p class="stay-map-walk">{transitLabel(stay.data.station, stay.data.walk_min)}</p>
+              <p class="stay-map-walk">{stayTransit(stay)}</p>
             </div>
             <div class="stay-map-visual" aria-hidden="true"></div>
           </a>
@@ -118,10 +118,6 @@ const mapUrl = mapsHref(stay.data.address);
     <section class="section" id="intro">
       <article class="container stay-intro">
         <h2>숙소 소개</h2>
-        <div class="callout">
-          <strong>맞지 않는 사람</strong>
-          {stay.data.not_for}
-        </div>
         <div class="prose">
           <Content />
         </div>
@@ -145,7 +141,7 @@ const mapUrl = mapsHref(stay.data.address);
               {stay.data.address}
               <span>지도보기</span>
             </p>
-            <p class="stay-map-walk">{transitLabel(stay.data.station, stay.data.walk_min)}</p>
+            <p class="stay-map-walk">{stayTransit(stay)}</p>
           </div>
           <div class="stay-map-visual" aria-hidden="true"></div>
         </a>

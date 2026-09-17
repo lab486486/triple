@@ -11,6 +11,7 @@ room_size_sqm: 18
 beds: "트윈 + 엑스트라 이불"
 child_sharing: true
 extra_bed: true
+transit: 오카치마치역(2분 소요)
 station: 오카치마치역
 walk_min: 2
 price_band: mid

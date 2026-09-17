@@ -12,6 +12,7 @@ room_size_sqm: 35
 beds: "싱글 2 + 2층침대"
 child_sharing: true
 extra_bed: false
+transit: 아사쿠사역(1분 소요)
 station: 아사쿠사역
 walk_min: 1
 price_band: mid

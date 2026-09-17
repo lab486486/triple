@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { stayCover } from "../lib/covers";
-import { placeLabel, priceLabels, sleepLabels, stayPath } from "../lib/labels";
+import { placeLabel, priceLabels, sleepLabels, stayPath, stayTransit } from "../lib/labels";
 
 interface Props {
   stay: CollectionEntry<"stays">;
@@ -36,7 +36,7 @@ const place = placeLabel(stay.data.city, stay.data.area);
         <span class="pkg-from">경비</span>
         <b>{priceLabels[stay.data.price_band]}</b>
       </div>
-      <span class="pkg-walk">{stay.data.station} {stay.data.walk_min}분</span>
+      <span class="pkg-walk">{stayTransit(stay)}</span>
     </div>
   </div>
 </a>

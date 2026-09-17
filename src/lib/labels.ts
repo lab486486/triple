@@ -28,12 +28,18 @@ export const weekdayPriceLabels: Record<PriceBand, string> = {
   high: "1박 15만원대(평일기준)",
 };
 
+export function stayTransit(stay: {
+  data: { transit?: string; station?: string; walk_min?: number };
+}): string {
+  if (stay.data.transit?.trim()) return stay.data.transit.trim();
+  const station = stay.data.station?.trim();
+  if (!station) return "";
+  const minutes = stay.data.walk_min ?? 0;
+  return `${station}(${minutes}분 소요)`;
+}
+
 export function transitLabel(station: string, walkMin: number): string {
-  const label =
-    station.endsWith("역") && !station.includes(" ")
-      ? `${station.slice(0, -1)} 역`
-      : station;
-  return `${label}(${walkMin}분 소요)`;
+  return stayTransit({ data: { station, walk_min: walkMin } });
 }
 
 export function stayPath(stay: CollectionEntry<"stays">): string {

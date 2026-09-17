@@ -12,6 +12,7 @@ room_size_sqm: 40
 beds: "패밀리·2베드룸 아파트 (타입별 상이)"
 child_sharing: true
 extra_bed: false
+transit: 난바역(4분 소요)
 station: 난바역
 walk_min: 4
 price_band: mid

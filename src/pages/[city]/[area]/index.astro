@@ -52,14 +52,19 @@ const crumbs = crumbsForArea(city, area);
     </section>
 
     <section class="section">
-      <article class="narrow prose">
-        <Content />
-      </article>
+      <div class="container area-body">
+        <article class="prose">
+          <Content />
+        </article>
+        <aside class="area-aside" aria-label="광고">
+          <div class="ad-slot">광고 영역</div>
+        </aside>
+      </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <h2>숙소 판정</h2>
+        <h2>주변 숙소검색</h2>
         <div class="grid grid-3" style="margin-top:1rem">
           {stays.map((stay) => <StayCard stay={stay} />)}
         </div>

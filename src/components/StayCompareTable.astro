@@ -1,58 +1,44 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import {
-  partyList,
-  priceLabels,
-  sleepLabels,
-  stayPath,
-} from "../lib/labels";
-import { affiliateHref } from "../lib/affiliate";
+import { partyList, stayPath, stayTransit } from "../lib/labels";
+import { roomsForStay } from "../lib/rooms";
 
 interface Props {
   stays: CollectionEntry<"stays">[];
 }
 
 const { stays } = Astro.props;
+const rows = stays.flatMap((stay) =>
+  roomsForStay(stay).map((room) => ({
+    stay,
+    room,
+    parties: room.party_types?.length ? room.party_types : stay.data.party_types,
+  })),
+);
 ---
 
 <div class="compare-wrap">
   <table class="compare">
     <thead>
       <tr>
-        <th>숙소</th>
-        <th>실제 수면</th>
-        <th>방</th>
-        <th>역</th>
-        <th>이런 구성</th>
-        <th>가격대</th>
-        <th></th>
+        <th>숙소명</th>
+        <th>침대 조합</th>
+        <th>면적</th>
+        <th>교통</th>
+        <th>추천 조합</th>
       </tr>
     </thead>
     <tbody>
       {
-        stays.map((stay) => (
-          <tr data-parties={stay.data.party_types.join(" ")}>
+        rows.map(({ stay, room, parties }) => (
+          <tr data-parties={parties.join(" ")}>
             <td>
               <a href={stayPath(stay)}>{stay.data.nameKo}</a>
             </td>
-            <td>{sleepLabels[stay.data.sleep_layout]} · {stay.data.beds}</td>
-            <td>{stay.data.room_size_sqm}㎡ · 공식 {stay.data.capacity_official}인</td>
-            <td>
-              {stay.data.station} {stay.data.walk_min}분
-            </td>
-            <td>{partyList(stay.data.party_types)}</td>
-            <td>{priceLabels[stay.data.price_band]}</td>
-            <td>
-              <a
-                class="cta"
-                style="padding:0.4rem 0.7rem;font-size:0.82rem"
-                href={affiliateHref(stay.data.rakuten_url)}
-                rel="sponsored noopener noreferrer"
-                target="_blank"
-              >
-                잔여 확인
-              </a>
-            </td>
+            <td>{room.beds}</td>
+            <td>{room.size_sqm ? `${room.size_sqm}㎡` : `${stay.data.room_size_sqm}㎡`}</td>
+            <td>{stayTransit(stay)}</td>
+            <td>{partyList(parties)}</td>
           </tr>
         ))
       }

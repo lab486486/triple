@@ -12,6 +12,7 @@ room_size_sqm: 35
 beds: "타입별 싱글·로프트 조합"
 child_sharing: true
 extra_bed: false
+transit: 아사쿠사역(6분 소요)
 station: 아사쿠사역
 walk_min: 6
 price_band: mid

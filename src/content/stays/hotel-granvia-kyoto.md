@@ -11,6 +11,7 @@ room_size_sqm: 32
 beds: "디럭스 트윈 또는 커넥팅"
 child_sharing: true
 extra_bed: true
+transit: 교토역(0분 소요)
 station: 교토역
 walk_min: 0
 price_band: high

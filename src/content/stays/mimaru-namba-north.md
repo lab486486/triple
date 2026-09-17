@@ -12,6 +12,7 @@ room_size_sqm: 38
 beds: "싱글 여러 개 + 2층침대 타입"
 child_sharing: true
 extra_bed: false
+transit: 난바역(8분 소요)
 station: 난바역
 walk_min: 8
 price_band: mid
@@ -26,7 +27,7 @@ rank: 2
 featured: false
 updated: 2026-09-15
 photos:
-  - stays/mimaru-namba-north.jpg
+  - https://pub-776d8a270e67409bb1704e375af76a79.r2.dev/stays/mimaru-namba-north.jpg
 ---
 
 난바 스테이션점과 브랜드·방 철학이 같습니다. 위치가 조금 북쪽으로, 신사이바시 쪽이 더 가깝습니다. 3인에게는 「어느 네온 앞인가」보다 잔여 타입의 침대 수가 중요합니다.

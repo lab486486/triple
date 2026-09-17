@@ -11,6 +11,7 @@ room_size_sqm: 28
 beds: "화실 이불 또는 침대+이불"
 child_sharing: true
 extra_bed: false
+transit: 아사쿠사역(3분 소요)
 station: 아사쿠사역
 walk_min: 3
 price_band: high

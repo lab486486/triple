@@ -12,6 +12,7 @@ room_size_sqm: 35
 beds: "로프트·싱글 조합 (타입별 상이)"
 child_sharing: true
 extra_bed: false
+transit: 우에노역(5분 소요)
 station: 우에노역
 walk_min: 5
 price_band: mid
@@ -26,7 +27,7 @@ rank: 1
 featured: true
 updated: 2026-09-15
 photos:
-  - stays/minn-ueno.jpg
+  - https://pub-776d8a270e67409bb1704e375af76a79.r2.dev/stays/minn-ueno.jpg
 rooms:
   - name: 모더레이트 패밀리 로프트
     size_sqm: 35

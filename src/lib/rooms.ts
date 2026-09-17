@@ -9,7 +9,7 @@ export function roomsForStay(stay: CollectionEntry<"stays">): StayRoom[] {
     {
       name: `대표 3인실 · ${sleepLabels[stay.data.sleep_layout]}`,
       size_sqm: stay.data.room_size_sqm,
-      beds: stay.data.beds,
+      beds: stay.data.beds ?? sleepLabels[stay.data.sleep_layout],
       capacity_official: stay.data.capacity_official,
       capacity_comfortable: stay.data.capacity_comfortable,
       party_types: stay.data.party_types,

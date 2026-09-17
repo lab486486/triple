@@ -5,7 +5,7 @@ import {
   cityNames,
   sleepLabels,
   stayPath,
-  transitLabel,
+  stayTransit,
   weekdayPriceLabels,
 } from "../lib/labels";
 
@@ -29,7 +29,7 @@ const photo = stayCover(stay.data.city, stay.data.area, stay.data.photos);
     <h3>{stay.data.nameKo}</h3>
     <ul class="pkg-facts">
       <li>숙소 구성 : {sleepLabels[stay.data.sleep_layout]}</li>
-      <li>교통 : {transitLabel(stay.data.station, stay.data.walk_min)}</li>
+      <li>교통 : {stayTransit(stay)}</li>
       <li>가격 : {weekdayPriceLabels[stay.data.price_band]}</li>
     </ul>
   </div>

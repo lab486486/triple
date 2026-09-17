@@ -12,6 +12,7 @@ room_size_sqm: 40
 beds: "싱글 4 또는 싱글 2+2층침대"
 child_sharing: true
 extra_bed: false
+transit: 도청앞역(8분 소요)
 station: 도청앞역
 walk_min: 8
 price_band: mid
