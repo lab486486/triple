@@ -59,8 +59,8 @@ export const cityNames: Record<string, string> = {
 
 export const areaNames: Record<string, string> = {
   ueno: "우에노",
-  asakusa: "아사쿠사",
-  shinjuku: "신주쿠",
+  ginza: "긴자(도쿄역)",
+  shinjuku: "신주쿠(시부야)",
   namba: "난바",
   station: "교토역",
   hakata: "하카타",

@@ -65,8 +65,8 @@ collections:
         hint: "제목 위 꼬리표에 쓰입니다."
         options:
           - { label: 우에노, value: ueno }
-          - { label: 아사쿠사, value: asakusa }
-          - { label: 신주쿠, value: shinjuku }
+          - { label: 긴자(도쿄역), value: ginza }
+          - { label: 신주쿠(시부야), value: shinjuku }
           - { label: 난바, value: namba }
           - { label: 교토역, value: station }
           - { label: 하카타, value: hakata }

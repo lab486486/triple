@@ -1,2 +1,6 @@
 /rss /rss.xml 200
 /rss/ /rss.xml 200
+/tokyo/asakusa/ /tokyo/ginza/ 301
+/tokyo/asakusa/mimaru-asakusa-station/ /tokyo/ginza/mimaru-ginza-east/ 301
+/tokyo/asakusa/minn-asakusa/ /tokyo/ginza/ 301
+/tokyo/asakusa/gate-hotel-ryokan-asakusa/ /tokyo/ginza/ 301

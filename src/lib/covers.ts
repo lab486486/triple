@@ -9,7 +9,7 @@ export const cityCovers: Record<string, string> = {
 
 export const areaCovers: Record<string, string> = {
   "tokyo/ueno": "/images/covers/ueno.jpg",
-  "tokyo/asakusa": "/images/covers/asakusa.jpg",
+  "tokyo/ginza": "/images/covers/ginza.jpg",
   "tokyo/shinjuku": "/images/covers/shinjuku.jpg",
   "osaka/namba": "/images/covers/namba.jpg",
   "kyoto/station": "/images/covers/kyoto-station.jpg",

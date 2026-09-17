@@ -49,9 +49,11 @@ const ledeLines = city.data.lede.split(/(?<=\.)\s+/).filter(Boolean);
       </div>
     </section>
     <section class="section">
-      <article class="narrow prose">
-        <Content />
-      </article>
+      <div class="container">
+        <article class="prose">
+          <Content />
+        </article>
+      </div>
     </section>
     <div class="container">
       <FaqList faqs={city.data.faqs} />
