@@ -1,6 +1,6 @@
 ---
 import { affiliateHref } from "../lib/affiliate";
-import { nightPrice } from "../lib/stayMeta";
+import { bandWon } from "../lib/stayMeta";
 import type { PriceBand } from "../lib/labels";
 
 interface Props {
@@ -18,6 +18,6 @@ const { band, href, class: className } = Astro.props;
   rel="sponsored noopener noreferrer"
   target="_blank"
 >
-  <em>직접 눌러서 확인!</em>
-  <b>{nightPrice(band)}</b>
+  <em>최저가 할인중!</em>
+  <b>{bandWon[band]}</b>
 </a>
