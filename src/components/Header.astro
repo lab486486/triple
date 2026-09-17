@@ -1,14 +1,13 @@
 ---
-import { nav, site } from "../site.config";
+import { nav } from "../site.config";
 
 const path = Astro.url.pathname;
 ---
 
 <header class="site-header">
   <div class="nav-shell">
-    <a class="brand" href="/" aria-label="3room.kr">
-      <span class="brand-mark" aria-hidden="true">3</span>
-      <span class="brand-word">{site.brandRest}</span>
+    <a class="brand" href="/" aria-label="3인룸">
+      <img class="brand-logo" src="/images/brand/logo.png" alt="3인룸" width="640" height="186" />
     </a>
     <nav class="nav-links" aria-label="주요 메뉴">
       {

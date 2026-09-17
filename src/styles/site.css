@@ -126,31 +126,13 @@ select {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0;
-  font-weight: 800;
-  font-size: 1.05rem;
-  letter-spacing: -0.04em;
   text-decoration: none;
 }
 
-.brand-mark {
-  display: inline-grid;
-  place-items: center;
-  width: 1.7rem;
-  height: 1.7rem;
-  border-radius: 0;
-  background: #111;
-  color: #f2ff00;
-  font-size: 1.28rem;
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -0.08em;
-}
-
-.brand-word {
-  margin-left: 0;
-  font-weight: 800;
-  letter-spacing: -0.06em;
+.brand-logo {
+  display: block;
+  height: 1.9rem;
+  width: auto;
 }
 
 .nav-links {
@@ -1621,8 +1603,13 @@ h3 {
 }
 
 .footer-brand {
+  display: inline-flex;
   color: #fff;
   margin-bottom: 0.7rem;
+}
+
+.footer-brand .brand-logo {
+  height: 2.2rem;
 }
 
 .footer-lead,
@@ -1753,6 +1740,10 @@ h3 {
   .nav-cta,
   .nav-blog {
     display: none;
+  }
+
+  .brand-logo {
+    height: 1.65rem;
   }
 
   .menu-btn {

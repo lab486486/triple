@@ -3,7 +3,7 @@ local_backend:
   allowed_hosts: ["127.0.0.1", "localhost"]
 site_url: https://3room.kr
 display_url: https://3room.kr
-logo_url: /favicon.svg
+logo_url: /images/brand/logo.png
 
 backend:
   name: github
