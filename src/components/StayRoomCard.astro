@@ -19,10 +19,7 @@ const href = room.rakuten_url ?? stay.data.rakuten_url;
   </div>
   <div class="room-body">
     <div class="room-copy">
-      <div class="room-name-row">
-        <h3>{room.name}</h3>
-        <a class="room-detail" href="#intro">상세 정보</a>
-      </div>
+      <h3>{room.name}</h3>
       <p class="room-meta">
         {room.size_sqm ? `${room.size_sqm}㎡ · ` : ""}
         {room.beds} · 편안하게 {room.capacity_comfortable}인
@@ -37,6 +34,7 @@ const href = room.rakuten_url ?? stay.data.rakuten_url;
       <p class="room-note">{room.note}</p>
     </div>
     <div class="room-cta">
+      <a class="room-detail" href="#intro">상세 정보</a>
       <AffiliateCta href={href} class="room-book" label={"객실\n예약하기"} />
     </div>
   </div>
