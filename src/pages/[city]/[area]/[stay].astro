@@ -101,7 +101,7 @@ const bookUrl = stayAffiliateUrl(stay);
 
     <nav class="stay-tabs" aria-label="숙소 섹션">
       <div class="container stay-tabs-row">
-        <a href="#rooms">객실 선택</a>
+        <a href="#rooms">3인실 객실 정보</a>
         <a href="#intro">숙소 소개</a>
         <a href="#location">위치 정보</a>
       </div>
@@ -109,8 +109,8 @@ const bookUrl = stayAffiliateUrl(stay);
 
     <section class="section" id="rooms">
       <div class="container">
-        <h2>객실 선택</h2>
-        <p class="section-note">3명이 눕는 타입만 올립니다. 요금은 날짜마다 달라서 눌러서 확인하세요.</p>
+        <h2>3인실 객실 정보</h2>
+        <p class="section-note">이 호텔에서 3인 이상 투숙 가능한 객실입니다.</p>
         <div class="room-list">
           {rooms.map((room) => <StayRoomCard room={room} stay={stay} photo={cover} />)}
         </div>

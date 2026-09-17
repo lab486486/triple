@@ -15,28 +15,28 @@ const href = stayAffiliateUrl(stay);
 ---
 
 <article class="room-card">
-  <div class="room-photo">
-    <img src={room.photo ?? photo} alt="" width="480" height="360" loading="lazy" />
-  </div>
-  <div class="room-body">
-    <div class="room-copy">
-      <h3>{room.name}</h3>
-      <p class="room-meta">
-        {room.size_sqm ? `${room.size_sqm}㎡ · ` : ""}
-        {room.beds} · 편안하게 {room.capacity_comfortable}인
-      </p>
-      <p class="room-times">
-        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
-          <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
-          <path d="M12 8v4l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
-        </svg>
-        입실 {stay.data.check_in} · 퇴실 {stay.data.check_out}
-      </p>
-      <p class="room-note">{room.note}</p>
+  <div class="room-media">
+    <div class="room-photo">
+      <img src={room.photo ?? photo} alt="" width="480" height="360" loading="lazy" />
     </div>
     <div class="room-cta">
       <a class="room-detail" href="#intro">상세 정보</a>
       <AffiliateCta href={href} class="room-book" label={"객실\n예약하기"} />
     </div>
+  </div>
+  <div class="room-copy">
+    <h3>{room.name}</h3>
+    <p class="room-meta">
+      {room.size_sqm ? `${room.size_sqm}㎡ · ` : ""}
+      {room.beds} · 편안하게 {room.capacity_comfortable}인
+    </p>
+    <p class="room-times">
+      <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+        <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
+        <path d="M12 8v4l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+      </svg>
+      입실 {stay.data.check_in} · 퇴실 {stay.data.check_out}
+    </p>
+    <p class="room-note">{room.note}</p>
   </div>
 </article>
