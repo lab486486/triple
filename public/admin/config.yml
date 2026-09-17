@@ -85,7 +85,7 @@ collections:
           - { label: 7만원대, value: low }
           - { label: 10만원대, value: mid }
           - { label: 15만원대, value: high }
-      - { name: rakuten_url, label: 어필리에이트 URL, widget: string, hint: "가격·객실 예약 버튼에 연결됩니다." }
+      - { name: trip_hotel, label: 트립닷컴 호텔번호, widget: string, required: false, hint: "숙소 상세 URL의 숫자만, 또는 주소 전체를 붙여넣으세요. 예: 109105007 / https://kr.trip.com/hotels/tokyo-hotel-detail-109105007/... 비우면 영문 숙소명으로 검색합니다." }
       - { name: official_url, label: 공식 사이트, widget: string, required: false }
       - { name: verdict, label: 한줄 평가, widget: text, hint: "별점 카드 아래 문구입니다. 별점(9.0 이상)은 숙소마다 자동으로 붙습니다." }
       - { name: address, label: 주소, widget: string, hint: "위치 정보 카드와 지도보기 링크에 나갑니다." }
@@ -147,7 +147,7 @@ collections:
               - { label: 부부+자녀, value: couple_child }
               - { label: 성인 3인, value: three_adults }
           - { name: note, label: 객실 메모, widget: text, hint: "객실 카드 설명으로 나갑니다." }
-          - { name: rakuten_url, label: 이 타입 어필리에이트 URL (없으면 숙소 URL), widget: string, required: false }
+          - { name: trip_hotel, label: 이 타입 트립닷컴 호텔번호, widget: string, required: false, hint: "비우면 숙소 번호를 씁니다." }
           - { name: photo, label: 객실 사진, widget: image, required: false, hint: "없으면 숙소 대표 사진을 씁니다." }
       - { name: body, label: 숙소 소개, widget: markdown, hint: "숙소 소개 본문입니다." }
       - name: party_types

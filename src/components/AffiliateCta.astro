@@ -1,18 +1,16 @@
 ---
-import { affiliateHref } from "../lib/affiliate";
-
 interface Props {
   href: string;
   label?: string;
   class?: string;
 }
 
-const { href, label = "라쿠텐트래블에서 일정·잔여 확인", class: className } = Astro.props;
+const { href, label = "객실 예약하기", class: className } = Astro.props;
 ---
 
 <a
   class:list={["cta", className]}
-  href={affiliateHref(href)}
+  href={href}
   rel="sponsored noopener noreferrer"
   target="_blank"
 >

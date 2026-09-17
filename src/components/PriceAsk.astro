@@ -1,5 +1,4 @@
 ---
-import { affiliateHref } from "../lib/affiliate";
 import { bandWon } from "../lib/stayMeta";
 import type { PriceBand } from "../lib/labels";
 
@@ -14,7 +13,7 @@ const { band, href, class: className } = Astro.props;
 
 <a
   class:list={["price-ask", className]}
-  href={affiliateHref(href)}
+  href={href}
   rel="sponsored noopener noreferrer"
   target="_blank"
 >

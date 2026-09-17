@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { roomAffiliateUrl } from "../lib/affiliate";
 import type { StayRoom } from "../lib/rooms";
 import AffiliateCta from "./AffiliateCta.astro";
 
@@ -10,7 +11,7 @@ interface Props {
 }
 
 const { room, stay, photo } = Astro.props;
-const href = room.rakuten_url ?? stay.data.rakuten_url;
+const href = roomAffiliateUrl(stay, room);
 ---
 
 <article class="room-card">

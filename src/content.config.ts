@@ -56,6 +56,7 @@ const stayRoom = z.object({
   party_types: z.array(partyType).optional(),
   recommended: z.boolean().optional().default(false),
   note: z.string(),
+  trip_hotel: z.string().optional(),
   rakuten_url: z.string().url().optional(),
   photo: z.string().optional(),
 });
@@ -80,7 +81,8 @@ const stays = defineCollection({
     station: z.string().optional(),
     walk_min: z.number().optional(),
     price_band: priceBand,
-    rakuten_url: z.string().url(),
+    trip_hotel: z.string().optional(),
+    rakuten_url: z.string().url().optional(),
     official_url: z.string().url().optional(),
     address: z.string(),
     check_in: z.preprocess(

@@ -9,9 +9,15 @@ export const site = {
   baseUrl: "https://triple-e6i.pages.dev",
   mediaBaseUrl: "https://pub-776d8a270e67409bb1704e375af76a79.r2.dev",
   lang: "ko",
-  /** 라쿠텐트래블 어필리에이트 ID. 발급 후 넣으면 모든 CTA에 붙습니다. */
-  rakutenAffiliateId: "",
-  rakutenSearchBase: "https://hotel.travel.rakuten.co.jp/hotelsearch/",
+  tripAllianceId: "3937504",
+  tripSid: "331494563",
+  tripSub1: "3room",
+  tripCityIds: {
+    tokyo: 228,
+    osaka: 219,
+    kyoto: 734,
+    fukuoka: 248,
+  },
 } as const;
 
 export const nav = [
