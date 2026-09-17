@@ -11,6 +11,19 @@ export const prerender = true;
     <title>3인룸 편집</title>
   </head>
   <body>
+    <script is:inline>
+      window.CMS_MANUAL_INIT = true;
+    </script>
     <script is:inline src="https://unpkg.com/decap-cms@^3.6.2/dist/decap-cms.js"></script>
+    <script is:inline>
+      CMS.init({
+        config: {
+          load_config_file: true,
+          backend: {
+            base_url: window.location.origin,
+          },
+        },
+      });
+    </script>
   </body>
 </html>
