@@ -5,8 +5,8 @@ export const site = {
   title: "3인룸 — 일본 3인 숙소",
   description:
     "3명이 실제로 눕는 일본 숙소만 고릅니다. 우에노·도쿄·오사카·교토·후쿠오카에서 부부+자녀와 성인 3인 기준으로 방을 가릅니다.",
-  /** 커스텀 도메인 연결 전까지 Pages 주소. 연결 후 https://3room.kr 로 바꿉니다. */
-  baseUrl: "https://triple-e6i.pages.dev",
+  /** 공개 주소. 관리자 GitHub OAuth callback은 https://3room.kr/api/callback 입니다. */
+  baseUrl: "https://3room.kr",
   mediaBaseUrl: "https://pub-776d8a270e67409bb1704e375af76a79.r2.dev",
   lang: "ko",
   tripAllianceId: "3937504",
