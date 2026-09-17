@@ -1019,31 +1019,6 @@ h3 {
   color: var(--blue);
 }
 
-.area-body {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 18.5rem;
-  gap: 1.4rem;
-  align-items: start;
-}
-
-.area-aside {
-  position: sticky;
-  top: 5.4rem;
-}
-
-.ad-slot {
-  min-height: 16rem;
-  display: grid;
-  place-items: center;
-  padding: 1rem;
-  background: var(--card);
-  border: 1px dashed var(--line);
-  border-radius: 1rem;
-  color: var(--muted);
-  font-size: 0.85rem;
-  font-weight: 700;
-}
-
 .criteria {
   background: var(--navy);
   color: #e8eefc;
@@ -1721,14 +1696,6 @@ h3 {
 
   .city-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .area-body {
-    grid-template-columns: 1fr;
-  }
-
-  .area-aside {
-    position: static;
   }
 
   .stay-title,
