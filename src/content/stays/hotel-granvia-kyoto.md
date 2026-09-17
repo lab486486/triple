@@ -14,7 +14,7 @@ extra_bed: true
 transit: 교토역(0분 소요)
 station: 교토역
 walk_min: 0
-price_band: high
+price_band: 15
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=Hotel+Granvia+Kyoto
 official_url: https://www.granvia-kyoto.co.jp/
 address: 京都市下京区烏丸通塩小路下ル

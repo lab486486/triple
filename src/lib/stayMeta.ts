@@ -1,13 +1,9 @@
-import type { PriceBand } from "./labels";
+export function bandWon(band: number): string {
+  return `${band}만원대`;
+}
 
-export const bandWon: Record<PriceBand, string> = {
-  low: "7만원대",
-  mid: "10만원대",
-  high: "15만원대",
-};
-
-export function nightPrice(band: PriceBand): string {
-  return `1박 ${bandWon[band]}`;
+export function nightPrice(band: number): string {
+  return `1박 ${bandWon(band)}`;
 }
 
 export function stayScore(id: string) {

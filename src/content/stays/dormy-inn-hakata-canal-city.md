@@ -14,7 +14,7 @@ extra_bed: true
 transit: 고후쿠마치역(5분 소요)
 station: 고후쿠마치역
 walk_min: 5
-price_band: mid
+price_band: 10
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=Dormy+Inn+Premium+Hakata+Canal+City
 official_url: https://www.hotespa.net/
 address: 福岡市博多区

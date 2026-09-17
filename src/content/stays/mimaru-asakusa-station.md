@@ -15,7 +15,7 @@ extra_bed: false
 transit: 아사쿠사역(1분 소요)
 station: 아사쿠사역
 walk_min: 1
-price_band: mid
+price_band: 10
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=MIMARU+Tokyo+Asakusa+Station
 official_url: https://mimaruhotels.com/en/hotel/asakusa-station/
 address: 東京都台東区雷門2-20-4

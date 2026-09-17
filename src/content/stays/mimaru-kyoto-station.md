@@ -15,7 +15,7 @@ extra_bed: false
 transit: 교토역 하치조(2분 소요)
 station: 교토역 하치조
 walk_min: 2
-price_band: mid
+price_band: 10
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=MIMARU+Kyoto+Station
 official_url: https://mimaruhotels.com/en/hotel/kyoto-station/
 address: 京都市南区東九条東山王町15-1

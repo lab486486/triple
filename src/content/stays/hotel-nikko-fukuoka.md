@@ -14,7 +14,7 @@ extra_bed: true
 transit: 하카타역(8분 소요)
 station: 하카타역
 walk_min: 8
-price_band: high
+price_band: 15
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=Hotel+Nikko+Fukuoka
 official_url: https://www.hotelnikkofukuoka.com/
 address: 福岡市博多区白金2-18-25

@@ -14,7 +14,7 @@ extra_bed: true
 transit: 오카치마치역(2분 소요)
 station: 오카치마치역
 walk_min: 2
-price_band: mid
+price_band: 10
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=Dormy+Inn+Premium+Ueno+Okachimachi
 official_url: https://www.hotespa.net/hotels/ueno/
 address: 東京都台東区上野3-16-3

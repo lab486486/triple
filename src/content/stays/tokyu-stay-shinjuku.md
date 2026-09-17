@@ -14,7 +14,7 @@ extra_bed: true
 transit: 신주쿠역(5분 소요)
 station: 신주쿠역
 walk_min: 5
-price_band: mid
+price_band: 10
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=Tokyu+Stay+Shinjuku
 official_url: https://www.tokyustay.co.jp/
 address: 東京都新宿区

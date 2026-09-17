@@ -14,7 +14,7 @@ extra_bed: false
 transit: 교토역(3분 소요)
 station: 교토역
 walk_min: 3
-price_band: low
+price_band: 7
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=ibis+Styles+Kyoto+Station
 official_url: https://all.accor.com/hotel/B4P3/index.en.shtml
 address: 京都市下京区

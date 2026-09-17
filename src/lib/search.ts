@@ -20,7 +20,7 @@ export function filterStays(
         return false;
       }
     }
-    if (query.price && stay.data.price_band !== query.price) return false;
+    if (query.price && String(stay.data.price_band) !== query.price) return false;
     if (query.layout && stay.data.sleep_layout !== query.layout) return false;
     if (query.party && !stay.data.party_types.includes(query.party as never)) {
       return false;

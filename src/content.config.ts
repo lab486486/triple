@@ -10,7 +10,6 @@ const sleepLayout = z.enum([
   "futon_3",
   "apartment",
 ]);
-const priceBand = z.enum(["low", "mid", "high"]);
 
 const faq = z.object({
   q: z.string(),
@@ -80,7 +79,13 @@ const stays = defineCollection({
     transit: z.string().optional(),
     station: z.string().optional(),
     walk_min: z.number().optional(),
-    price_band: priceBand,
+    price_band: z.preprocess((value) => {
+      if (value === "low") return 7;
+      if (value === "mid") return 10;
+      if (value === "high") return 15;
+      if (typeof value === "string" && value.trim()) return Number(value);
+      return value;
+    }, z.number().int().positive()),
     trip_hotel: z.string().optional(),
     rakuten_url: z.string().url().optional(),
     official_url: z.string().url().optional(),

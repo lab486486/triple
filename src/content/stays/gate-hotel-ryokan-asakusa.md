@@ -14,7 +14,7 @@ extra_bed: false
 transit: 아사쿠사역(3분 소요)
 station: 아사쿠사역
 walk_min: 3
-price_band: high
+price_band: 15
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=The+Gate+Hotel+Ryokan+Asakusa+Kaminarimon
 official_url: https://www.gate-hotel.jp/asakusa-kaminarimon/
 address: 東京都台東区雷門2

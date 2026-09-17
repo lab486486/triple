@@ -14,7 +14,7 @@ extra_bed: false
 transit: 니혼바시역(5분 소요)
 station: 니혼바시역
 walk_min: 5
-price_band: high
+price_band: 15
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=Cross+Hotel+Osaka
 official_url: https://www.crosshotel.com/osaka/
 address: 大阪府大阪市中央区島町1-1-36

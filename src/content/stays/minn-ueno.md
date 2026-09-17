@@ -15,7 +15,7 @@ extra_bed: false
 transit: 우에노역(5분 소요)
 station: 우에노역
 walk_min: 5
-price_band: mid
+price_band: 10
 trip_hotel: "64218295"
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=Minn+Ueno
 official_url: https://staytuned.asia/en/brands/minn/hotels/minn-ueno

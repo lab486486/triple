@@ -15,7 +15,7 @@ extra_bed: false
 transit: 우에노역(3분 소요)
 station: 우에노역
 walk_min: 3
-price_band: mid
+price_band: 10
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=MIMARU+Tokyo+Ueno+East
 official_url: https://mimaruhotels.com/en/hotel/ueno-east/
 address: 東京都台東区東上野4-26-3

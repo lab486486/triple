@@ -2,7 +2,7 @@ import type { CollectionEntry } from "astro:content";
 
 export type PartyType = CollectionEntry<"stays">["data"]["party_types"][number];
 export type SleepLayout = CollectionEntry<"stays">["data"]["sleep_layout"];
-export type PriceBand = CollectionEntry<"stays">["data"]["price_band"];
+export type PriceBand = number;
 
 export const partyLabels: Record<PartyType, string> = {
   couple_child: "부부+자녀",
@@ -16,17 +16,13 @@ export const sleepLabels: Record<SleepLayout, string> = {
   twin_extra: "엑스트라베드",
 };
 
-export const priceLabels: Record<PriceBand, string> = {
-  low: "실속",
-  mid: "중간",
-  high: "상급",
-};
+export function priceLabel(band: number): string {
+  return `${band}만원대`;
+}
 
-export const weekdayPriceLabels: Record<PriceBand, string> = {
-  low: "1박 7만원대(평일기준)",
-  mid: "1박 10만원대(평일기준)",
-  high: "1박 15만원대(평일기준)",
-};
+export function weekdayPriceLabel(band: number): string {
+  return `1박 ${band}만원대(평일기준)`;
+}
 
 export function stayTransit(stay: {
   data: { transit?: string; station?: string; walk_min?: number };

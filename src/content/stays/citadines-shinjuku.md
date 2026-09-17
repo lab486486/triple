@@ -14,7 +14,7 @@ extra_bed: true
 transit: 신주쿠역(7분 소요)
 station: 신주쿠역
 walk_min: 7
-price_band: high
+price_band: 15
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=Citadines+Shinjuku+Tokyo
 official_url: https://www.discoverasr.com/en/citadines/japan/citadines-shinjuku-tokyo
 address: 東京都新宿区新宿

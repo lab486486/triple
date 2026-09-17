@@ -14,7 +14,7 @@ extra_bed: true
 transit: 하카타역(3분 소요)
 station: 하카타역
 walk_min: 3
-price_band: mid
+price_band: 10
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=Nishitetsu+Hotel+Croom+Hakata
 official_url: https://www.nishitetsu-hotel-croom.jp/hakata/
 address: 福岡市博多区博多駅前

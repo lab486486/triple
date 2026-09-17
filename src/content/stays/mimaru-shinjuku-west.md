@@ -15,7 +15,7 @@ extra_bed: false
 transit: 도청앞역(8분 소요)
 station: 도청앞역
 walk_min: 8
-price_band: mid
+price_band: 10
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=MIMARU+Tokyo+Shinjuku+West
 official_url: https://mimaruhotels.com/en/hotel/shinjuku-west/
 address: 東京都新宿区西新宿3-3-11

@@ -1,9 +1,8 @@
 ---
 import { bandWon } from "../lib/stayMeta";
-import type { PriceBand } from "../lib/labels";
 
 interface Props {
-  band: PriceBand;
+  band: number;
   href: string;
   class?: string;
 }
@@ -18,5 +17,5 @@ const { band, href, class: className } = Astro.props;
   target="_blank"
 >
   <em>최저가 할인중!</em>
-  <b>{bandWon[band]}</b>
+  <b>{bandWon(band)}</b>
 </a>

@@ -6,7 +6,7 @@ import {
   sleepLabels,
   stayPath,
   stayTransit,
-  weekdayPriceLabels,
+  weekdayPriceLabel,
 } from "../lib/labels";
 
 interface Props {
@@ -30,7 +30,7 @@ const photo = stayCover(stay.data.city, stay.data.area, stay.data.photos);
     <ul class="pkg-facts">
       <li>숙소 구성 : {sleepLabels[stay.data.sleep_layout]}</li>
       <li>교통 : {stayTransit(stay)}</li>
-      <li>가격 : {weekdayPriceLabels[stay.data.price_band]}</li>
+      <li>가격 : {weekdayPriceLabel(stay.data.price_band)}</li>
     </ul>
   </div>
 </a>

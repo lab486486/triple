@@ -15,7 +15,7 @@ extra_bed: false
 transit: 난바역(4분 소요)
 station: 난바역
 walk_min: 4
-price_band: mid
+price_band: 10
 rakuten_url: https://hotel.travel.rakuten.co.jp/hotelsearch/?f_keyword=MIMARU+Osaka+Namba+Station
 official_url: https://mimaruhotels.com/en/hotel/namba-station/
 address: 大阪府大阪市中央区
