@@ -5,7 +5,7 @@ city: tokyo
 area: ueno
 photos:
   - https://pub-776d8a270e67409bb1704e375af76a79.r2.dev/stays/minn-ueno.jpg
-price_band: 10
+price_band: 40
 trip_hotel: "64218295"
 official_url: https://staytuned.asia/en/brands/minn/hotels/minn-ueno
 verdict: 부부+자녀와 성인 3인 모두, 우에노에서 실패가 가장 적은 아파트형.
