@@ -26,7 +26,6 @@ rooms:
     recommended: true
   - party_types:
       - couple_child
-      - three_adults
     capacity_comfortable: 4
     name: 디럭스 스위트
     capacity_official: 4
