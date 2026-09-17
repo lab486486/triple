@@ -10,7 +10,7 @@ interface Props {
 
 const { stay, featured = stay.data.featured } = Astro.props;
 const href = stayPath(stay);
-const photo = stayCover(stay.data.city, stay.data.area);
+const photo = stayCover(stay.data.city, stay.data.area, stay.data.photos);
 const place = placeLabel(stay.data.city, stay.data.area);
 ---
 

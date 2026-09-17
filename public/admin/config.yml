@@ -20,6 +20,11 @@ backend:
 
 media_folder: public/images/uploads
 public_folder: /images/uploads
+media_library:
+  name: r2
+  config:
+    upload_url: /api/upload
+    public_base_url: https://pub-776d8a270e67409bb1704e375af76a79.r2.dev
 
 slug:
   encoding: ascii

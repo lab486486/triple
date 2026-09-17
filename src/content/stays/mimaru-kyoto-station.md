@@ -25,6 +25,8 @@ not_for: 기온 골목에서 자고 싶은 일정. 그때는 낮에 나가고, �
 rank: 1
 featured: true
 updated: 2026-09-15
+photos:
+  - stays/mimaru-kyoto-station.jpg
 rooms:
   - name: 패밀리 아파트
     size_sqm: 40

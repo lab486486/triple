@@ -3,13 +3,18 @@ import Layout from "../layouts/Layout.astro";
 import SearchBar from "../components/SearchBar.astro";
 import CityPackageCard from "../components/CityPackageCard.astro";
 import { organizationJsonLd } from "../lib/jsonld";
-import { getAreasByCity, getCities, getCityHighlights } from "../lib/content";
+import { getAreasByCity, getCities, getStaysByCity } from "../lib/content";
 import { areaCover } from "../lib/covers";
 import { areaPath } from "../lib/labels";
 import { getCollection } from "astro:content";
 
 const cities = await getCities();
-const highlights = await getCityHighlights();
+const cityStays = await Promise.all(
+  cities.map(async (city) => ({
+    city,
+    stays: await getStaysByCity(city.id),
+  })),
+);
 const areaEntries = await Promise.all(
   cities.map(async (city) => ({
     city,
@@ -56,13 +61,27 @@ const posts = (await getCollection("guides"))
           <h2>도시별 추천 숙소</h2>
           <a class="text-link" href="/search/">전체보기</a>
         </div>
-        <div class="city-grid">
+        <div class="city-grid" id="city-highlights">
           {
-            highlights.map(({ city, stay }) => (
-              <CityPackageCard city={city} stay={stay} />
-            ))
+            cityStays.map(({ city, stays }) =>
+              stays.length ? (
+                <div class="city-highlight" data-city={city.id}>
+                  {stays.map((stay, index) => (
+                    <CityPackageCard city={city} stay={stay} picked={index === 0} />
+                  ))}
+                </div>
+              ) : null,
+            )
           }
         </div>
+        <script is:inline>
+          document.querySelectorAll("#city-highlights .city-highlight").forEach((group) => {
+            const cards = [...group.querySelectorAll(".city-pack")];
+            if (cards.length < 2) return;
+            cards.forEach((card) => card.classList.remove("is-pick"));
+            cards[Math.floor(Math.random() * cards.length)].classList.add("is-pick");
+          });
+        </script>
       </div>
     </section>
 

@@ -25,6 +25,8 @@ not_for: 욕조가 꼭 필요하거나, 퀸+소파베드 타입을 성인 3인�
 rank: 1
 featured: true
 updated: 2026-09-15
+photos:
+  - stays/minn-ueno.jpg
 rooms:
   - name: 모더레이트 패밀리 로프트
     size_sqm: 35

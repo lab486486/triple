@@ -1,3 +1,5 @@
+import { mediaUrl } from "./media";
+
 export const cityCovers: Record<string, string> = {
   tokyo: "/images/covers/tokyo.jpg",
   osaka: "/images/covers/namba.jpg",
@@ -18,10 +20,19 @@ export function areaCover(city: string, area: string): string {
   return areaCovers[`${city}/${area}`] ?? cityCovers[city] ?? cityCovers.tokyo;
 }
 
-export function stayCover(city: string, area: string): string {
+export function stayCover(city: string, area: string, photos: string[] = []) {
+  const first = photos[0];
+  if (first) return mediaUrl(first);
   return areaCover(city, area);
 }
 
 export function stayGallery(city: string, area: string, photos: string[] = []) {
-  return [...new Set([...photos, stayCover(city, area), cityCovers[city] ?? cityCovers.tokyo])];
+  const custom = photos.map(mediaUrl);
+  return [
+    ...new Set([
+      ...custom,
+      areaCover(city, area),
+      cityCovers[city] ?? cityCovers.tokyo,
+    ]),
+  ];
 }

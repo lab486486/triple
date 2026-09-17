@@ -657,6 +657,18 @@ h3 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.city-highlight {
+  min-width: 0;
+}
+
+.city-highlight > :not(.is-pick) {
+  display: none;
+}
+
+.city-highlight .city-pack {
+  height: 100%;
+}
+
 .grid,
 .grid-2 {
   display: grid;

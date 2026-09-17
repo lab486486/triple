@@ -23,4 +23,4 @@ GitHub 저장소와 연결한 뒤 빌드 설정은 다음과 같습니다.
 
 숙소·지역·가이드는 `src/content/` 마크다운입니다. 빈 지역 페이지는 올리지 말고, 숙소 frontmatter의 `city`/`area`가 URL과 일치해야 합니다.
 
-관리자 폼은 `/admin/` 입니다. 로컬에서는 개발 서버와 함께 `npm run cms`를 켭니다. 배포 사이트에서 GitHub로 로그인하려면 Cloudflare에 `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`을 넣고, GitHub OAuth App의 callback을 `https://triple-e6i.pages.dev/api/callback`로 두면 됩니다. `3room.kr`을 붙인 뒤에는 callback을 그 주소로 추가하면 됩니다. 숙소 입력 때 객실은 3인실만 넣습니다.
+관리자 폼은 `/admin/` 입니다. 로컬에서는 개발 서버와 함께 `npm run cms`를 켭니다. 배포 사이트에서 GitHub로 로그인하려면 Cloudflare에 `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`을 넣고, GitHub OAuth App의 callback을 `https://triple-e6i.pages.dev/api/callback`로 두면 됩니다. `3room.kr`을 붙인 뒤에는 callback을 그 주소로 추가하면 됩니다. 숙소 입력 때 객실은 3인실만 넣습니다. 숙소 사진은 Cloudflare R2(`3room-media`)에 올라가고, Pages에 `MEDIA_BUCKET` 바인딩이 있어야 관리자에서 업로드됩니다.

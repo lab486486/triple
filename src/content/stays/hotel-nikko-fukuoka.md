@@ -24,6 +24,8 @@ not_for: 성인 3인이 1인당 요금을 맞추고 싶은 경우. 트리플베�
 rank: 2
 featured: true
 updated: 2026-09-15
+photos:
+  - stays/hotel-nikko-fukuoka.jpg
 rooms:
   - name: 패밀리·재패니즈 웨스턴
     size_sqm: 36

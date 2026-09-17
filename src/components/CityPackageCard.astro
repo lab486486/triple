@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { cityCovers } from "../lib/covers";
+import { stayCover } from "../lib/covers";
 import {
   cityNames,
   sleepLabels,
@@ -12,19 +12,20 @@ import {
 interface Props {
   city: CollectionEntry<"cities">;
   stay: CollectionEntry<"stays">;
+  picked?: boolean;
 }
 
-const { city, stay } = Astro.props;
-const photo = cityCovers[city.id] ?? cityCovers.tokyo;
+const { city, stay, picked = false } = Astro.props;
+const photo = stayCover(stay.data.city, stay.data.area, stay.data.photos);
 ---
 
-<a class="pkg-card city-pack" href={stayPath(stay)}>
+<a class:list={["pkg-card", "city-pack", picked && "is-pick"]} href={stayPath(stay)}>
   <div class="pkg-photo">
     <img src={photo} alt="" width="640" height="400" loading="lazy" />
     <span class="pkg-badge">{city.data.nameKo}</span>
   </div>
   <div class="pkg-body">
-    <p class="pkg-kicker">{cityNames[city.id]} 대표숙소</p>
+    <p class="pkg-kicker">{cityNames[city.id]} 추천 숙소</p>
     <h3>{stay.data.nameKo}</h3>
     <ul class="pkg-facts">
       <li>숙소 구성 : {sleepLabels[stay.data.sleep_layout]}</li>
