@@ -83,8 +83,9 @@ export function extractHotelId(raw: string): string | null {
 }
 
 function tripHotelUrl(hotelId: string, city: string): string {
-  const slug = tripCitySlug(city);
-  const url = new URL(`${TRIP_HOST}/hotels/${slug}-hotel-detail-${hotelId}/`);
+  const url = new URL(`${TRIP_HOST}/hotels/detail/`);
+  url.searchParams.set("cityId", String(tripCityId(city)));
+  url.searchParams.set("hotelId", hotelId);
   return stampTripAffiliate(url);
 }
 
@@ -98,6 +99,9 @@ function tripSearchUrl(keyword: string, city: string): string {
 function stampTripAffiliate(input: string | URL): string {
   try {
     const url = input instanceof URL ? input : new URL(input);
+    url.searchParams.set("adult", "3");
+    url.searchParams.set("children", "0");
+    url.searchParams.set("crn", "1");
     url.searchParams.set("Allianceid", site.tripAllianceId);
     url.searchParams.set("SID", site.tripSid);
     url.searchParams.set("trip_sub1", site.tripSub1);
@@ -119,8 +123,4 @@ function isTripHost(raw: string): boolean {
 
 function tripCityId(city: string): number {
   return site.tripCityIds[city as keyof typeof site.tripCityIds] ?? site.tripCityIds.tokyo;
-}
-
-function tripCitySlug(city: string): string {
-  return city in site.tripCityIds ? city : "tokyo";
 }

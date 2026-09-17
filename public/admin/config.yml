@@ -77,7 +77,7 @@ collections:
         hint: "상세 상단 갤러리입니다. R2에 올린 주소가 그대로 들어갑니다."
         field: { name: photo, label: 사진, widget: image }
       - { name: price_band, label: 가격대(만원), widget: number, value_type: int, default: 10, min: 1, hint: "10 만 넣으면 화면에 10만원대로 나갑니다." }
-      - { name: trip_hotel, label: 트립닷컴 호텔번호, widget: string, required: false, hint: "주소에 hotelId=숫자가 있으면 그 숫자만 씁니다. 주소 전체를 붙여넣어도 됩니다. 체크인 날짜·uniquekey는 버려집니다. 비우면 영문 숙소명으로 검색합니다." }
+      - { name: trip_hotel, label: 트립닷컴 호텔번호, widget: string, required: false, hint: "hotelId 숫자 또는 상세 주소를 넣으면 그 호텔이 성인 3인 기준으로 열립니다. 비우면 영문 숙소명으로 검색합니다." }
       - { name: official_url, label: 공식 사이트, widget: string, required: false }
       - { name: verdict, label: 한줄 평가, widget: text, hint: "별점 카드 아래 문구입니다. 별점(9.0 이상)은 숙소마다 자동으로 붙습니다." }
       - { name: address, label: 주소, widget: string, hint: "위치 정보 카드와 지도보기 링크에 나갑니다." }
