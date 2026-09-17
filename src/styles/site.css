@@ -1606,8 +1606,10 @@ h3 {
   margin-bottom: 0.7rem;
 }
 
-.footer-brand .brand-logo {
-  height: 2.2rem;
+.footer-mark {
+  display: block;
+  width: 2.8rem;
+  height: 2.8rem;
 }
 
 .footer-lead,
@@ -1740,7 +1742,7 @@ h3 {
     display: none;
   }
 
-  .brand-logo {
+  .site-header .brand-logo {
     height: 1.65rem;
   }
 
