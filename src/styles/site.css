@@ -1381,9 +1381,10 @@ h3 {
 
 .room-name-row {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: baseline;
-  gap: 0.7rem;
+  flex-wrap: wrap;
+  gap: 0.55rem 0.75rem;
 }
 
 .room-body h3 {
@@ -1437,7 +1438,7 @@ h3 {
   width: 5.6rem;
   height: 5.6rem;
   padding: 0.35rem 0.4rem;
-  border-radius: 1rem;
+  border-radius: 0.72rem;
   background: linear-gradient(180deg, #6b86ff 0%, #3d5ef0 100%);
   box-shadow: 0 8px 18px rgba(61, 94, 240, 0.28);
   text-align: center;
@@ -1797,7 +1798,7 @@ h3 {
   .room-book {
     width: 4.8rem;
     height: 4.8rem;
-    border-radius: 0.85rem;
+    border-radius: 0.65rem;
   }
 
   .room-name-row {
