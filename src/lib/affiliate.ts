@@ -11,22 +11,8 @@ type StayAffiliate = {
   };
 };
 
-type RoomAffiliate = {
-  trip_hotel?: string;
-  rakuten_url?: string;
-};
-
 export function stayAffiliateUrl(stay: StayAffiliate): string {
   return tripTargetUrl(stay.data.trip_hotel, stay.data.city, stay.data.nameEn, stay.data.rakuten_url);
-}
-
-export function roomAffiliateUrl(stay: StayAffiliate, room?: RoomAffiliate): string {
-  const roomValue = room?.trip_hotel?.trim();
-  if (roomValue) return tripTargetUrl(roomValue, stay.data.city, stay.data.nameEn, room?.rakuten_url);
-  if (room?.rakuten_url && isTripHost(room.rakuten_url)) {
-    return tripTargetUrl(room.rakuten_url, stay.data.city, stay.data.nameEn);
-  }
-  return stayAffiliateUrl(stay);
 }
 
 export function affiliateHref(rawUrl: string): string {

@@ -55,7 +55,6 @@ const stayRoom = z.object({
   party_types: z.array(partyType).optional(),
   recommended: z.boolean().optional().default(false),
   note: z.string(),
-  trip_hotel: z.string().optional(),
   rakuten_url: z.string().url().optional(),
   photo: z.string().optional(),
 });
