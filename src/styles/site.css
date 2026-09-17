@@ -1323,55 +1323,78 @@ h3 {
 
 .room-list {
   display: grid;
-  gap: 0.6rem;
-  margin-top: 0.7rem;
+  gap: 0.75rem;
+  margin-top: 0.85rem;
 }
 
 .room-card {
   display: grid;
-  grid-template-columns: 8.4rem minmax(0, 1fr);
+  grid-template-columns: 12rem minmax(0, 1fr);
+  grid-template-rows: 9.6rem;
+  align-items: stretch;
   gap: 0;
   background: var(--card);
   border: 1px solid var(--line);
-  border-radius: 0.95rem;
+  border-radius: 1.05rem;
   overflow: hidden;
 }
 
 .room-photo {
   position: relative;
+  width: 12rem;
+  height: 9.6rem;
+  overflow: hidden;
   background: #d8deea;
 }
 
 .room-photo img {
+  position: absolute;
+  inset: 0;
   width: 100%;
+  max-width: none;
   height: 100%;
-  min-height: 5.2rem;
+  min-height: 0;
   object-fit: cover;
+  object-position: center;
 }
 
 .room-body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 0.7rem;
-  padding: 0.52rem 0.8rem;
+  min-width: 0;
+  gap: 0.9rem;
+  padding: 0.75rem 1rem;
+}
+
+.room-copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.room-cta {
+  display: grid;
+  align-content: center;
+  justify-items: end;
+  flex: none;
 }
 
 .room-name-row {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  gap: 0.6rem;
+  gap: 0.7rem;
 }
 
 .room-body h3 {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 1.22rem;
+  letter-spacing: -0.03em;
 }
 
 .room-detail {
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.95rem;
   font-weight: 700;
   text-decoration: none;
   white-space: nowrap;
@@ -1384,10 +1407,10 @@ h3 {
 .room-meta,
 .room-times,
 .room-note {
-  margin: 0.12rem 0 0;
+  margin: 0.22rem 0 0;
   color: var(--muted);
-  font-size: 0.78rem;
-  line-height: 1.35;
+  font-size: 0.95rem;
+  line-height: 1.4;
 }
 
 .room-times {
@@ -1405,29 +1428,33 @@ h3 {
   overflow: hidden;
   color: var(--ink-soft);
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-}
-
-.room-cta {
-  display: grid;
-  align-content: center;
-  justify-items: end;
-  flex: none;
+  -webkit-line-clamp: 2;
 }
 
 .room-book {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: auto;
-  min-width: 5.6rem;
-  height: auto;
-  padding: 0.48rem 0.72rem;
-  border-radius: 0.7rem;
+  display: grid;
+  place-items: center;
+  width: 5.6rem;
+  height: 5.6rem;
+  padding: 0.35rem 0.4rem;
+  border-radius: 1rem;
+  background: linear-gradient(180deg, #6b86ff 0%, #3d5ef0 100%);
+  box-shadow: 0 8px 18px rgba(61, 94, 240, 0.28);
   text-align: center;
-  line-height: 1.2;
+  line-height: 1.25;
   font-size: 0.8rem;
   font-weight: 800;
+  letter-spacing: -0.02em;
+  white-space: pre-line;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
+}
+
+.room-book:hover,
+.cta.room-book:hover {
+  background: linear-gradient(180deg, #7a93ff 0%, #3554e6 100%);
+  box-shadow: 0 11px 22px rgba(61, 94, 240, 0.36);
+  transform: translateY(-2px);
+  filter: saturate(1.05);
 }
 
 .stay-intro h2 {
@@ -1662,14 +1689,19 @@ h3 {
   .stay-title,
   .stay-panels,
   .stay-head,
-  .room-card,
   .stay-location,
   .stay-panel-map {
     grid-template-columns: 1fr;
   }
 
-  .room-photo img {
-    min-height: 7.2rem;
+  .room-card {
+    grid-template-columns: 9.6rem minmax(0, 1fr);
+    grid-template-rows: 8.4rem;
+  }
+
+  .room-photo {
+    width: 9.6rem;
+    height: 8.4rem;
   }
 
   .stay-map-visual {
@@ -1730,7 +1762,6 @@ h3 {
   .stay-title,
   .stay-panels,
   .stay-head,
-  .room-card,
   .stay-location,
   .stay-panel-map {
     grid-template-columns: 1fr;
@@ -1744,19 +1775,29 @@ h3 {
     justify-items: start;
   }
 
-  .room-photo img {
-    min-height: 6.4rem;
+  .room-card {
+    grid-template-columns: 7.8rem minmax(0, 1fr);
+    grid-template-rows: 7.8rem;
+  }
+
+  .room-photo {
+    width: 7.8rem;
+    height: 7.8rem;
   }
 
   .room-body {
-    flex-direction: column;
-    align-items: stretch;
+    gap: 0.55rem;
+    padding: 0.55rem 0.7rem;
   }
 
-  .room-cta {
-    width: auto;
-    align-self: flex-end;
-    justify-items: end;
+  .room-body h3 {
+    font-size: 1.02rem;
+  }
+
+  .room-book {
+    width: 4.8rem;
+    height: 4.8rem;
+    border-radius: 0.85rem;
   }
 
   .room-name-row {

@@ -18,7 +18,7 @@ const href = room.rakuten_url ?? stay.data.rakuten_url;
     <img src={room.photo ?? photo} alt="" width="480" height="360" loading="lazy" />
   </div>
   <div class="room-body">
-    <div>
+    <div class="room-copy">
       <div class="room-name-row">
         <h3>{room.name}</h3>
         <a class="room-detail" href="#intro">상세 정보</a>
@@ -37,7 +37,7 @@ const href = room.rakuten_url ?? stay.data.rakuten_url;
       <p class="room-note">{room.note}</p>
     </div>
     <div class="room-cta">
-      <AffiliateCta href={href} class="room-book" label="객실 예약하기" />
+      <AffiliateCta href={href} class="room-book" label={"객실\n예약하기"} />
     </div>
   </div>
 </article>
