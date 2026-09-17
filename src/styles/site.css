@@ -327,7 +327,7 @@ select {
 }
 
 .intro-text .search-kicker {
-  color: var(--orange);
+  color: #ffd23a;
 }
 
 .intro-text h1 {
