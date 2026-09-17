@@ -85,7 +85,7 @@ collections:
           - { label: 7만원대, value: low }
           - { label: 10만원대, value: mid }
           - { label: 15만원대, value: high }
-      - { name: trip_hotel, label: 트립닷컴 호텔번호, widget: string, required: false, hint: "숙소 상세 URL의 숫자만, 또는 주소 전체를 붙여넣으세요. 예: 109105007 / https://kr.trip.com/hotels/tokyo-hotel-detail-109105007/... 비우면 영문 숙소명으로 검색합니다." }
+      - { name: trip_hotel, label: 트립닷컴 호텔번호, widget: string, required: false, hint: "주소에 hotelId=숫자가 있으면 그 숫자만 씁니다. 주소 전체를 붙여넣어도 됩니다. 체크인 날짜·uniquekey는 버려집니다. 비우면 영문 숙소명으로 검색합니다." }
       - { name: official_url, label: 공식 사이트, widget: string, required: false }
       - { name: verdict, label: 한줄 평가, widget: text, hint: "별점 카드 아래 문구입니다. 별점(9.0 이상)은 숙소마다 자동으로 붙습니다." }
       - { name: address, label: 주소, widget: string, hint: "위치 정보 카드와 지도보기 링크에 나갑니다." }
