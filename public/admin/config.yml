@@ -189,6 +189,12 @@ collections:
       - { name: description, label: 설명, widget: text, hint: "목록과 검색 결과에 보이는 한 줄입니다." }
       - { name: cover_image, label: 커버 이미지, widget: image, required: false }
       - { name: kicker, label: 꼬리표, widget: string, default: 블로그, hint: "카드 위에 작게 붙는 말. 예: 블로그" }
+      - name: tags
+        label: 태그
+        widget: list
+        required: false
+        hint: "관련 글을 묶을 때 씁니다. 예: 3인실, 부부+자녀"
+        field: { name: tag, label: 태그, widget: string }
       - { name: body, label: 본문, widget: markdown, hint: "숙소 고르는 법, 지역 팁 등 글을 작성합니다." }
 
   - name: cities

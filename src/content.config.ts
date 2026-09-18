@@ -116,6 +116,7 @@ const guides = defineCollection({
     kicker: z.string().default("블로그"),
     date: z.coerce.date(),
     cover_image: z.string().optional(),
+    tags: z.array(z.string()).default([]),
   }),
 });
 

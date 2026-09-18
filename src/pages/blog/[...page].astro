@@ -1,15 +1,21 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import Pager from "../../components/Pager.astro";
 import { areaCover } from "../../lib/covers";
 
-const posts = (await getCollection("guides")).sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
-);
+export async function getStaticPaths({ paginate }) {
+  const posts = (await getCollection("guides")).sort(
+    (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+  );
+  return paginate(posts, { pageSize: 6 });
+}
+
+const { page } = Astro.props;
 ---
 
 <Layout
-  title="블로그"
+  title={page.currentPage > 1 ? `블로그 ${page.currentPage}페이지` : "블로그"}
   description="일본 3인 숙소를 고르는 기준과 여행 메모를 모았습니다."
 >
   <main id="main" class="section">
@@ -17,9 +23,9 @@ const posts = (await getCollection("guides")).sort(
       <p class="kicker">블로그</p>
       <h1>일본 3인 숙소 이야기</h1>
       <p class="lede">방을 고르는 기준과, 다녀온 뒤에 남는 메모입니다.</p>
-      <div class="article-grid" style="margin-top:2rem">
+      <div class="article-grid blog-grid">
         {
-          posts.map((post) => (
+          page.data.map((post) => (
             <a class="article-card" href={`/blog/${post.id}/`}>
               <img
                 src={post.data.cover_image || areaCover("tokyo", "ueno")}
@@ -37,6 +43,7 @@ const posts = (await getCollection("guides")).sort(
           ))
         }
       </div>
+      <Pager current={page.currentPage} last={page.lastPage} />
     </div>
   </main>
 </Layout>

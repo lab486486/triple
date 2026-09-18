@@ -1,9 +1,17 @@
 ---
-import { getCollection, render } from "astro:content";
+import { render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import { areaCover } from "../../lib/covers";
+import {
+  allGuides,
+  formatPostDate,
+  guidePath,
+  neighborGuides,
+  relatedGuides,
+} from "../../lib/posts";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("guides");
+  const posts = await allGuides();
   return posts.map((post) => ({
     params: { slug: post.id },
     props: { post },
@@ -11,18 +19,86 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
+const posts = await allGuides();
+const { newer, older } = neighborGuides(posts, post.id);
+const related = relatedGuides(posts, post, 3);
+const toc = headings.filter((item) => item.depth === 2 || item.depth === 3);
+const cover = post.data.cover_image || areaCover("tokyo", "ueno");
 ---
 
 <Layout title={post.data.title} description={post.data.description}>
   <main id="main" class="section">
-    <article class="narrow prose">
-      <p class="kicker">{post.data.kicker}</p>
-      <h1>{post.data.title}</h1>
-      {post.data.cover_image && (
-        <img class="post-cover" src={post.data.cover_image} alt="" width="1200" height="675" />
-      )}
-      <Content />
-    </article>
+    <div class="container post-layout">
+      <header class="post-head">
+        <p class="kicker">{post.data.kicker}</p>
+        <h1>{post.data.title}</h1>
+        <p class="post-date">{formatPostDate(post.data.date)}</p>
+      </header>
+
+      {
+        toc.length > 0 && (
+          <aside class="post-toc">
+            <div class="post-toc-box">
+              <p>목차</p>
+              <nav aria-label="이 글의 목차">
+                {toc.map((item) => (
+                  <a class={item.depth > 2 ? "is-h3" : undefined} href={`#${item.slug}`}>
+                    {item.text}
+                  </a>
+                ))}
+              </nav>
+            </div>
+          </aside>
+        )
+      }
+
+      <div class="post-body">
+        <img class="post-cover" src={cover} alt="" width="1200" height="675" />
+        <article class="prose">
+          <Content />
+        </article>
+
+        <nav class="post-neighbors" aria-label="앞뒤 글">
+          {
+            older ? (
+              <a href={guidePath(older)}>
+                <small>이전 글</small>
+                <strong>{older.data.title}</strong>
+              </a>
+            ) : (
+              <span class="is-empty">이전 글이 없습니다</span>
+            )
+          }
+          {
+            newer ? (
+              <a href={guidePath(newer)}>
+                <small>다음 글</small>
+                <strong>{newer.data.title}</strong>
+              </a>
+            ) : (
+              <span class="is-empty">다음 글이 없습니다</span>
+            )
+          }
+        </nav>
+
+        {
+          related.length > 0 && (
+            <section class="post-related">
+              <h2>관련 글</h2>
+              <div class="post-related-grid">
+                {related.map((item) => (
+                  <a href={guidePath(item)}>
+                    <small>{(item.data.tags ?? [])[0] || item.data.kicker}</small>
+                    <strong>{item.data.title}</strong>
+                    <p>{item.data.description}</p>
+                  </a>
+                ))}
+              </div>
+            </section>
+          )
+        }
+      </div>
+    </div>
   </main>
 </Layout>
