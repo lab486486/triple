@@ -20,7 +20,7 @@ rooms:
     name: 원베드룸 패밀리 아파트
     capacity_official: 6
     size_sqm: 40
-    beds: 싱글 2 + 2층침대
+    beds: 싱글 2개 + 2층침대
     photo: https://pub-776d8a270e67409bb1704e375af76a79.r2.dev/uploads/2026/09/1789912491647-0221312000k6t6p6b044F_R_696_392_R5.webp
     note: 부부는 싱글침대에서 자녀는 2층 침대에서 휴식하기 좋은 객실입니다.
     recommended: true
@@ -30,7 +30,7 @@ rooms:
     name: 투베드룸 아파트
     capacity_official: 6
     size_sqm: 44
-    beds: 싱글침대 4개
+    beds: 싱글 4개
     photo: https://pub-776d8a270e67409bb1704e375af76a79.r2.dev/uploads/2026/09/1789912552843-0224a12000k6sjo5g8CB5_R_696_392_R5.webp
     note: 침대 2개씩 2개의 방에 배치되어 분리해서 휴식하기 좋은 객실입니다.
     recommended: true
