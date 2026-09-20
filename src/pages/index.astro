@@ -93,7 +93,10 @@ const posts = (await getCollection("guides"))
         <div class="dest-grid">
           {
             destinations.map(({ city, area }) => (
-              <a class="dest-card" href={areaPath(city.id, area.data.slug)}>
+              <a
+                class:list={["dest-card", { "is-harbor": area.data.slug === "hakata" }]}
+                href={areaPath(city.id, area.data.slug)}
+              >
                 <img
                   src={areaCover(city.id, area.data.slug)}
                   alt=""
