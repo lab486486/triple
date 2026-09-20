@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { partyList, stayPath, stayTransit } from "../lib/labels";
+import { partyList, stayPath } from "../lib/labels";
 import { roomsForStay } from "../lib/rooms";
 
 interface Props {
@@ -22,9 +22,9 @@ const rows = stays.flatMap((stay) =>
     <thead>
       <tr>
         <th>숙소명</th>
+        <th>타입 이름</th>
         <th>침대 조합</th>
         <th>면적</th>
-        <th>교통</th>
         <th>추천 조합</th>
       </tr>
     </thead>
@@ -35,9 +35,9 @@ const rows = stays.flatMap((stay) =>
             <td>
               <a href={stayPath(stay)}>{stay.data.nameKo}</a>
             </td>
+            <td>{room.name}</td>
             <td>{room.beds}</td>
             <td>{room.size_sqm ? `${room.size_sqm}㎡` : `${stay.data.room_size_sqm}㎡`}</td>
-            <td>{stayTransit(stay)}</td>
             <td>{partyList(parties)}</td>
           </tr>
         ))
