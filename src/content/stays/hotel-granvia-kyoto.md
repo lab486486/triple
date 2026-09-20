@@ -26,7 +26,7 @@ party_types:
   - couple_child
 sleep_layout: twin_extra
 capacity_comfortable: 2
-rank: 2
+rank: 3
 featured: false
 capacity_official: 3
 beds: 디럭스 트윈 또는 커넥팅
