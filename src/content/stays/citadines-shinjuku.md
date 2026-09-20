@@ -24,10 +24,9 @@ rooms:
     photo: https://pub-776d8a270e67409bb1704e375af76a79.r2.dev/uploads/2026/09/1789913492077-1mc5012000ni2bctb2A68_R_696_392_R5.webp
 party_types:
   - couple_child
-  - three_adults
 sleep_layout: apartment
 capacity_comfortable: 2
-rank: 2
+rank: 3
 featured: false
 capacity_official: 3
 beds: 더블 + 소파베드 또는 1베드룸
