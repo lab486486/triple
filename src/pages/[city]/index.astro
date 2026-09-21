@@ -42,7 +42,7 @@ const ledeLines = city.data.lede.split(/(?<=\.)\s+/).filter(Boolean);
     </section>
     <section class="section">
       <div class="container">
-        <h2>{city.data.nameKo} 3인실 숙소 리스트</h2>
+        <h2>{city.data.nameKo} 3인 숙소 추천</h2>
         <div class="grid grid-3" style="margin-top:1rem">
           {stays.slice(0, 6).map((stay) => <StayCard stay={stay} />)}
         </div>
