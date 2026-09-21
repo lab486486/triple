@@ -254,7 +254,7 @@ select {
 }
 
 .search-band {
-  padding: 0.6rem 0 1.5rem;
+  padding: 0.45rem 0 0.85rem;
 }
 
 .search-band h1 {
@@ -278,7 +278,7 @@ select {
   grid-template-columns: 1.08fr 0.92fr;
   gap: 1.6rem;
   align-items: stretch;
-  height: 22rem;
+  height: 17.6rem;
 }
 
 .intro-copy {
@@ -323,22 +323,28 @@ select {
   right: 0;
   bottom: 0;
   z-index: 1;
-  padding: 1.35rem 1.3rem 1.25rem;
-}
-
-.intro-text .search-kicker {
-  color: #ffd23a;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.22rem;
+  padding: 0.7rem 1.05rem 0.7rem;
 }
 
 .intro-text h1 {
-  margin: 0 0 0.55rem;
+  margin: 0;
   color: #fff;
+  line-height: 1.12;
 }
 
 .intro-text .lede {
   margin: 0;
   color: rgba(255, 255, 255, 0.92);
   max-width: none;
+  line-height: 1.2;
+}
+
+.intro-text .lede-lines {
+  gap: 0.08em;
 }
 
 .intro-text .lede-lines span {
@@ -376,7 +382,7 @@ select {
 
 .search-group-picks {
   min-height: 0;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: 1fr;
 }
 
 .search-group > span {
@@ -2002,9 +2008,26 @@ h3 {
 
   .intro-visual {
     flex: none;
-    min-height: 18rem;
-    height: 18rem;
-    max-height: 18rem;
+    min-height: 14.4rem;
+    height: 14.4rem;
+    max-height: 14.4rem;
+  }
+
+  .intro-text {
+    padding: 0.55rem 0.85rem 0.55rem;
+    gap: 0.16rem;
+  }
+
+  .intro-text .lede-lines span {
+    white-space: normal;
+  }
+
+  .search-band h1 {
+    font-size: clamp(1.28rem, 5.4vw, 1.7rem);
+  }
+
+  #featured.section {
+    padding-top: 1.05rem;
   }
 
   .city-grid {
@@ -2045,19 +2068,6 @@ h3 {
   .split-photos img:last-child {
     height: 12rem;
     margin: 0;
-  }
-
-  .intro-text .lede-lines {
-    display: block;
-  }
-
-  .intro-text .lede-lines span {
-    display: inline;
-    white-space: normal;
-  }
-
-  .intro-text .lede-lines span + span::before {
-    content: " ";
   }
 }
 

@@ -49,8 +49,7 @@ const layouts = [
   <input type="hidden" name="layout" value="" />
 
   <div class="search-group search-group-picks">
-    <span>여행 지역</span>
-    <div class="pick-grid" data-group="city">
+    <div class="pick-grid" data-group="city" aria-label="여행 지역">
       {
         cities.map((city) => (
           <button class="pick pick-square" type="button" data-value={city.id} aria-pressed="false">
@@ -63,8 +62,7 @@ const layouts = [
   </div>
 
   <div class="search-group search-group-picks">
-    <span>침대 구성</span>
-    <div class="pick-grid" data-group="layout">
+    <div class="pick-grid" data-group="layout" aria-label="침대 구성">
       {
         layouts.map((item) => (
           <button class="pick pick-round" type="button" data-value={item.value} aria-pressed="false">
