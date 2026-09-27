@@ -7,7 +7,7 @@ photos:
   - https://pub-776d8a270e67409bb1704e375af76a79.r2.dev/uploads/2026/09/1790478704252-200p1g000001hfwfj1469_W_1280_853_R5.jpg
 price_band: 40
 trip_hotel: "705197"
-official_url: 2 Chome-1-1 Hakataekihigashi, 하카타 구, 812-0013 후쿠오카시, 후쿠오카 현, 일본
+official_url: https://ko.miyakohotels.ne.jp/hakata/
 verdict: 지하철역과 중심가에 위치해 쇼핑, 식사, 이동이 편리한 가성비 호텔
 address: 2 Chome-1-1 Hakataekihigashi, 하카타 구, 812-0013 후쿠오카시, 후쿠오카 현, 일본
 transit: 하카타 지하철(100m)
