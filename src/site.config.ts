@@ -2,9 +2,9 @@ export const site = {
   name: "3인룸",
   brandName: "3인룸",
   brandRest: "room.kr",
-  title: "3인룸 ㅡ 도쿄 오사카 교토 후쿠오카 숙소 정보",
+  title: "일본 3인여행 숙소는 3인룸",
   description:
-    "애매한 3인 여행자를 위한 3인, 4인, 가족 호텔 정보 제공",
+    "3명이면 애매하지만, 완벽한 여행을 위해 도쿄, 오사카, 교토, 후쿠오카 3인실 가족형 호텔을 비교해드립니다.",
   /** 공개 주소. 관리자 GitHub OAuth callback은 https://3room.kr/api/callback 입니다. */
   baseUrl: "https://3room.kr",
   mediaBaseUrl: "https://pub-776d8a270e67409bb1704e375af76a79.r2.dev",

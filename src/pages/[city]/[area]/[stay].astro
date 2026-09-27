@@ -79,22 +79,6 @@ const bookUrl = stayAffiliateUrl(stay);
             <p class="stay-panel-head">서비스 및 부대시설 <span>›</span></p>
             <AmenityGrid items={amenities.slice(0, 6)} compact />
           </a>
-          <a
-            class="stay-panel stay-panel-map"
-            href={mapUrl}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <div class="stay-map-copy">
-              <p class="stay-panel-head">위치 정보 <span>›</span></p>
-              <p class="stay-map-line">
-                {stay.data.address}
-                <span>지도보기</span>
-              </p>
-              <p class="stay-map-walk">{stayTransit(stay)}</p>
-            </div>
-            <div class="stay-map-visual" aria-hidden="true"></div>
-          </a>
         </div>
       </div>
     </section>
