@@ -123,6 +123,15 @@ const bookUrl = stayAffiliateUrl(stay);
         <div class="prose">
           <Content />
         </div>
+        {
+          stay.data.official_url && (
+            <p class="stay-official">
+              <a href={stay.data.official_url} rel="noopener noreferrer" target="_blank">
+                공식 홈페이지 바로가기
+              </a>
+            </p>
+          )
+        }
         <hr class="stay-rule" />
         <h2>서비스 및 부대시설</h2>
         <AmenityGrid items={amenities} />

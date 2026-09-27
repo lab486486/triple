@@ -1705,6 +1705,18 @@ h3 {
   margin: 0 0 0.8rem;
 }
 
+.stay-official {
+  margin: 1.15rem 0 0;
+  text-align: left;
+}
+
+.stay-official a {
+  color: var(--blue);
+  font-weight: 750;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
 .stay-location {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
