@@ -7,12 +7,14 @@ import "../styles/site.css";
 interface Props {
   title?: string;
   description?: string;
+  keywords?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
   title = site.title,
   description = site.description,
+  keywords,
   jsonLd,
 } = Astro.props;
 
@@ -29,6 +31,7 @@ const graph = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     <meta name="naver-site-verification" content="3e00f98d6af31ab07f236a39330a5f23ed5eebdd" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
     <link rel="canonical" href={canonical} />
     <link rel="alternate" type="application/rss+xml" title={`${site.brandName} RSS`} href={new URL("/rss", site.baseUrl).href} />
     <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32" />

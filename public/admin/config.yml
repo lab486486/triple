@@ -209,11 +209,16 @@ collections:
     fields:
       - { name: nameKo, label: 도시 이름, widget: string }
       - { name: nameEn, label: 영문 (파일명), widget: string }
-      - { name: title, label: 페이지 제목, widget: string, hint: "도쿄 숙소 3인" }
+      - { name: title, label: 페이지 제목, widget: string, hint: "도쿄 3인 숙소" }
       - { name: description, label: 메타 설명, widget: text }
       - { name: kicker, label: 꼬리표, widget: string }
       - { name: lede, label: 리드, widget: text }
       - { name: sort, label: 정렬, widget: number, value_type: int, min: 1 }
+      - name: searchAreas
+        label: 숙소 지역 키워드
+        widget: list
+        hint: "숙소가 많은 지역. 검색에는 '도쿄 3인 숙소 신주쿠'처럼 붙습니다."
+        field: { name: area, label: 지역, widget: string }
       - name: faqs
         label: FAQ
         widget: list

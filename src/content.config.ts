@@ -26,6 +26,7 @@ const cities = defineCollection({
     kicker: z.string(),
     lede: z.string(),
     sort: z.number(),
+    searchAreas: z.array(z.string()).default([]),
     faqs: z.array(faq),
   }),
 });

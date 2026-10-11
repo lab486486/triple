@@ -5,6 +5,7 @@ import StayCard from "../../components/StayCard.astro";
 import FaqList from "../../components/FaqList.astro";
 import { getCities, getStaysByCity, getCity } from "../../lib/content";
 import { breadcrumbJsonLd, crumbsForCity, faqJsonLd } from "../../lib/jsonld";
+import { cityStayKeywordPhrases } from "../../lib/keywords";
 import { render } from "astro:content";
 
 export async function getStaticPaths() {
@@ -22,11 +23,16 @@ const stays = await getStaysByCity(city.id);
 const { Content } = await render(city);
 const crumbs = crumbsForCity(city);
 const ledeLines = city.data.lede.split(/(?<=\.)\s+/).filter(Boolean);
+const keywordText = cityStayKeywordPhrases(
+  city.data.nameKo,
+  city.data.searchAreas,
+).join(", ");
 ---
 
 <Layout
   title={city.data.title}
-  description={city.data.description}
+  description={keywordText}
+  keywords={keywordText}
   jsonLd={[breadcrumbJsonLd(crumbs), faqJsonLd(city.data.faqs)]}
 >
   <main id="main">
