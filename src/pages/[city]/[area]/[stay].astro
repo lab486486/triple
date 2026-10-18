@@ -94,7 +94,10 @@ const bookUrl = stayAffiliateUrl(stay);
     <section class="section" id="rooms">
       <div class="container">
         <h2>객실 정보</h2>
-        <p class="section-note">링크를 통해 구매가 이루어지면 소정의 수수료를 지급받습니다</p>
+        <div class="room-note-row">
+          <p class="section-note">객실 예약하기를 통해 구매할 경우 소정의 수수료가 지급됩니다</p>
+          <button type="button" class="room-share" data-room-share>공유하기</button>
+        </div>
         <div class="room-list">
           {rooms.map((room) => <StayRoomCard room={room} stay={stay} photo={cover} />)}
         </div>
@@ -157,6 +160,33 @@ const bookUrl = stayAffiliateUrl(stay);
         </section>
       )
     }
+
+    <script>
+      const shareButton = document.querySelector("[data-room-share]");
+      shareButton?.addEventListener("click", async () => {
+        if (!(shareButton instanceof HTMLButtonElement)) return;
+        const url = window.location.href;
+        const title = document.title;
+        if (navigator.share) {
+          try {
+            await navigator.share({ title, url });
+            return;
+          } catch (error) {
+            if (error instanceof DOMException && error.name === "AbortError") return;
+          }
+        }
+        try {
+          await navigator.clipboard.writeText(url);
+          const previous = shareButton.textContent;
+          shareButton.textContent = "링크를 복사했어요";
+          window.setTimeout(() => {
+            shareButton.textContent = previous;
+          }, 1600);
+        } catch {
+          window.prompt("주소를 복사해 공유해 주세요.", url);
+        }
+      });
+    </script>
 
     <div class="stay-dock">
       <div class="container stay-dock-row">

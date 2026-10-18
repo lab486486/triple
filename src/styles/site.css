@@ -21,9 +21,9 @@
   --font: "Noto Sans KR", Manrope, "Apple SD Gothic Neo", system-ui, sans-serif;
   --max: 72rem;
   --narrow: 44rem;
-  --nav-top: 0.85rem;
-  --nav-height: 3.05rem;
-  --nav-gap: 0.9rem;
+  --nav-top: 0rem;
+  --nav-height: 4.05rem;
+  --nav-gap: 0rem;
 }
 
 *,
@@ -97,13 +97,10 @@ select {
   left: 0;
   right: 0;
   z-index: 80;
-  padding: var(--nav-top) 0 0.55rem;
-  background: color-mix(in srgb, var(--bg) 92%, #fff);
-  backdrop-filter: saturate(1.15) blur(16px);
-  -webkit-backdrop-filter: saturate(1.15) blur(16px);
+  padding: 0;
+  background: #fff;
   border: 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
-  pointer-events: none;
+  border-bottom: 1px solid var(--line);
 }
 
 .site-header .nav-shell,
@@ -112,15 +109,15 @@ select {
 }
 
 .nav-shell {
-  width: min(100% - 1.5rem, var(--max));
+  width: min(100% - 2rem, var(--max));
   margin: 0 auto;
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 0.5rem 1rem;
-  background: var(--card);
-  border-radius: 999px;
-  box-shadow: var(--shadow);
+  padding: 0.75rem 0;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .brand {
@@ -147,7 +144,7 @@ select {
   text-decoration: none;
   color: var(--ink-soft);
   padding: 0.45rem 0.8rem;
-  border-radius: 999px;
+  border-radius: 0.25rem;
 }
 
 .nav-links a:hover,
@@ -159,19 +156,19 @@ select {
 .nav-blog {
   display: inline-flex;
   align-items: center;
-  padding: 0.45rem 0.9rem;
-  border-radius: 999px;
-  background: var(--ink-soft);
-  color: #fff;
+  padding: 0.45rem 0.8rem;
+  border-radius: 0.25rem;
+  background: transparent;
+  color: var(--ink-soft);
   text-decoration: none;
-  font-weight: 750;
-  font-size: 0.9rem;
+  font-weight: 650;
+  font-size: 0.92rem;
 }
 
 .nav-blog:hover,
 .nav-blog[aria-current="page"] {
-  background: var(--ink);
-  color: #fff;
+  background: var(--blue-soft);
+  color: var(--blue);
 }
 
 .nav-cta {
@@ -195,8 +192,8 @@ select {
   width: 2.4rem;
   height: 2.4rem;
   border: 0;
-  background: var(--blue-soft);
-  border-radius: 999px;
+  background: transparent;
+  border-radius: 0;
   padding: 0;
 }
 
@@ -228,11 +225,12 @@ select {
 
 .mobile-panel {
   display: none;
-  margin-top: 0.6rem;
-  background: var(--card);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow);
-  padding: 0.4rem 1rem 0.8rem;
+  margin-top: 0;
+  background: #fff;
+  border-radius: 0;
+  box-shadow: none;
+  border-top: 1px solid var(--line);
+  padding: 0.2rem 0 0.8rem;
 }
 
 .mobile-link {
@@ -244,13 +242,13 @@ select {
 }
 
 .mobile-link-blog {
-  margin-top: 0.45rem;
+  margin-top: 0;
   border-bottom: 0;
-  background: var(--ink-soft);
-  color: #fff;
-  border-radius: 0.85rem;
-  text-align: center;
-  padding: 0.7rem 0.9rem;
+  background: transparent;
+  color: inherit;
+  border-radius: 0;
+  text-align: left;
+  padding: 0.7rem 0;
 }
 
 .search-band {
@@ -278,7 +276,7 @@ select {
   grid-template-columns: 1.08fr 0.92fr;
   gap: 1.6rem;
   align-items: stretch;
-  height: 17.6rem;
+  height: 21rem;
 }
 
 .intro-copy {
@@ -353,16 +351,149 @@ select {
 
 .search-card {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: minmax(0, 1fr) auto;
-  gap: 0.4rem 0.5rem;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
   align-content: stretch;
   height: 100%;
+  min-width: 0;
   min-height: 0;
-  background: var(--card);
+  background: #e7eef8;
   border-radius: 1.5rem;
-  padding: 0.7rem 0.75rem 0.75rem;
-  box-shadow: var(--shadow);
+  padding: 0;
+  border: 2.25px solid rgba(0, 81, 250, 0.72);
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(0, 81, 250, 0.22), var(--shadow);
+}
+
+.map-heading {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.7rem;
+  z-index: 1;
+  margin: 0;
+  width: max-content;
+  max-width: calc(100% - 1.4rem);
+  padding: 0.28rem 0.7rem;
+  border-radius: 0.45rem;
+  background: #0051fa;
+  color: #fff;
+  font-size: 1.26rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  text-decoration: none;
+  pointer-events: none;
+}
+
+.japan-map {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  border-radius: 0;
+  overflow: hidden;
+  background: #e7eef8;
+}
+
+.japan-map-svg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.map-sea {
+  fill: #e7eef8;
+}
+
+.map-land {
+  fill: #f8f9fc;
+  stroke: #c5d0e6;
+  stroke-width: 1.15;
+  stroke-linejoin: round;
+}
+
+.map-inset {
+  fill: #f3f6fc;
+  stroke: #101b33;
+  stroke-width: 1.8;
+}
+
+.map-leader {
+  stroke: #5c6b8a;
+  stroke-width: 1.6;
+}
+
+.map-hit {
+  fill: transparent;
+}
+
+.map-city {
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+}
+
+.map-dot {
+  fill: #8b97b0;
+  stroke: #fff;
+  stroke-width: 1.5;
+}
+
+.map-city text {
+  font-family: inherit;
+  font-size: 18.2px;
+  font-weight: 800;
+  fill: #1c2740;
+}
+
+.map-city[data-pair="west"] .map-dot {
+  fill: #1f7a4d;
+}
+
+.map-city[data-pair="kansai"] .map-dot {
+  fill: #c23b4a;
+}
+
+.map-city[data-pair="east"] .map-dot {
+  fill: #3b5ce8;
+}
+
+.map-city[data-pair="north"] .map-dot {
+  fill: #e07a12;
+}
+
+.map-city[data-pair="island"] .map-dot {
+  fill: #7a3ae0;
+}
+
+.map-city.is-on .map-dot,
+.map-city:hover .map-dot {
+  stroke-width: 2.6;
+}
+
+.map-city.is-on text,
+.map-city:hover text {
+  fill: #c2410c;
+}
+
+.map-city:focus-visible .map-dot {
+  stroke: var(--orange);
+  stroke-width: 2.6;
+}
+
+.map-note {
+  position: absolute;
+  left: 0.85rem;
+  bottom: 0.7rem;
+  z-index: 1;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.3;
 }
 
 .search-card .search-submit {
@@ -509,6 +640,11 @@ select {
 
 .search-submit {
   width: 100%;
+}
+
+.search-submit:disabled {
+  background: #c5cbe0;
+  cursor: default;
 }
 
 .search-submit,
@@ -720,6 +856,26 @@ h3 {
   font-weight: 800;
   padding: 0.22rem 0.55rem;
   border-radius: 999px;
+}
+
+.pkg-badge[data-pair="west"] {
+  background: #1f7a4d;
+}
+
+.pkg-badge[data-pair="kansai"] {
+  background: #c23b4a;
+}
+
+.pkg-badge[data-pair="east"] {
+  background: #3b5ce8;
+}
+
+.pkg-badge[data-pair="north"] {
+  background: #e07a12;
+}
+
+.pkg-badge[data-pair="island"] {
+  background: #7a3ae0;
 }
 
 .pkg-body,
@@ -1546,7 +1702,7 @@ h3 {
 
 .stay-tabs {
   position: sticky;
-  top: 4.6rem;
+  top: calc(var(--nav-top) + var(--nav-height) + var(--nav-gap));
   z-index: 20;
   background: color-mix(in srgb, var(--bg) 88%, transparent);
   backdrop-filter: blur(10px);
@@ -1577,10 +1733,33 @@ h3 {
   scroll-margin-top: 8rem;
 }
 
+.room-note-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem 1.25rem;
+  margin-top: 0.35rem;
+}
+
 .section-note {
   margin: 0;
   color: var(--muted);
   font-size: 0.9rem;
+}
+
+.room-share {
+  flex: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #000;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.7;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
 }
 
 .room-list {
@@ -1851,6 +2030,11 @@ h3 {
   padding: 4rem 0;
 }
 
+.empty-note {
+  margin: 1rem 0 0;
+  color: var(--ink-soft);
+}
+
 .site-footer {
   margin-top: 3rem;
   background: var(--navy);
@@ -1860,8 +2044,14 @@ h3 {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1.3fr;
+  grid-template-columns: 1.1fr 2fr;
   gap: 1.5rem;
+}
+
+.footer-city-cols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.4rem 1.4rem;
 }
 
 .footer-brand {
@@ -1944,13 +2134,33 @@ h3 {
 
   .intro-search {
     height: auto;
+    min-width: 0;
     min-height: 0;
   }
 
   .search-card {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     grid-template-rows: none;
     height: auto;
+  }
+
+  .japan-map {
+    height: auto;
+    aspect-ratio: 520 / 262;
+    min-height: 16rem;
+  }
+
+  .japan-map-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .map-city text {
+    font-size: 11.2px;
+  }
+
+  .map-heading {
+    font-size: 1.14rem;
   }
 
   .search-card .pick-grid {
@@ -2105,7 +2315,7 @@ h3 {
   }
 
   .nav-shell {
-    border-radius: 1.2rem;
+    border-radius: 0;
   }
 
   .grid-2,

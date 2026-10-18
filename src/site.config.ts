@@ -21,8 +21,6 @@ export const site = {
 } as const;
 
 export const nav = [
-  { href: "/tokyo/", label: "도쿄" },
-  { href: "/osaka/", label: "오사카" },
-  { href: "/kyoto/", label: "교토" },
-  { href: "/fukuoka/", label: "후쿠오카" },
+  { href: "/", label: "Home" },
+  { href: "/blog/", label: "블로그" },
 ] as const;

@@ -4,7 +4,7 @@ import SearchBar from "../components/SearchBar.astro";
 import CityPackageCard from "../components/CityPackageCard.astro";
 import { organizationJsonLd } from "../lib/jsonld";
 import { getAreasByCity, getCities, getStaysByCity } from "../lib/content";
-import { areaCover } from "../lib/covers";
+import { areaCover, areaCovers } from "../lib/covers";
 import { areaPath } from "../lib/labels";
 import { getCollection } from "astro:content";
 
@@ -22,11 +22,13 @@ const areaEntries = await Promise.all(
   })),
 );
 const destinations = areaEntries.flatMap(({ city, areas }) =>
-  areas.map((area) => ({ city, area })),
+  areas
+    .filter((area) => areaCovers[`${city.id}/${area.data.slug}`])
+    .map((area) => ({ city, area })),
 );
 const posts = (await getCollection("guides"))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 2);
+  .slice(0, 6);
 ---
 
 <Layout jsonLd={organizationJsonLd()}>

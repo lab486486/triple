@@ -49,9 +49,15 @@ const keywordText = cityStayKeywordPhrases(
     <section class="section">
       <div class="container">
         <h2>{city.data.nameKo} 3인 숙소 추천</h2>
-        <div class="grid grid-3" style="margin-top:1rem">
-          {stays.slice(0, 6).map((stay) => <StayCard stay={stay} />)}
-        </div>
+        {
+          stays.length > 0 ? (
+            <div class="grid grid-3" style="margin-top:1rem">
+              {stays.slice(0, 6).map((stay) => <StayCard stay={stay} />)}
+            </div>
+          ) : (
+            <p class="empty-note">{city.data.nameKo} 숙소는 아직 없습니다.</p>
+          )
+        }
       </div>
     </section>
     <section class="section">

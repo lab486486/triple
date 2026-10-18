@@ -52,9 +52,14 @@ export function cityPath(city: string): string {
 
 export const cityNames: Record<string, string> = {
   tokyo: "도쿄",
+  nagoya: "나고야",
   osaka: "오사카",
   kyoto: "교토",
+  hiroshima: "히로시마",
   fukuoka: "후쿠오카",
+  sapporo: "삿포로",
+  hakodate: "하코다테",
+  okinawa: "오키나와",
 };
 
 export const areaNames: Record<string, string> = {
@@ -64,6 +69,11 @@ export const areaNames: Record<string, string> = {
   namba: "난바",
   station: "교토역",
   hakata: "하카타",
+  nagoya: "시내",
+  hiroshima: "시내",
+  sapporo: "시내",
+  hakodate: "시내",
+  okinawa: "시내",
 };
 
 export function placeLabel(city: string, area: string): string {

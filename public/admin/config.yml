@@ -56,13 +56,18 @@ collections:
         hint: "제목 위 꼬리표(우에노 · 도쿄)에 쓰입니다."
         options:
           - { label: 도쿄, value: tokyo }
+          - { label: 나고야, value: nagoya }
           - { label: 오사카, value: osaka }
           - { label: 교토, value: kyoto }
+          - { label: 히로시마, value: hiroshima }
           - { label: 후쿠오카, value: fukuoka }
+          - { label: 삿포로, value: sapporo }
+          - { label: 하코다테, value: hakodate }
+          - { label: 오키나와, value: okinawa }
       - name: area
         label: 지역
         widget: select
-        hint: "제목 위 꼬리표에 쓰입니다."
+        hint: "나고야·히로시마·삿포로·하코다테·오키나와는 같은 이름의 시내를 고르면 그 도시 목록에 바로 등록됩니다."
         options:
           - { label: 우에노, value: ueno }
           - { label: 긴자(도쿄역), value: ginza }
@@ -70,6 +75,11 @@ collections:
           - { label: 난바, value: namba }
           - { label: 교토역, value: station }
           - { label: 하카타, value: hakata }
+          - { label: 나고야 시내, value: nagoya }
+          - { label: 히로시마 시내, value: hiroshima }
+          - { label: 삿포로 시내, value: sapporo }
+          - { label: 하코다테 시내, value: hakodate }
+          - { label: 오키나와 시내, value: okinawa }
       - name: photos
         label: 숙소 사진
         widget: list
@@ -242,10 +252,15 @@ collections:
         widget: select
         options:
           - { label: 도쿄, value: tokyo }
+          - { label: 나고야, value: nagoya }
           - { label: 오사카, value: osaka }
           - { label: 교토, value: kyoto }
+          - { label: 히로시마, value: hiroshima }
           - { label: 후쿠오카, value: fukuoka }
-      - { name: slug, label: 지역 슬러그, widget: string, hint: "ueno, namba, station, hakata" }
+          - { label: 삿포로, value: sapporo }
+          - { label: 하코다테, value: hakodate }
+          - { label: 오키나와, value: okinawa }
+      - { name: slug, label: 지역 슬러그, widget: string, hint: "ueno, namba, station, hakata. 새 도시 시내는 nagoya, hiroshima, sapporo, hakodate, okinawa" }
       - { name: nameKo, label: 지역 이름, widget: string }
       - { name: nameEn, label: 영문, widget: string }
       - { name: title, label: 페이지 제목, widget: string }

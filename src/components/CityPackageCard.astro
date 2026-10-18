@@ -17,12 +17,23 @@ interface Props {
 
 const { city, stay, picked = false } = Astro.props;
 const photo = stayCover(stay.data.city, stay.data.area, stay.data.photos);
+const cityPair: Record<string, string> = {
+  hiroshima: "west",
+  fukuoka: "west",
+  kyoto: "kansai",
+  osaka: "kansai",
+  nagoya: "east",
+  tokyo: "east",
+  sapporo: "north",
+  hakodate: "north",
+  okinawa: "island",
+};
 ---
 
 <a class:list={["pkg-card", "city-pack", picked && "is-pick"]} href={stayPath(stay)}>
   <div class="pkg-photo">
     <img src={photo} alt="" width="640" height="400" loading="lazy" />
-    <span class="pkg-badge">{city.data.nameKo}</span>
+    <span class="pkg-badge" data-pair={cityPair[city.id]}>{city.data.nameKo}</span>
   </div>
   <div class="pkg-body">
     <p class="pkg-kicker">{cityNames[city.id]} 추천 숙소</p>

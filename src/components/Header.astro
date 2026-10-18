@@ -2,6 +2,8 @@
 import { nav } from "../site.config";
 
 const path = Astro.url.pathname;
+const isCurrent = (href: string) =>
+  href === "/" ? path === "/" : path === href || path.startsWith(href);
 ---
 
 <header class="site-header">
@@ -14,20 +16,13 @@ const path = Astro.url.pathname;
         nav.map((item) => (
           <a
             href={item.href}
-            aria-current={path.startsWith(item.href) ? "page" : undefined}
+            aria-current={isCurrent(item.href) ? "page" : undefined}
           >
             {item.label}
           </a>
         ))
       }
     </nav>
-    <a
-      class="nav-blog"
-      href="/blog/"
-      aria-current={path.startsWith("/blog/") ? "page" : undefined}
-    >
-      블로그
-    </a>
     <button
       class="menu-btn"
       type="button"
@@ -48,7 +43,6 @@ const path = Astro.url.pathname;
           </a>
         ))
       }
-      <a class="mobile-link mobile-link-blog" href="/blog/">블로그</a>
     </div>
   </div>
 </header>

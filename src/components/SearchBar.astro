@@ -1,128 +1,30 @@
 ---
-import { getCities } from "../lib/content";
+import JapanMap from "./JapanMap.astro";
 
 interface Props {
   layout?: "panel" | "page";
 }
 
 const { layout = "panel" } = Astro.props;
-const cities = await getCities();
-
-const cityImages: Record<string, string> = {
-  tokyo: "/images/search/tokyo.png",
-  osaka: "/images/search/osaka.png",
-  kyoto: "/images/search/kyoto.png",
-  fukuoka: "/images/search/fukuoka.png",
-};
-
-const layouts = [
-  {
-    value: "apartment",
-    label: "더블+싱글",
-    image: "/images/search/bed-double-single.png",
-  },
-  {
-    value: "triple_bed",
-    label: "싱글 X 3",
-    image: "/images/search/bed-triple-single.png",
-  },
-  {
-    value: "futon_3",
-    label: "다다미",
-    image: "/images/search/bed-tatami.png",
-  },
-  {
-    value: "twin_extra",
-    label: "엑스트라베드",
-    image: "/images/search/bed-extra.png",
-  },
-];
 ---
 
-<form
-  class:list={["search-card", layout === "page" && "search-card-page"]}
-  action="/search/"
-  method="get"
-  data-search-form
->
-  <input type="hidden" name="region" value="" />
-  <input type="hidden" name="layout" value="" />
-
-  <div class="search-group search-group-picks">
-    <div class="pick-grid" data-group="city" aria-label="여행 지역">
-      {
-        cities.map((city) => (
-          <button class="pick pick-square" type="button" data-value={city.id} aria-pressed="false">
-            <img src={cityImages[city.id] ?? cityImages.tokyo} alt="" width="640" height="480" />
-            <span>{city.data.nameKo}</span>
-          </button>
-        ))
-      }
-    </div>
+<div class:list={["search-card", layout === "page" && "search-card-page"]}>
+  <div class="japan-map">
+    <h2 class="map-heading">지도에서 3인실 찾기</h2>
+    <JapanMap />
+    <p class="map-note" data-map-note hidden></p>
   </div>
-
-  <div class="search-group search-group-picks">
-    <div class="pick-grid" data-group="layout" aria-label="침대 구성">
-      {
-        layouts.map((item) => (
-          <button class="pick pick-round" type="button" data-value={item.value} aria-pressed="false">
-            <img src={item.image} alt="" width="640" height="480" />
-            <span>{item.label}</span>
-          </button>
-        ))
-      }
-    </div>
-  </div>
-
-  <button class="search-submit" type="submit">3인 숙소 찾기</button>
-</form>
+</div>
 
 <script>
-  function markOn(row: Element, value: string) {
-    row.querySelectorAll<HTMLButtonElement>(".pick").forEach((button) => {
-      const on = (button.dataset.value ?? "") === value && value !== "";
-      button.classList.toggle("is-on", on);
-      button.setAttribute("aria-pressed", String(on));
-    });
-  }
-
-  document.querySelectorAll<HTMLFormElement>("[data-search-form]").forEach((form) => {
-    const fields = {
-      region: form.querySelector<HTMLInputElement>('[name="region"]')!,
-      layout: form.querySelector<HTMLInputElement>('[name="layout"]')!,
-    };
-    const cityRow = form.querySelector("[data-group='city']")!;
-    const layoutRow = form.querySelector("[data-group='layout']")!;
-    const params = new URLSearchParams(window.location.search);
-
-    const region = params.get("region") ?? "";
-    const cityId = region.split("/")[0] ?? "";
-    fields.region.value = cityId;
-    fields.layout.value = params.get("layout") ?? "";
-
-    markOn(cityRow, cityId);
-    markOn(layoutRow, fields.layout.value);
-
-    function bindToggle(
-      row: Element,
-      field: HTMLInputElement,
-    ) {
-      row.addEventListener("click", (event) => {
-        const button = (event.target as HTMLElement).closest<HTMLButtonElement>(".pick");
-        if (!button) return;
-        const value = button.dataset.value ?? "";
-        field.value = field.value === value ? "" : value;
-        markOn(row, field.value);
-      });
-    }
-
-    bindToggle(cityRow, fields.region);
-    bindToggle(layoutRow, fields.layout);
-
-    form.addEventListener("submit", () => {
-      Object.values(fields).forEach((input) => {
-        input.disabled = !input.value;
-      });
+  document.querySelectorAll<HTMLAnchorElement>(".map-city").forEach((pin) => {
+    pin.addEventListener("click", (event) => {
+      if (pin.dataset.ready === "true") return;
+      event.preventDefault();
+      const note = pin.closest(".japan-map")?.querySelector<HTMLElement>("[data-map-note]");
+      if (!note) return;
+      note.hidden = false;
+      note.textContent = `${pin.dataset.label} 숙소는 아직 준비 중이에요`;
     });
   });
 </script>
