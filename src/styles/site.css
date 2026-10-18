@@ -449,6 +449,11 @@ select {
   fill: #1c2740;
 }
 
+.map-leader-m,
+.map-label-m {
+  display: none;
+}
+
 .map-city[data-pair="west"] .map-dot {
   fill: #1f7a4d;
 }
@@ -2155,8 +2160,18 @@ h3 {
     height: 100%;
   }
 
+  .map-leader-d,
+  .map-label-d {
+    display: none;
+  }
+
+  .map-leader-m,
+  .map-label-m {
+    display: inline;
+  }
+
   .map-city text {
-    font-size: 11.2px;
+    font-size: 22.4px;
   }
 
   .map-heading {

@@ -1,15 +1,15 @@
 ---
 /** 인천 출발로 자주 가는 도시. ready인 도시만 지역 숙소 페이지가 있다. */
 const cities = [
-  { id: "sapporo", name: "삿포로", x: 295.7, y: 49.5, cx: 214, cy: 46, lx: 206, ly: 50, anchor: "end", pair: "north", ready: true },
-  { id: "hakodate", name: "하코다테", x: 284.5, y: 67, cx: 332, cy: 84, lx: 340, ly: 88, anchor: "start", pair: "north", ready: true },
-  { id: "tokyo", name: "도쿄", x: 274.7, y: 164.7, cx: 352, cy: 150, lx: 360, ly: 154, anchor: "start", pair: "east", ready: true },
-  { id: "nagoya", name: "나고야", x: 240.8, y: 172.4, cx: 168, cy: 128, lx: 160, ly: 132, anchor: "end", pair: "east", ready: true },
-  { id: "kyoto", name: "교토", x: 209, y: 174, cx: 162, cy: 160, lx: 154, ly: 164, anchor: "end", pair: "kansai", ready: true },
-  { id: "osaka", name: "오사카", x: 224.5, y: 180.5, cx: 286, cy: 210, lx: 294, ly: 214, anchor: "start", pair: "kansai", ready: true },
-  { id: "hiroshima", name: "히로시마", x: 186, y: 184.8, cx: 132, cy: 198, lx: 124, ly: 202, anchor: "end", pair: "west", ready: true },
-  { id: "fukuoka", name: "후쿠오카", x: 165, y: 200.5, cx: 118, cy: 234, lx: 110, ly: 238, anchor: "end", pair: "west", ready: true },
-  { id: "okinawa", name: "오키나와", x: 452, y: 196, cx: 460, cy: 232, lx: 460, ly: 250, anchor: "middle", pair: "island", ready: true },
+  { id: "sapporo", name: "삿포로", x: 295.7, y: 49.5, cx: 214, cy: 46, lx: 206, ly: 50, anchor: "end", mx: 232, my: 80, mcx: 248, mcy: 66, manchor: "end", pair: "north", ready: true },
+  { id: "hakodate", name: "하코다테", x: 284.5, y: 67, cx: 332, cy: 84, lx: 340, ly: 88, anchor: "start", mx: 348, my: 96, mcx: 338, mcy: 84, manchor: "start", pair: "north", ready: true },
+  { id: "tokyo", name: "도쿄", x: 274.7, y: 164.7, cx: 352, cy: 150, lx: 360, ly: 154, anchor: "start", mx: 332, my: 158, mcx: 322, mcy: 156, manchor: "start", pair: "east", ready: true },
+  { id: "nagoya", name: "나고야", x: 240.8, y: 172.4, cx: 168, cy: 128, lx: 160, ly: 132, anchor: "end", mx: 150, my: 108, mcx: 166, mcy: 122, manchor: "end", pair: "east", ready: true },
+  { id: "kyoto", name: "교토", x: 209, y: 174, cx: 162, cy: 160, lx: 154, ly: 164, anchor: "end", mx: 148, my: 160, mcx: 160, mcy: 158, manchor: "end", pair: "kansai", ready: true },
+  { id: "osaka", name: "오사카", x: 224.5, y: 180.5, cx: 286, cy: 210, lx: 294, ly: 214, anchor: "start", mx: 300, my: 210, mcx: 286, mcy: 198, manchor: "start", pair: "kansai", ready: true },
+  { id: "hiroshima", name: "히로시마", x: 186, y: 184.8, cx: 132, cy: 198, lx: 124, ly: 202, anchor: "end", mx: 144, my: 208, mcx: 150, mcy: 198, manchor: "end", pair: "west", ready: true },
+  { id: "fukuoka", name: "후쿠오카", x: 165, y: 200.5, cx: 118, cy: 234, lx: 110, ly: 238, anchor: "end", mx: 144, my: 252, mcx: 142, mcy: 234, manchor: "end", pair: "west", ready: true },
+  { id: "okinawa", name: "오키나와", x: 452, y: 196, cx: 460, cy: 232, lx: 460, ly: 250, anchor: "middle", mx: 456, my: 250, mcx: 456, mcy: 232, manchor: "middle", pair: "island", ready: true },
 ];
 ---
 
@@ -28,10 +28,12 @@ const cities = [
         data-ready={city.ready ? "true" : "false"}
         aria-label={city.ready ? `${city.name} 숙소` : `${city.name}, 준비 중`}
       >
-        <line class="map-leader" x1={city.x} y1={city.y} x2={city.cx} y2={city.cy} />
+        <line class="map-leader map-leader-d" x1={city.x} y1={city.y} x2={city.cx} y2={city.cy} />
+        <line class="map-leader map-leader-m" x1={city.x} y1={city.y} x2={city.mcx} y2={city.mcy} />
         <circle class="map-hit" cx={city.x} cy={city.y} r="14" />
         <circle class="map-dot" cx={city.x} cy={city.y} r="6.5" />
-        <text x={city.lx} y={city.ly} text-anchor={city.anchor}>{city.name}</text>
+        <text class="map-label-d" x={city.lx} y={city.ly} text-anchor={city.anchor}>{city.name}</text>
+        <text class="map-label-m" x={city.mx} y={city.my} text-anchor={city.manchor}>{city.name}</text>
       </a>
     ))
   }
