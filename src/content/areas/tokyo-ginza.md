@@ -3,7 +3,7 @@ city: tokyo
 slug: ginza
 nameKo: 긴자(도쿄역)
 nameEn: Ginza
-title: 긴자(도쿄역) 숙소 3인
+title: 긴자(도쿄역) 숙소 3인 / 4인 / 가족숙소
 description: |-
   도쿄 긴자·도쿄역 숙소 3인 추천. 3인 호텔과 가족숙소를
   신칸센·치안·방 면적으로 가릅니다.

@@ -3,7 +3,7 @@ city: tokyo
 slug: shinjuku
 nameKo: 신주쿠(시부야)
 nameEn: Shinjuku
-title: 신주쿠(시부야) 숙소 3인
+title: 신주쿠(시부야) 숙소 3인 / 4인 / 가족숙소
 description: |-
   도쿄 신주쿠·시부야 숙소 3인 추천. 3인 호텔·가족여행 숙소를
   역세권 트윈과 실제 침대 구성으로 가릅니다.

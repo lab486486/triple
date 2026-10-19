@@ -3,7 +3,7 @@ city: tokyo
 slug: ueno
 nameKo: 우에노
 nameEn: Ueno
-title: 우에노 숙소 3인
+title: 우에노 숙소 3인 / 4인 / 가족숙소
 description: 도쿄 우에노 숙소 3인·가성비 3인 호텔. 가족여행 숙소와 성인 3인 방을 침대·면적으로 가릅니다.
 kicker: 도쿄
 why: |-

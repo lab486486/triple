@@ -3,7 +3,7 @@ city: kyoto
 slug: station
 nameKo: 교토역
 nameEn: Kyoto Station
-title: 교토역 숙소 3인
+title: 교토역 숙소 3인 / 4인 / 가족숙소
 description: |-
   천년 고도의 관문이라는 입지적·도시 구조적 특징의 교토
   전통 료칸부터 모던한 글로벌 체인 호텔, 가성비 뛰어난 아파트형 숙소까지 다양한 지역

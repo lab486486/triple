@@ -3,7 +3,7 @@ city: sapporo
 slug: sapporo
 nameKo: 시내
 nameEn: Sapporo Center
-title: 삿포로 시내 3인 숙소
+title: 삿포로 시내 숙소 3인 / 4인 / 가족숙소
 description: 삿포로 시내 3인 숙소. 가격, 방 크기, 침대 개수를 비교해 3인실을 고릅니다.
 kicker: 삿포로
 why: |-

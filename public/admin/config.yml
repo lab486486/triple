@@ -147,7 +147,7 @@ collections:
             required: false
             options:
               - { label: 부부+자녀, value: couple_child }
-              - { label: 성인 3인, value: three_adults }
+              - { label: 성인 3인+, value: three_adults }
           - { name: note, label: 객실 메모, widget: text, hint: "객실 카드 설명으로 나갑니다." }
           - { name: photo, label: 객실 사진, widget: image, required: false, hint: "없으면 숙소 대표 사진을 씁니다." }
       - { name: body, label: 숙소 소개, widget: markdown, hint: "숙소 소개 본문입니다." }
@@ -158,7 +158,7 @@ collections:
         min: 1
         options:
           - { label: 부부+자녀, value: couple_child }
-          - { label: 성인 3인, value: three_adults }
+          - { label: 성인 3인+, value: three_adults }
       - name: sleep_layout
         label: 대표 침대 구성
         widget: select

@@ -6,7 +6,7 @@ export type PriceBand = number;
 
 export const partyLabels: Record<PartyType, string> = {
   couple_child: "부부+자녀",
-  three_adults: "성인 3인",
+  three_adults: "성인 3인+",
 };
 
 export const sleepLabels: Record<SleepLayout, string> = {

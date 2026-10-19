@@ -3,7 +3,7 @@ city: osaka
 slug: namba
 nameKo: 난바
 nameEn: Namba
-title: 난바 숙소 3인
+title: 난바 숙소 3인 / 4인 / 가족숙소
 description: |-
   오사카 난바 숙소 3인, 가족여행 숙소 3인 추천.
   3인 호텔·가성비 방을 도톤보리 접근과 면적으로 가릅니다.

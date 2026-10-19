@@ -3,7 +3,7 @@ city: fukuoka
 slug: hakata
 nameKo: 하카타
 nameEn: Hakata
-title: 하카타 숙소 3인
+title: 하카타 숙소 3인 / 4인 / 가족숙소
 description: |-
   후쿠오카 및 큐슈 전체의 관문인 하카타 
   대형 비즈니스 호텔부터 글로벌 체인 호텔, 가성비 뛰어난 레지던스 및 호스텔까지 갖춘 지역
