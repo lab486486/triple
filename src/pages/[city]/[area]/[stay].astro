@@ -93,13 +93,13 @@ const bookUrl = stayAffiliateUrl(stay);
 
     <section class="section" id="rooms">
       <div class="container">
+        <p class="section-note room-disclosure" id="room-disclosure">
+          객실 예약하기를 통해 구매할 경우 소정의 수수료가 지급됩니다
+        </p>
         <div class="room-head">
           <h2>객실 정보</h2>
           <button type="button" class="room-share" data-room-share>공유하기</button>
         </div>
-        <p class="section-note room-disclosure" id="room-disclosure">
-          객실 예약하기를 통해 구매할 경우 소정의 수수료가 지급됩니다
-        </p>
         <div class="room-list">
           {rooms.map((room) => <StayRoomCard room={room} stay={stay} photo={cover} />)}
         </div>
@@ -194,12 +194,19 @@ const bookUrl = stayAffiliateUrl(stay);
         window.setTimeout(() => {
           if (cancelled) return;
           cleanup();
-          const top = disclosure.getBoundingClientRect().top;
+          const heading = rooms.querySelector("h2");
+          if (!heading) return;
+          const top = heading.getBoundingClientRect().top;
           const viewportH = window.innerHeight || 0;
           if (!viewportH || top <= viewportH * 0.7) return;
+          const header = document.querySelector(".site-header");
+          const tabs = document.querySelector(".stay-tabs");
+          const offset =
+            (header?.getBoundingClientRect().height ?? 0) +
+            (tabs?.getBoundingClientRect().height ?? 0);
           const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-          rooms.scrollIntoView({
-            block: "start",
+          window.scrollTo({
+            top: heading.getBoundingClientRect().top + window.scrollY - offset,
             behavior: reduceMotion ? "auto" : "smooth",
           });
         }, 1000);
