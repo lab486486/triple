@@ -97,10 +97,12 @@ const bookUrl = stayAffiliateUrl(stay);
           <h2>객실 정보</h2>
           <button type="button" class="room-share" data-room-share>공유하기</button>
         </div>
+        <p class="section-note room-disclosure" id="room-disclosure">
+          객실 예약하기를 통해 구매할 경우 소정의 수수료가 지급됩니다
+        </p>
         <div class="room-list">
           {rooms.map((room) => <StayRoomCard room={room} stay={stay} photo={cover} />)}
         </div>
-        <p class="section-note room-list-note">객실 예약하기를 통해 구매할 경우 소정의 수수료가 지급됩니다</p>
       </div>
     </section>
 
@@ -162,6 +164,47 @@ const bookUrl = stayAffiliateUrl(stay);
     }
 
     <script>
+      const disclosure = document.getElementById("room-disclosure");
+      const rooms = document.getElementById("rooms");
+      if (disclosure && rooms && location.hash !== "#intro" && location.hash !== "#location") {
+        let cancelled = false;
+        const startY = window.scrollY || window.pageYOffset || 0;
+        const cleanup = () => {
+          window.removeEventListener("wheel", cancel);
+          window.removeEventListener("touchmove", cancel);
+          window.removeEventListener("scroll", onUserScroll);
+          window.removeEventListener("keydown", onKeyScroll);
+        };
+        const cancel = () => {
+          cancelled = true;
+          cleanup();
+        };
+        const onUserScroll = () => {
+          const y = window.scrollY || window.pageYOffset || 0;
+          if (Math.abs(y - startY) > 8) cancel();
+        };
+        const onKeyScroll = (event: KeyboardEvent) => {
+          const keys = ["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", " "];
+          if (keys.includes(event.key)) cancel();
+        };
+        window.addEventListener("wheel", cancel, { passive: true });
+        window.addEventListener("touchmove", cancel, { passive: true });
+        window.addEventListener("scroll", onUserScroll, { passive: true });
+        window.addEventListener("keydown", onKeyScroll);
+        window.setTimeout(() => {
+          if (cancelled) return;
+          cleanup();
+          const top = disclosure.getBoundingClientRect().top;
+          const viewportH = window.innerHeight || 0;
+          if (!viewportH || top <= viewportH * 0.7) return;
+          const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          rooms.scrollIntoView({
+            block: "start",
+            behavior: reduceMotion ? "auto" : "smooth",
+          });
+        }, 1000);
+      }
+
       const shareButton = document.querySelector("[data-room-share]");
       shareButton?.addEventListener("click", async () => {
         if (!(shareButton instanceof HTMLButtonElement)) return;
